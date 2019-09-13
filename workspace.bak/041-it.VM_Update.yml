@@ -1,0 +1,13 @@
+---
+
+- name: Basic Sysctl Installition
+  #hosts: all
+  #hosts: it_Monitor
+  hosts: it_Kubectl
+  serial: 3
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    - { role: sys.os_update  }
+   

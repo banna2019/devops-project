@@ -1,0 +1,36 @@
+---
+
+- include_tasks: firewalld.yml
+
+- name: SELinux | Install libselinux-python
+  package:
+     name: "{{ selinux_requirements }}"
+     state: present
+  register: selinux_install_required_packages
+  until: selinux_install_required_packages
+  retries: 3
+
+- name: SELinux | Set SELinux policy and state
+  selinux: 
+    policy: "{{ selinux_policy }}"
+    state: "{{ selinux_state }}"
+  register: selinux
+
+- debug: var=selinux
+
+- block:
+    - name: SELinux | Restart machine
+      shell: sleep 2 && shutdown -r now "Restarting with SELinux Disabled"
+      async: 1
+      poll: 0
+      ignore_errors: true
+
+    - name: SELinux | Wait for the server to come back
+      become: false
+      delegate_to: localhost
+      wait_for:
+        port: "22"
+        host: "{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}"
+        search_regex: OpenSSH
+        delay: 10
+  when: selinux.changed and reboot

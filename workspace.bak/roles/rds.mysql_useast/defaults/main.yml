@@ -1,0 +1,21 @@
+---
+# defaults file for rds.mysql
+
+aws_application_name: my-application
+aws_tags: 0
+
+# Reference to the Created RDS instance
+db_instance: ""
+
+rds_instance_name: ""
+rds_instance_size_gb: 100
+rds_instance_type: db.t2.micro
+
+rds_admin_username: "dbUser"
+rds_admin_password: ""
+
+rds_multi_zone: no
+
+rds_backup_retention: 1
+rds_db_name: ""
+

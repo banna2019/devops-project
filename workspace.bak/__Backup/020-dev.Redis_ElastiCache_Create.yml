@@ -1,0 +1,42 @@
+---
+
+- name: Create ElastiCache Redis instance
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+    - { role: aec.redis,
+           aws_tags: 56,
+           redis_cluster_type: cache.m5.large,
+           aws_application_name: "bigPanda" }
+
+    #- { role: aec.redis,
+    #       aws_tags: 11,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "yq11" }
+    #- { role: aec.redis,
+    #       aws_tags: 12,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "v9cp" }
+    #- { role: aec.redis,
+    #       aws_tags: 15,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "7125c" }
+    #- { role: aec.redis,
+    #       aws_tags: 16,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "hy56" }
+    #- { role: aec.redis,
+    #       aws_tags: 17,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "c5w" }
+    #- { role: aec.redis,
+    #       aws_tags: 18,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "dgg" }
+    #- { role: aec.redis,
+    #       aws_tags: 19,
+    #       redis_cluster_type: cache.m5.large,
+    #       aws_application_name: "z3y" }

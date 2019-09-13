@@ -1,0 +1,26 @@
+---
+# tasks file for rds.mysql
+
+- name: Check MySQL DB instance
+  rds_instance_facts:
+    region: "{{ rds_instance_region }}"
+    db_instance_identifier: "{{ rds_instance_name }}"
+  register: rds_facts
+
+- name: Remove RDS MySQL DB instance
+  rds:
+    command: delete
+    region: "{{ rds_instance_region }}"
+    instance_name: "{{ rds_instance_name }}"
+    snapshot: "{{ rds_snapshot_name }}"
+    wait: yes
+    wait_timeout: 1800
+  when:
+    - deleteExisting 
+    - rds_facts.instances[0].db_instance_identifier|lower == rds_instance_name|lower
+
+- debug:
+    msg: "1={{ rds_facts.instances[0].db_instance_identifier | lower }} 2={{ rds_instance_name | lower }}"
+
+- debug: 
+    var=rds_facts

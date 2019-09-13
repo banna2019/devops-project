@@ -1,0 +1,48 @@
+---
+# defaults file for ec2
+
+# CentOS Linux 7 1801_01 2018-Jan-14
+# ap-southeast-1  Asia Pacific (Singapore)
+# ap-southeast-2  Asia Pacific (Seoul)
+# ap-southeast-2  Asia Pacific (Sydney)
+# ami-f4cc1de2  # Ubuntu 16.04 LTS
+
+ec2_ami_Id: "" 
+ec2_instance_type: t2.micro
+
+# Remove old ec2 instances if 'deleteExisting' is true or 'tear_down' is true
+deleteExisting: false
+tear_down: false
+
+# default Application TAG 
+aws_tags: 0
+
+# key pair to use on the instance; pem file name
+ec2_Key_Pair: ""
+
+# security group name
+ec2_security_group_Id: ""
+
+# Hosts Group Name 
+app_name: ""
+
+# Location
+ec2_instance_region: "ap-southeast-1"
+
+# the subnet ID
+vpc_subnet_Id: ""
+
+# the private ip address to assign the instance
+ec2_instance_private_Ip: ""
+
+#
+ec2_volume_Device_Name: /dev/sda1
+
+# ssd gp2 root volume
+ec2_volume_type: gp2
+
+#
+ec2_volume_Size: 8
+
+#
+ec2_env: ""

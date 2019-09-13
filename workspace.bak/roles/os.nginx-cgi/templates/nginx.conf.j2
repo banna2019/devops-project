@@ -1,0 +1,103 @@
+user  {{ nginx_user }};
+{% block worker %}
+worker_processes  {{ nginx_worker_processes }};
+{% endblock %}
+error_log  {{ nginx_error_log }};
+pid        {{ nginx_pidfile }};
+
+{% if nginx_extra_conf_options %}
+{{ nginx_extra_conf_options }}
+{% endif %}
+
+{% block share_modules_includes %}
+# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+include {{ nginx_modules_path }}/*.conf;
+{% endblock %}
+
+{% block events %}
+events {
+    use epoll;
+    worker_connections  {{ nginx_worker_connections }};
+    multi_accept {{ nginx_multi_accept }};
+}
+{% endblock %}
+
+http {
+    {% block http_begin %}{% endblock %}
+
+{% block http_basic %}
+    include       {{ nginx_mime_file_path }};
+    default_type  application/octet-stream;
+
+    server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
+
+    client_max_body_size {{ nginx_client_max_body_size }};
+
+    log_format  main  {{ nginx_log_format|indent(23) }};
+
+    access_log  {{ nginx_access_log }};
+
+    sendfile        {{ nginx_sendfile }};
+    tcp_nopush      {{ nginx_tcp_nopush }};
+    tcp_nodelay     {{ nginx_tcp_nodelay }};
+
+    keepalive_timeout  {{ nginx_keepalive_timeout }};
+    keepalive_requests {{ nginx_keepalive_requests }};
+    types_hash_max_size {{ nginx_types_hash_max_size }};
+
+    server_tokens {{ nginx_server_tokens }};
+{% if nginx_proxy_cache_path %}
+    proxy_cache_path {{ nginx_proxy_cache_path }};
+{% endif %}
+{% endblock %}
+
+{% block http_gzip %}
+    #gzip on;
+{% endblock %}
+
+{% if nginx_ssl_header_items is defined %}
+
+  {% block server_ssl -%}
+  {% for ssl_header_line in nginx_ssl_header_items %}
+  add_header                  {{ ssl_header_line }};
+  {% endfor %}
+
+    ssl_certificate             /etc/pki/tls/certs/{{ nginx_ssl_certificate }};
+    ssl_certificate_key         /etc/pki/tls/private/{{ nginx_ssl_certificate_key }};
+
+  {% for ssl_conf_line in nginx_ssl_conf_items %}
+  {{ ssl_conf_line }};
+  {% endfor %}
+
+    {% endblock %}
+{% endif %}
+
+{% if nginx_extra_http_options %}
+    {{ nginx_extra_http_options|indent(4, False) }}
+{% endif %}
+
+{% block http_upstream %}
+{% for upstream in nginx_upstreams %}
+    upstream {{ upstream.name }} {
+{% if upstream.strategy is defined %}
+        {{ upstream.strategy }};
+{% endif %}
+{% for server in upstream.servers %}
+        server {{ server }};
+{% endfor %}
+{% if upstream.keepalive is defined %}
+        keepalive {{ upstream.keepalive }};
+{% endif %}
+    }
+{% endfor %}
+{% endblock %}
+
+{% block http_includes %}
+    include {{ nginx_conf_path }}/*.conf;
+{% if nginx_conf_path != nginx_vhost_path %}
+    include {{ nginx_vhost_path }}/*;
+{% endif %}
+{% endblock %}
+
+    {% block http_end %}{% endblock %}
+}

@@ -1,0 +1,140 @@
+---
+
+- name: Create AWS RDS Instance vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+    - { role: rds.mysql_useast,
+           aws_tags: 6,
+           rds_instance_size_gb: 300,
+           aws_application_name: "cshh",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "ysMO8FoL-T27qTv2vZ" }
+    - { role: rds.mysql_useast,
+           aws_tags: 7,
+           rds_instance_size_gb: 300,
+           aws_application_name: "1hao",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "rgh4Ja7S-I31Xq5z60" }
+    - { role: rds.mysql_useast,
+           aws_tags: 10,
+           rds_instance_size_gb: 300,
+           aws_application_name: "6hao",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "fsYn04E-C5EBJRxky0" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 8,
+           aws_application_name: "rrcai",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "7r4ETn8twXBZbq-Qbo" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 9,
+           aws_application_name: "csdd",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "3pcin-vyg2dgM6JpO8" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 11,
+           aws_application_name: "yq11",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "4rfCunImnYE61Z-dQY" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 12,
+           aws_application_name: "v9cp",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "1dWlP6KCIkVU-M8vMz" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 15,
+           aws_application_name: "7125d",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "8eOpg0hTuZY85-c76u" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 16,
+           aws_application_name: "hy56",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "n03U7-5Ru2U00DN175" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 17,
+           aws_application_name: "c5w",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "sI1-cnBZg9n627eaz4" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 18,
+           aws_application_name: "dgg",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "Cb-tQlDE3fqIsUPmAw" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 19,
+           aws_application_name: "z3y",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "kvp8t-cqydF0VNy9Or" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 21,
+           aws_application_name: "bigapple",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "9OHtocCNT-ekPUHY8r" }
+
+    - { role: rds.mysql_useast,
+           aws_tags: 22,
+           aws_application_name: "dafa",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "8W16-vfnHPJ46PGr04" }
+    - { role: rds.mysql_useast,
+           aws_tags: 23,
+           aws_application_name: "union",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "3g1UDa6eZyB8U1-bYj" }
+    - { role: rds.mysql_useast,
+           aws_tags: 25,
+           aws_application_name: "kuai6",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "n-1dRkeEvHjEYKHQGl" }
+    - { role: rds.mysql_useast,
+           aws_tags: 26,
+           aws_application_name: "csgj",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "t0v8-mAxriLFMxAvKP" }
+    - { role: rds.mysql_useast,
+           aws_tags: 27,
+           aws_application_name: "95cp",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "fNe-7UbEXocVjOEDDx" }
+    - { role: rds.mysql_useast,
+           aws_tags: 30,
+           aws_application_name: "cstx",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "nNZ-Z5sujweqfWq266" }
+    - { role: rds.mysql_useast,
+           aws_tags: 36,
+           aws_application_name: "fortuna",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "zEwo-L4TwKQbLKA4N6" }
+    - { role: rds.mysql_useast,
+           aws_tags: 38,
+           aws_application_name: "wealth",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "O-R3yImIVUSJ2nvDdS" }
+    - { role: rds.mysql_useast,
+           aws_tags: 39,
+           aws_application_name: "myth",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "aUgBzL9Wt-tb8jC9Nh" }
+    - { role: rds.mysql_useast,
+           aws_tags: 40,
+           aws_application_name: "chouse",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "4w58F4RmO6dLaEE-yI" }
+
+

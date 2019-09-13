@@ -1,0 +1,15 @@
+---
+
+- name: Create RDS MySQL Instance
+  hosts: local
+  connection: local
+
+
+  tasks:
+    - name: Log into private registry and force re-authorization
+      docker_login:
+        registry: "10.8.209.198:7149"
+        username: "docker"
+        password: "r0JT67Ud6Ybt"
+        reauthorize: yes
+

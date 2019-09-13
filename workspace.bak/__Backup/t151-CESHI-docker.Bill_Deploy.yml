@@ -1,0 +1,15 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_CESHI_bill
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  vars:
+    language: "JAVA"
+
+ 
+  roles:
+    # Docker for Bill
+    - { role: docker.deploy_project, docker_image_name: "openlottery", project_port: 8030, project_tag: "rsl_201902110200_b1" }
+    - { role: docker.deploy_project, docker_image_name: "timetlot", project_port: 8080, project_tag: "rls_2019021515544_b1" }

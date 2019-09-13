@@ -1,0 +1,15 @@
+---
+
+- name: Define Betting fact
+  set_fact:
+    ec2_key_Pair: "One_Nodes_CMS" 
+    #
+    vpc_subnet_Id: "subnet-02535dd198e7106dc"
+    ec2_subnet_ipv4_cidr: "10.101.16."
+    #
+    ec2_security_group_Id:
+      - sg-052365812c2839d63     # nodes-SSH
+      - sg-0e7af62fc5731f960     # nodes-All
+      - sg-009dc79fcc06e7236     # nodes-CMS
+    #
+    ec2_volume_Size: 8

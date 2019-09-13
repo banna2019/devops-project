@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 38
+    platform_name: "S038"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec038-wealth-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db038-wealth-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "O-R3yImIVUSJ2nvDdS"
+    #
+    mq_username: "cfxdvj"
+    mq_password: "CTIaS3BXQ4VSL30-Kd"
+    home_page_url: "https://cfcp8.net"
+    home_page_title: "财富国际"
+    pay_url: "https://pay-cfcp.h5api.co"
+    api_turn_url: "https://tp-cfcp.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "wealth-038-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: "https://e-142536.chatnow.meiqia.com/dist/standalone.html"
+    # UMENG
+    umeng_andorid_app_key: "5c86040b3fc19583fa00063a"
+    umeng_andorid_master_secret: "a7f4t9qxpzjodq6qkjulz87kgokvbnmp"
+    umeng_ios_app_key: "5c8600fe3fc19578df0002cf"
+    umeng_ios_master_secret: "y8ewrz4hej1rbwtjg55gq2k4iaoltwhe"
+

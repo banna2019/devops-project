@@ -1,0 +1,8 @@
+---
+# defaults file for rds.mysql
+
+aws_application_name: my-application
+aws_tags: 0
+
+#redis_instance_type: cache.m3.medium
+redis_cluster_type: cache.m3.medium

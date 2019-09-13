@@ -1,0 +1,15 @@
+---
+
+- name: Basic Sysctl Installition
+  hosts: all
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    - { role: sys.timezone, timezone: Asia/Shanghai  }
+    - { role: os.repo-epel }
+    - { role: sys.limits }
+    - { role: sys.security }
+    - { role: sys.selinux, selinux_state: disabled, reboot: true }
+   

@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 6
+    platform_name: "RRB"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec006-cshh-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db006-cshh-aurora.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "root"
+    aws_rds_password: "piuche8aeFoi5eiGhej8quaev"
+    #
+    mq_username: "riribo"
+    mq_password: "OSaimeekaequ4Bohle"
+    home_page_url: "http://h788.com"
+    home_page_title: "创世红海"
+    pay_url: "https://pay.cshh8pc.com"
+    api_turn_url: "https://tp.cshh8pc.com"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "rrbo-006-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "api.cshh8.com"
+    online_service_url: "https://messenger.providesupport.com/messenger/150maf5kjhryj0vsq2z5s5c6k4.html"
+    # UMENG
+    umeng_andorid_app_key: "5af7a609a40fa334960002d7"
+    umeng_andorid_master_secret: "5o0c6j02emzkszfnpiy8hrkjvw88ezt8"
+    umeng_ios_app_key: "5af6ccadf43e48751a0001d6"
+    umeng_ios_master_secret: "wzhvnfaumw4qheyobla7eobvnipnfyqn"
+

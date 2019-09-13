@@ -1,0 +1,12 @@
+---
+
+- name: Add new User with ssh authorized_keys and groups docker
+  #hosts: all
+  hosts: nodes_CESHI_CMS
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    - { role: sys.add_user, provision_username: "banna", authorized_keys_filename: "Public-Nodes-Banna.pub"  }
+   

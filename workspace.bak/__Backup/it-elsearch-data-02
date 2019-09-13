@@ -1,0 +1,10 @@
+---
+
+es_node_data: true
+#es_node_master: true
+es_node_master: false
+es_data_dirs:
+  - "/data/elasticsearch_1/data"
+  - "/data/elasticsearch_2/data"
+  - "/data/elasticsearch_3/data"
+

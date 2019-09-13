@@ -1,0 +1,36 @@
+---
+
+- name: Change Hostname
+  hosts: all
+  #hosts: it_Monitor
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    #- { role: sys.hostname, domain_name: "h788.com" }       #006-nodes
+    #- { role: sys.hostname, domain_name: "1hao999.vip" }    #007-nodes
+    #- { role: sys.hostname, domain_name: "rrc9999.com" }    #008-nodes
+    #- { role: sys.hostname, domain_name: "dd33z.com" }      #009-nodes
+    #- { role: sys.hostname, domain_name: "6hao999.vip" }    #010-nodes
+    #- { role: sys.hostname, domain_name: "yq11.com" }       #011-nodes
+    #- { role: sys.hostname, domain_name: "v9cpa.com" }      #012-nodes
+    #- { role: sys.hostname, domain_name: "7125d.com" }      #015-nodes
+    #- { role: sys.hostname, domain_name: "565566.com" }     #016-nodes
+    #- { role: sys.hostname, domain_name: "c5w33.com" }      #017-nodes 
+    #- { role: sys.hostname, domain_name: "85cpvip.com" }    #018-nodes 
+    #- { role: sys.hostname, domain_name: "77199.com" }      #019-nodes
+    #- { role: sys.hostname, domain_name: "18d.com" }        #021-nodes 
+
+    #- { role: sys.hostname, domain_name: "25582558.com" }   #022-nodes
+    #- { role: sys.hostname, domain_name: "8cslm.com" }      #023-nodes 
+    #- { role: sys.hostname, domain_name: "666cpw.com" }     #025-nodes
+    #- { role: sys.hostname, domain_name: "6csgj.com" }      #026-nodes 
+    #- { role: sys.hostname, domain_name: "t0095.app" }      #027-nodes 
+    #- { role: sys.hostname, domain_name: "28050.com" }      #030-nodes 
+    #- { role: sys.hostname, domain_name: "cscp8.net" }      #036-nodes
+    #- { role: sys.hostname, domain_name: "cfcp8.net" }      #038-nodes 
+    #- { role: sys.hostname, domain_name: "33028.com" }      #039-nodes 
+    #- { role: sys.hostname, domain_name: "205632.com" }      #040-nodes 
+    - { role: sys.hostname, domain_name: "1286.com" }       #056-nodes 
+    #- { role: sys.hostname, domain_name: "pp6.me" }         #249-nodes and it-nodes

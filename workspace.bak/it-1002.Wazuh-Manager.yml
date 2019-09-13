@@ -1,0 +1,13 @@
+---
+
+- name: Create IT Monitor EC2 vHost
+  hosts: it_Monitor
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    #
+    - { role: wazuh.manager }
+    - { role: wazuh.filebeat }
+

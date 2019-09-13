@@ -1,0 +1,24 @@
+---
+
+- name: Create "lucky" all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    - { role: ec2.dev_vm, app_name: "bet1" }
+    - { role: ec2.dev_vm, app_name: "bet2" }
+    - { role: ec2.dev_vm, app_name: "MQ1" }
+    - { role: ec2.dev_vm, app_name: "MQ2" }
+    - { role: ec2.dev_vm, app_name: "bill" }
+    - { role: ec2.dev_vm, app_name: "chat" }
+    - { role: ec2.dev_vm, app_name: "data" }
+    - { role: ec2.dev_vm, app_name: "dock" }
+    - { role: ec2.dev_vm, app_name: "H5" }
+    - { role: ec2.dev_vm, app_name: "CMS" }
+
+  vars:
+    ec2_env: "lucky"
+    aws_tags: 21
+    
+

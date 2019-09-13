@@ -1,0 +1,11 @@
+---
+
+- name: Resizing Redis instance
+  hosts: local
+  connection: local
+
+  roles:
+    - { role: aec.resizing_redis,
+             aws_tags: 56,
+             aws_application_name: "bigPanda",
+             redis_node_type: cache.m5.large }

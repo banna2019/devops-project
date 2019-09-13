@@ -1,0 +1,62 @@
+{% block server_redirect %}
+{% if item.server_name_redirect is defined %}
+server {
+    listen       {{ item.listen | default('80') }};
+    server_name  {{ item.server_name_redirect }};
+    return       301 $scheme://{{ item.server_name.split(' ')[0] }}$request_uri;
+}
+{% endif %}
+{% endblock %}
+
+server {
+    {% block server_begin %}{% endblock %}
+
+    {% block server_basic -%}
+    listen {{ item.listen | default('80') }};
+
+{% if item.server_name is defined %}
+    server_name {{ item.server_name }};
+{% endif %}
+
+{% if item.root is defined %}
+    root {{ item.root }};
+{% endif %}
+
+{% if item.error_page is defined %}
+    error_page {{ item.error_page }};
+{% endif %}
+{% if item.access_log is defined %}
+    access_log {{ item.access_log }};
+{% endif %}
+{% if item.error_log is defined %}
+    error_log {{ item.error_log }} error;
+{% endif %}
+
+{% if item.return is defined %}
+    return {{ item.return }};
+{% endif %}
+    {% endblock %}
+
+{% if nginx_ssl_enable %}
+
+  {% block server_ssl -%}
+  {% for ssl_header_line in nginx_ssl_header_items %}
+    add_header                  {{ ssl_header_line }};
+  {% endfor %}
+
+      ssl_certificate             /etc/pki/tls/certs/{{ nginx_ssl_certificate }};
+      ssl_certificate_key         /etc/pki/tls/private/{{ nginx_ssl_certificate_key }};
+
+  {% for ssl_conf_line in nginx_ssl_conf_items %}
+    {{ ssl_conf_line }};
+  {% endfor %}
+
+    {% endblock %}
+{% endif %}
+
+    {% block server_end %}{% endblock %}
+
+{% if item.extra_parameters is defined %}
+    {{ item.extra_parameters|indent(4) }}
+{% endif %}
+}

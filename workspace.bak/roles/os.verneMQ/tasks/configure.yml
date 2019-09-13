@@ -1,0 +1,59 @@
+---
+
+#- name: Set VerneMQ nofile Limits
+#  become: yes
+#  lineinfile:
+#    dest: /etc/default/vernemq
+#    create: yes
+#    regexp: "^ulimit -n \\d+"
+#    line: "ulimit -n {{ vernemq_nofile }}"
+#  notify: restart vernemq
+
+- name: Set VerneMQ nofile limits.conf
+  become: yes
+  lineinfile:
+    dest: /etc/security/limits.conf
+    create: no
+    regexp: "^vernemq\\s+{{ item }}\\s+nofile\\s+\\d+"
+    line: "vernemq     {{ item }}      nofile     {{ vernemq_nofile }}"
+  notify: restart vernemq
+  with_items:
+    - soft
+    - hard
+
+- name: Edit VerneMQ Configuration File
+  become: yes
+  ini_file:
+    dest: /etc/vernemq/vernemq.conf
+    section: ~
+    option: "{{ item.key }}"
+    value: "{% if item.value == true %}on{% elif item.value == false %}off{% else %}{{ item.value }}{% endif %}"
+  with_dict: "{{ vernemq_configuration }}"
+  notify: restart vernemq
+
+- name: Check VerneMQ Configuration Options
+  become: yes
+  command: vernemq chkconfig
+  changed_when: no
+
+- name: Start and enable VerneMQ
+  become: yes
+  service:
+    name: vernemq
+    state: started
+    enabled: yes
+
+- name: Get Cluster Status
+  become: yes
+  command: vmq-admin cluster show
+  register: cluster_show
+  changed_when: no
+  when: vernemq_cluster_discovery_node is not none
+
+- name: Join Cluster
+  become: yes
+  command: "vmq-admin cluster join discovery-node={{ vernemq_cluster_discovery_node }}"
+  register: cluster_join
+  when:
+    - vernemq_cluster_discovery_node is not none
+    - vernemq_cluster_discovery_node not in cluster_show.stdout

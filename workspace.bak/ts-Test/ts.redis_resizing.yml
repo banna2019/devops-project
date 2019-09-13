@@ -1,0 +1,8 @@
+---
+
+- name: Create EC2 vHost
+  hosts: local
+  connection: local
+
+  roles:
+    - { role: aec.resizing_redis, aws_tags: 21, aws_application_name: "lucky"  }

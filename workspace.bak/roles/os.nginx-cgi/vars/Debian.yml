@@ -1,0 +1,28 @@
+---
+root_group: root
+nginx_conf_path: /etc/nginx/conf.d
+nginx_conf_file_path: /etc/nginx/nginx.conf
+nginx_mime_file_path: /etc/nginx/mime.types
+nginx_pidfile: /run/nginx.pid
+nginx_vhost_path: /etc/nginx/sites-enabled
+nginx_default_vhost_path: /etc/nginx/sites-enabled/default
+nginx_http_root_path: /data/www
+__nginx_user: "www-data"
+
+nginx_ssl_header_items:
+  - "Access-Control-Allow-Origin *"
+  - "Access-Control-Allow-Methods 'GET, POST, OPTIONS'"
+  - "Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization'"
+  - "Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload' always"
+  - "X-Content-Type-Options nosniff"
+  - "X-Frame-Options SAMEORIGIN"
+  - "X-XSS-Protection '1; mode=block'"
+
+nginx_ssl_conf_items:
+  - "ssl_prefer_server_ciphers   on"
+  - "ssl_protocols               TLSv1.3 TLSv1.2 TLSv1.1 TLSv1"
+  - "ssl_ciphers                 ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256"
+  - "ssl_session_cache           shared:SSL:10m"
+  - "ssl_session_timeout         10m"
+  - "ssl_buffer_size             4k"
+

@@ -1,0 +1,46 @@
+---
+
+- name: Get System fs.file-max
+  become: yes
+  command: sysctl -n fs.file-max
+  register: sysctl_filemax
+  changed_when: no
+
+- name: Set System fs.file-max
+  become: yes
+  sysctl:
+    name: fs.file-max
+    value: "{{ vernemq_nofile }}"
+    sysctl_set: yes
+    state: present
+    reload: yes
+  when: (sysctl_filemax.stdout | int) < vernemq_nofile
+
+- block:
+    - name: Define Vernemq nofile fact
+      set_fact:
+        vernemq_nofile: 1048576
+
+    - name: Download VerneMQ .rpm Package from official Repository
+      get_url:
+        url: "https://bintray.com/artifact/download/erlio/vernemq/rpm/centos7/vernemq-{{ vernemq_version }}-1.el7.x86_64.rpm"
+        dest: "/tmp/vernemq-{{ vernemq_version }}-1.el7.x86_64.rpm"
+
+    - name: Install VerneMQ .rpm Package from official Repository
+      yum:
+        name: "/tmp/vernemq-{{ vernemq_version }}-1.el7.x86_64.rpm"
+        state: present
+  become: yes
+  when: ansible_os_family == 'RedHat'  
+
+- block:
+    - name: Download VerneMQ .deb Package from official Repository
+      get_url:
+        url: "https://bintray.com/artifact/download/erlio/vernemq/deb/{{ ansible_lsb.codename }}/vernemq_{{ vernemq_version }}-1_amd64.deb"
+        dest: "/tmp/vernemq_{{ vernemq_version }}-1_amd64.deb"
+
+    - name: Install VerneMQ .deb Package from official Repository
+      apt:
+        deb: "/tmp/vernemq_{{ vernemq_version }}-1_amd64.deb"
+  become: yes
+  when: ansible_os_family == 'Debian'

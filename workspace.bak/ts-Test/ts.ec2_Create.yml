@@ -1,0 +1,9 @@
+---
+
+- name: Create EC2 vHost
+  hosts: local
+  connection: local
+
+  roles:
+    - { role: ec2.dev_vm, deleteExisting: false, ec2_env: "lucky", aws_tags: 100,  app_name: "bet2" }
+

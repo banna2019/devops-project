@@ -1,0 +1,38 @@
+---
+- name: Check current docker-compose version.
+  command: docker-compose --version
+  register: docker_compose_current_version
+  changed_when: false
+  failed_when: false
+
+- name: Delete existing docker-compose version if it's different.
+  file:
+    path: "{{ docker_compose_path }}"
+    state: absent
+  when: >
+    docker_compose_current_version.stdout is defined
+    and docker_compose_version not in docker_compose_current_version.stdout
+
+- name: Install Python packages
+  pip:
+    name: >
+      {{ item.name }}{% if item.version | d() %}=={{ item.version }}{% endif %}
+    state: "{{ item.state | d('present') }}"
+  loop: "{{ docker_default_pip_packages + docker_pip_packages }}"
+  when: item.name | d()
+
+#- name: Symlink Python binary to /usr/local/bin/python-docker
+#  file:
+#    path: "/usr/local/bin/python-docker"
+#    src: "{{ docker_pip_virtualenv }}/bin/python"
+#    state: "link"
+
+#- name: Symlink selected Python package binaries to /usr/local/bin
+#  file:
+#    path: "{{ item.path }}"
+#    src: "{{ item.src }}"
+#    state: "link"
+#  loop: "{{ docker_default_pip_packages + docker_pip_packages }}"
+#  when:
+#    - item.state | d("present") != "absent"
+#    - item.path | d() and item.src | d()

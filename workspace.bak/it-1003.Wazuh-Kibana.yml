@@ -1,0 +1,12 @@
+---
+
+- name: Create IT Monitor EC2 vHost
+  hosts: it_Monitor
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    # 
+    - { role: wazuh.kibana, elasticsearch_network_host: "vpc-ossec-es6-bx7wxcatf4vsfkyy72nmdjnfxe.ap-southeast-1.es.amazonaws.com" }
+

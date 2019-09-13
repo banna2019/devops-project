@@ -1,0 +1,13 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_CESHI
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: os.repo-epel }
+    - { role: os.java }
+
+   

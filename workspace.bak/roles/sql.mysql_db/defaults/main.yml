@@ -1,0 +1,10 @@
+---
+# defaults file for sql.mysql_db
+
+db_login_host: ""
+db_login_user: ""
+db_login_password: ""
+db_login_port: ""
+
+db_database_name: ""
+run_target_sql_command: ""

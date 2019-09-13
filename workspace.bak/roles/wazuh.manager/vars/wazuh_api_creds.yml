@@ -1,0 +1,4 @@
+---
+wazuh_api_user:
+  - "swan:$apr1$6KQDpS/F$sdUpBK/Y.6X/XYRiOpWvx."
+  - "chapi:$apr1$eLlpv9mu$D7wneRnnTFh7fu82hQXV4/"

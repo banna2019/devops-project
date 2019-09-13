@@ -1,0 +1,31 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    - { role: ec2.it_vm, app_name: "config",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 21, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "config-api",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 22, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "timer",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 23, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "es-sync",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 21, subnet_zone: "1a"  }
+    - { role: ec2.it_vm, app_name: "lottery",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 22, subnet_zone: "1a"  }
+    - { role: ec2.it_vm, app_name: "lottery-api",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 21, subnet_zone: "1c"  }
+    - { role: ec2.it_vm, app_name: "lottery-c-task",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 22, subnet_zone: "1c"  }
+    - { role: ec2.it_vm, app_name: "zuul1",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 24, subnet_zone: "1c"  }
+    - { role: ec2.it_vm, app_name: "zuul2",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 24, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "eureka1",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 25, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "eureka2",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 25, subnet_zone: "1c"  }
+    - { role: ec2.it_vm, app_name: "nginx",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 26, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "backend",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 27, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "opener",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 28, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "task",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 33, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "commons-api",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 29, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "thirdorder-collector",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 30, subnet_zone: "1b"  }
+    - { role: ec2.it_vm, app_name: "mqtt1",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 60, subnet_zone: "1a"  }
+    - { role: ec2.it_vm, app_name: "mqtt2",  ec2_instance_type: "t3.medium", ec2_volume_Size: 20, aws_tags: 60, subnet_zone: "1b"  }
+  
+
+  vars:
+    ec2_env: "simon"

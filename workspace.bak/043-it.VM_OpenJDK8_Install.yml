@@ -1,0 +1,14 @@
+---
+
+- name: Docker Installition
+  #hosts: all
+  hosts: it_Monitor
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: os.repo-epel }
+    - { role: os.java }
+
+   

@@ -1,0 +1,25 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    #- { role: ec2.dev_vm, app_name: "MQ1", ec2_instance_type: "c5.large" }
+    #- { role: ec2.dev_vm, app_name: "MQ2", ec2_instance_type: "c5.large" }
+    #
+    - { role: ec2.dev_vm, app_name: "bet1", ec2_instance_type: "m5.large" }
+    - { role: ec2.dev_vm, app_name: "bet2", ec2_instance_type: "m5.large" }
+    - { role: ec2.dev_vm, app_name: "bill", ec2_instance_type: "c5.large" }
+    - { role: ec2.dev_vm, app_name: "chat", ec2_instance_type: "c5.large" }
+    - { role: ec2.dev_vm, app_name: "data", ec2_instance_type: "m5.large" }
+    - { role: ec2.dev_vm, app_name: "dock", ec2_instance_type: "m5.large" }
+    - { role: ec2.dev_vm, app_name: "H5", ec2_instance_type: "c5.large" }
+    - { role: ec2.dev_vm, app_name: "CMS", ec2_instance_type: "m5.large" }
+
+  vars:
+    ec2_env: "cpdgg"
+    aws_tags: 18
+    
+

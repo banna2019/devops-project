@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 26
+    platform_name: "CG"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "csgj-026ec-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "csgj-026db-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "CCymm-CPEViwq7IrGf"
+    #
+    mq_username: "cgUser"
+    mq_password: "kc3b-bOJbleQ7EEnJA"
+    home_page_url: "https://6csgj.com"
+    home_page_title: "创世国际"
+    pay_url: "https://pay-csgj.h5api.co"
+    api_turn_url: "https://tp-csgj.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "5c5d5bfcb465f5b2cc000e63"
+    umeng_andorid_master_secret: "xphc6vsi0nw3xw54qoo90u8sazofrb8z"
+    umeng_ios_app_key: "5c5d6796b465f52826000bf5"
+    umeng_ios_master_secret: "1xanp8jcky2aiod4wrq6l59xztpm7uct"
+

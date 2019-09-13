@@ -1,0 +1,123 @@
+---
+
+# Private docker registry
+registry_hostname: "10.8.209.198:7149"
+registry_username: "docker"
+registry_password: "r0JT67Ud6Ybt"
+
+project_name: "{{ docker_image_name }}"
+project_host: "0.0.0.0"
+docker_project_restart: yes
+
+project_hostname: "{{ project_tag }}.{{ project_name }}.localhost"
+
+docker_project_image: "{{ registry_hostname }}/{{ registry_container }}:{{ project_tag }}"
+
+docker_project_name: "{{ project_name }}_{{ platform_name|lower }}{{ '%03d'|format(aws_tags|int) }}"
+
+docker_project_home: "/opt/{{ project_name }}"
+
+docker_project_ports:
+  - "{{ project_port }}:{{ project_app_port }}"
+
+docker_project_volumes: "{{ docker_project_directory_volumes + docker_project_file_volumes }}"
+
+### Project Settings
+Project_TZ: "Asia/Shanghai"
+Project_MQTT_HOST: "10.8.11.{{ aws_tags }}"
+Project_MQTT_PORT: "1883"
+Project_MQTT_USERNAME: "{{ mq_username }}"
+Project_MQTT_PWD: "{{ mq_password }}"
+
+Project_USE_MQTT_OTHER: 0
+Project_MQTT_OTHER_HOST: "10.8.21.{{ aws_tags }}"
+          
+Project_REDIS_HOST: "{{ aws_elasticache }}"
+Project_REDIS_PORT: "6379"
+
+Project_DB_HOST: "{{ aws_rds }}"
+Project_DB_PORT: "3306"
+Project_DB_USERNAME: "{{ aws_rds_username }}"
+Project_DB_PWD: "{{ aws_rds_password }}"
+Project_DB_DATABASES_NAME: "olot"
+
+Project_PLATFORM: "{{ platform_name }}"
+
+#Project_LOG_SERVER_HOST: "10.8.208.108"
+#Project_LOG_SERVER_UDP_PORT: "12201"
+
+## JAVA
+Project_ACTIVE_MQ_HOST: "13.251.101.42"
+Project_ACTIVE_MQ_PORT: "61616"
+
+Project_AG_API_URL: "http://52.76.190.197/api/ag"
+Project_KY_API_URL: "http://52.76.190.197/api/ky"
+
+Project_CSV_PATH: 0
+Project_IS_PUSH_H5: "{{ is_push_h5api }}"
+Project_TRANSFER_HOST: "" 
+
+Project_CHAT_HOST: "10.8.13.{{ aws_tags }}"
+Project_CHAT_PORT: 8081
+Project_API_HOST: "10.8.13.{{ aws_tags }}"
+Project_API_PORT: "8038"
+
+Project_NIUNIU_HOST: "10.8.101.{{ aws_tags }}"
+Project_NIUNIU_PORT: "8011"
+Project_SWAN_HOST: "10.8.101.{{ aws_tags }}"
+Project_SWAN_PORT: "8033"
+
+Project_ACT_HOST: "54.248.70.109"
+Project_ACT_PORT: "8040"
+Project_UMENG_ANDORID_APP_KEY: "{{ umeng_andorid_app_key }}"
+Project_UMENG_ANDORID_MASTER_SECRET: "{{ umeng_andorid_master_secret }}"
+Project_UMENG_IOS_APP_KEY: "{{ umeng_ios_app_key }}"
+Project_UMENG_IOS_MASTER_SECRET: "{{ umeng_ios_master_secret }}"
+
+H5_API_HOST: "10.8.15.{{ aws_tags }}"
+CMS_API_HOST: "10.8.16.{{ aws_tags }}"
+
+Project_H5_API_URL: "http://{{ H5_API_HOST }}:8080"
+Project_PHP_API_URL: "http://{{ CMS_API_HOST }}"
+
+Project_H5WSS_URL: "wss://{{ h5api_websocket_url }}/websocket"
+Project_LOCAL_WS_URL: "ws://10.8.15.{{ aws_tags }}:7070/websocket"
+Project_TURN_PAY_URL: "{{ api_turn_url }}"
+Project_H5API_URL: "https://{{ h5api_websocket_url }}/h5api"
+
+Project_AWS_S3_BUCKET_NAME: "{{ aws_s3_bucketname }}"
+Project_AWS_S3_HOST: "https://{{ aws_s3_bucketname }}.s3.amazonaws.com"
+Project_AWS_S3_REGION: "ap-southeast-1"
+Project_AWS_S3_SECRETKEY: "{{ aws_s3_secretkey }}"
+Project_AWS_S3_ACCESSKEY: "{{ aws_s3_accesskey }}"
+Project_ONLINE_SERVICE_URL: "{{ online_service_url }}"
+## PHP
+
+Project_BACKEND_SITE_NAME: "{{ home_page_title }}管理后台"
+Project_TURN_PAY_CALLBACK_URL: "{{ pay_url }}/return/index.php"
+Project_PAY_URL: "{{ pay_url }}/"
+Project_API_TRUN_URL: "{{ api_turn_url }}/m/index.php"
+
+Project_WEBCHAT_HOST: "10.8.15.{{ aws_tags }}"
+Project_WEBCHAT_PORT: "9354"
+Project_DOCK_HOST: "10.8.103.{{ aws_tags }}"
+Project_DOCK_PORT: "8009"
+Project_OPEN_LOTTERY_HOST: "10.8.12.{{ aws_tags }}"
+Project_OPEN_LOTTERY_PORT: "8030"
+
+Project_MERCH_NAME: "{{ home_page_title }}"
+Project_HOME_PAGE: "{{ home_page_url }}"
+Project_PLATFORM_NAME: "{{ home_page_title }}"
+
+
+## (default: json-file): Specify the logging driver
+# docker_project_log_driver: gelf
+#
+## (optional): Dictionary of options specific to the chosen log_driver
+# docker_project_log_options:
+#   gelf-address: "udp://{{ Project_LOG_SERVER_HOST }}:{{ Project_LOG_SERVER_UDP_PORT }}"   
+#   tag: "{{ docker_project_name }}"
+
+docker_project_log_driver: json-file
+docker_project_log_options:
+  max-size: 1g

@@ -1,0 +1,4 @@
+---
+# vars file for ec2.resizing
+
+ec2_instance_region: "ap-southeast-1"

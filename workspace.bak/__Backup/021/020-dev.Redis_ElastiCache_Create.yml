@@ -1,0 +1,14 @@
+---
+
+- name: Create "lucky" ElastiCache cluster
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+   - { role: aec.redis, 
+          aws_tags: 21,  
+          aws_application_name: "lucky" }
+ 
+

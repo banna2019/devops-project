@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 11
+    platform_name: "YQ"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec011-yq11-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db011-yq11-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "J811zBP7-BPTo2VrpH"
+    #
+    mq_username: "mqyiqu"
+    mq_password: "dae6RooCahh7eihoJo"
+    home_page_url: "http://yq11.com"
+    home_page_title: "金豆"
+    pay_url: "https://pay-yq11.h5api.co"
+    api_turn_url: "https://tp-yq11.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "5b07b171a40fa30635000084"
+    umeng_andorid_master_secret: "kybe10jf5hwcfc7y2qxii0o8kpl8pppg"
+    umeng_ios_app_key: "5b07aa5bf29d98386c000028"
+    umeng_ios_master_secret: "r3yzjommpvnxtaqyioktotnz9taxtqya"
+

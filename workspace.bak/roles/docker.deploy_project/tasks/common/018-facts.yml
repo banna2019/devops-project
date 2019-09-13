@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 18
+    platform_name: "DGG"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec018-dgg-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db018-dgg-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbuser"
+    aws_rds_password: "C8FshpnK-T8ZqdFSWU7s"
+    #
+    mq_username: "dggqtt"
+    mq_password: "MWtCz24b2U4-jY0pzJT2"
+    home_page_url: "http://85cpvip.com"
+    home_page_title: "顶呱刮"
+    pay_url: "https://pay-85cp.h5api.co"
+    api_turn_url: "https://tp-85cp.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "dgg-018-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-85cp.h5api.co"
+    online_service_url: "https://messenger.providesupport.com/messenger/0yvks2bl8rp0o1q5ap6pvga0mu.html"
+    # UMENG
+    umeng_andorid_app_key: "5b81096af29d987a030000be"
+    umeng_andorid_master_secret: "stprsh9yfwbt3wxetdoqwxchmzwncgu8"
+    umeng_ios_app_key: "5b811345b27b0a67580000ee"
+    umeng_ios_master_secret: "mykvwaewwfveje31ptgnznk38dma4lc3"
+

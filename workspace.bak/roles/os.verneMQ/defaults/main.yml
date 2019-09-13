@@ -1,0 +1,7 @@
+---
+
+vernemq_cluster_discovery_node: ~
+vernemq_configuration: {}
+#vernemq_download_url: ~
+vernemq_nofile: 65536
+vernemq_version: 1.6.2

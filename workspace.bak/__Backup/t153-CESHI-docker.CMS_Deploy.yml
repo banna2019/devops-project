@@ -1,0 +1,17 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_CESHI_CMS
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  vars:
+    language: "PHP"
+ 
+  roles:
+    # Docker for CMS
+    #- { role: docker.deploy_project, docker_image_name: "php-command", project_port: 80, project_tag: "rls_201902091000_b5" }
+    - { role: docker.deploy_project, docker_image_name: "php-admin", project_port: 8888, project_tag: "rls_201902091000_b9" }
+    #- { role: docker.deploy_project, docker_image_name: "php-share", project_port: 8881, project_tag: "rls_201902091000_b1" }
+
+   

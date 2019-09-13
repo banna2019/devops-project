@@ -1,0 +1,58 @@
+---
+
+- name: Create IT Monitor EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    #
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-logstash002",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 20,
+             aws_tags: 21,
+             subnet_zone: "1b" }
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-logstash003",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 20,
+             aws_tags: 21,
+             subnet_zone: "1c" }
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-logstash001",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 20,
+             aws_tags: 21,
+             subnet_zone: "1a" }
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-master001",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 30,
+             aws_tags: 101,
+             subnet_zone: "1b" }
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-kibana",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 20,
+             aws_tags: 120,
+             subnet_zone: "1a" }
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-worker002",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 30,
+             aws_tags: 31,
+             subnet_zone: "1b" }
+    - { role: ec2.it_Monitor,
+             app_name: "wazuh-worker003",
+             ec2_instance_type: "m5.large",
+             ebs_volume_Size: 30,
+             aws_tags: 31,
+             subnet_zone: "1c" }
+    #- { role: ec2.it_Monitor,
+    #         app_name: "wazuh-manager-worker003",
+    #         ec2_instance_type: "m5.large",
+    #         ebs_volume_Size: 30,
+    #         aws_tags: 31,
+    #         subnet_zone: "1a" }
+

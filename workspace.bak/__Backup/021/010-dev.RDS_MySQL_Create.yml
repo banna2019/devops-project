@@ -1,0 +1,16 @@
+---
+
+- name: Create "lucky" all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+   - { role: rds.mysql, 
+          aws_tags: 21,  
+          aws_application_name: "lucky",  
+          rds_admin_username: "dbAdmin", 
+          rds_admin_password: "S78xcGU7fUVLj-AJfQ" }
+ 
+

@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 39
+    platform_name: "S039"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec039-myth-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db039-myth-mysql56.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "SKY-2dP4MPtp4pusAb"
+    #
+    mq_username: "csmyth"
+    mq_password: "ORSl5GGfysS3-2TMzH"
+    home_page_url: "https://33028.com"
+    home_page_title: "创世神话"
+    pay_url: "https://pay-33028.h5api.co"
+    api_turn_url: "https://tp-33028.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-33028.h5api.co"
+    online_service_url: ""
+
+    # UMENG
+    umeng_andorid_app_key: "5c86040b3fc19583fa00063a"
+    umeng_andorid_master_secret: "a7f4t9qxpzjodq6qkjulz87kgokvbnmp"
+    umeng_ios_app_key: "5c8600fe3fc19578df0002cf"
+    umeng_ios_master_secret: "y8ewrz4hej1rbwtjg55gq2k4iaoltwhe"

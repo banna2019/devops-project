@@ -1,0 +1,44 @@
+---
+
+- name: Create cs-dafa ElastiCache cluster
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+    #- { role: aec.redis, 
+    #       aws_tags: 249,  
+    #       aws_application_name: "testing" }
+
+    #- { role: aec.redis, 
+    #       aws_tags: 8,
+    #       aws_application_name: "rrcai" }
+
+    #- { role: aec.redis, 
+    #       aws_tags: 19,
+    #       aws_application_name: "z3yuan" }
+
+    #- { role: aec.redis, 
+    #       aws_tags: 21,  
+    #       aws_application_name: "lucky" }
+
+    #- { role: aec.redis,
+    #       aws_tags: 22,
+    #       aws_application_name: "dafa" }
+
+    #- { role: aec.redis,
+    #       aws_tags: 9,
+    #       aws_application_name: "daddi" }
+
+    #- { role: aec.redis,
+    #       aws_tags: 23,
+    #       aws_application_name: "union" }
+ 
+    #- { role: aec.redis,
+    #       aws_tags: 25,
+    #       aws_application_name: "kuai6" }
+
+    - { role: aec.redis,
+           aws_tags: 26,
+           aws_application_name: "csgj" }

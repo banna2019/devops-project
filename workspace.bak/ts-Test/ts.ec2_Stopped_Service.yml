@@ -1,0 +1,13 @@
+---
+
+- name: Docker Installition
+  hosts: all
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  tasks:
+    - name: Disable rpcbind.socket service
+      service: name=rpcbind.socket state=stopped enabled=no
+
+   

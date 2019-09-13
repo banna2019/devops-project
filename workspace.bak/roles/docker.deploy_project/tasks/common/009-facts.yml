@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 9
+    platform_name: "DD"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "daddi-009ec-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "daddi-009db-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "eG-xTGVP2WUhTvqIph"
+    #
+    mq_username: "ddUser"
+    mq_password: "eUEWXIyo-HlgKj3VM9"
+    home_page_url: "https://dd33z.com"
+    home_page_title: "创世大地"
+    pay_url: "https://pay.dd33cpc.com"
+    api_turn_url: "https://tp.dd33cpc.com"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "5be270cdb465f5a90a0003b3"
+    umeng_andorid_master_secret: "nn8usop2z3c44gqifidrvkbkdeiegcni"
+    umeng_ios_app_key: "5be27314f1f556ab1100050c"
+    umeng_ios_master_secret: "1uaksk8o84vgcyv9cluw5gvkw6quxiz9"
+

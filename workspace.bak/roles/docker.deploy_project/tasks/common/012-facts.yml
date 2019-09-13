@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 12
+    platform_name: "v9"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec012-v9cp-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db012-v9cp-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbuser"
+    aws_rds_password: "d41d8cd98f00b204e9800998ecf8427e"
+    #
+    mq_username: "mqv9pr"
+    mq_password: "Yjk0MmZkYyAgLQo="
+    home_page_url: "http://v9cpa.com"
+    home_page_title: "V9彩票"
+    pay_url: "https://pay-v9cpa.h5api.co"
+    api_turn_url: "https://tp-v9cpa.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "v9cp-012-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-v9cpa.h5api.co"
+    online_service_url: "http://messenger.providesupport.net/messenger/1e7u20tbfpclx1ub86ur3rrqp1.html"
+    # UMENG
+    umeng_andorid_app_key: "5b189d948f4a9d67db00007b"
+    umeng_andorid_master_secret: "tkoacucmpjbbmevln3idbunojcagto0v"
+    umeng_ios_app_key: "5b35eeb1f43e485b88000156"
+    umeng_ios_master_secret: "yvesyt7jkjcm1507gd9hfdt2mnh22la1"
+

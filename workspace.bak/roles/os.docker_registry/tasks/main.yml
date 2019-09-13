@@ -1,0 +1,11 @@
+---
+
+- name: Check docker version
+  shell: docker --version
+  register: docker_version
+
+- debug: var=docker_version
+ 
+- name: Install Docker Registry v2 for Debian or RedHat
+  include: docker-registry-v2.yml
+

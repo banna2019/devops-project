@@ -1,0 +1,10 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_MQ
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: os.verneMQ }

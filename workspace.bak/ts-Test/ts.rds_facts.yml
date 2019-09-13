@@ -1,0 +1,26 @@
+---
+
+- name: Create RDS MySQL Instance
+  hosts: local
+  connection: local
+
+  tasks:
+    - name: Get facts form a mysql instance
+      rds_instance_facts: 
+         region: "ap-southeast-1"
+         db_instance_identifier: "test-in-021-mysql"
+      register: rds_mysql
+
+    - debug: 
+        msg: "rds_arn: {{ rds_mysql.instances[0].db_instance_arn }} rds_dbname: {{ rds_mysql.instances[0].db_instance_identifier }}"
+
+   
+    - name: Get facts from a postgres instance
+      rds_instance_facts:
+         region: "ap-southeast-1"
+         db_instance_identifier:  "test-in-02-postgres"
+      register: rds_pg
+
+    - debug:
+         msg: "instances is Empty."
+      when: rds_pg.instances == []

@@ -1,0 +1,16 @@
+---
+
+- name: Basic Sysctl Installition
+  hosts: it_Monitor
+  #hosts: it_Analytics
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+
+  roles:
+    - { role: sys.timezone, timezone: Asia/Shanghai  }
+    - { role: os.repo-epel }
+    - { role: sys.limits }
+    - { role: sys.security }
+    - { role: sys.selinux, selinux_state: disabled, reboot: true }
+   

@@ -1,0 +1,4 @@
+---
+
+ansible_ssh_user: centos
+ansible_ssh_private_key_file: ~/.aws/M210_IT_Monitor.pem

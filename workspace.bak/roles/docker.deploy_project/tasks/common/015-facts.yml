@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 15
+    platform_name: "QW"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec015-7125c-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db015-7125d-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbuser"
+    aws_rds_password: "M2Y3ZGE4ZSAgLQo="
+    #
+    mq_username: "mqqywa"
+    mq_password: "MGRhYzVlZCAgLQo="
+    home_page_url: "http://7125d.com"
+    home_page_title: "7125彩票"
+    pay_url: "https://pay-7125d.h5api.co"
+    api_turn_url: "https://tp-7125d.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "7125d-015-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-7125d.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "5b444398f29d9878ae00020c"
+    umeng_andorid_master_secret: "bzcymwdjcx5ult8bfe4xst8vft4yhnnr"
+    umeng_ios_app_key: "5b42efbe8f4a9d4e310001ee"
+    umeng_ios_master_secret: "t1kev3ehks7yfbnsp6ravsdb1inqk0tu"
+

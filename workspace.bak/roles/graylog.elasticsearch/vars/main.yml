@@ -1,0 +1,48 @@
+---
+es_package_url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch"
+es_conf_dir: "/etc/elasticsearch"
+sysd_script: "/usr/lib/systemd/system/elasticsearch.service"
+init_script: "/etc/init.d/elasticsearch"
+#add supported features here
+supported_xpack_features: ["alerting","monitoring","graph","security"]
+reserved_xpack_users: ["elastic","kibana","logstash_system"]
+
+# Customer Configuration
+es_instance_name: "es5"
+es_max_open_files: 1048576
+es_max_map_count: 262144
+es_max_threads: 20480
+#es_data_dirs:
+#  - "/data/elasticsearch_1/data"
+#  - "/data/elasticsearch_2/data"
+#  - "/data/elasticsearch_3/data"
+es_log_dir: "/data/elasticsearch/logs"
+es_config:
+  cluster.name: "logging-graylog"
+  discovery.zen.ping.unicast.hosts:
+    - "10.8.208.118:9300"
+    - "10.8.209.118:9300"
+    - "10.8.210.118:9300"
+    - "10.8.209.128:9300"
+    - "10.8.210.128:9300"
+  discovery.zen.minimum_master_nodes: 2
+  http.port: 9200
+  transport.tcp.port: 9300
+  node.data: "{{ es_node_data }}"
+  node.master: "{{ es_node_master }}"
+  bootstrap.memory_lock: true
+  bootstrap.system_call_filter: false
+  network.host: "0.0.0.0"
+  action.destructive_requires_name: true
+es_scripts: false
+es_templates: false
+es_version_lock: false
+es_heap_size: "2g"
+es_plugins_reinstall: true
+es_api_port: 9200
+es_action_auto_create_index: false
+
+es_enable_xpack: false
+es_plugins:
+  - plugin: ingest-geoip
+

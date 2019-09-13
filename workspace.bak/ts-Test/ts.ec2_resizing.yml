@@ -1,0 +1,8 @@
+---
+
+- name: Create EC2 vHost
+  hosts: local
+  connection: local
+
+  roles:
+    - { role: ec2.resizing, ec2_instance_ids: "i-0055270aa02744aca", ec2_instance_type: "t2.micro" }

@@ -1,0 +1,13 @@
+---
+
+- name: Create VerneMQ systemd unit file.
+  template:
+    src: vernemq.service.j2
+    dest: "/usr/lib/systemd/system/vernemq.service"
+    mode: "0644"
+
+- name: Enable VerneMQ service.
+  systemd:
+    name: "vernemq"
+    enabled: yes
+    daemon_reload: yes

@@ -1,0 +1,15 @@
+---
+
+- name: Create "lucky" all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+   - { role: rds.delete_exist_mysql, 
+          deleteExisting: true,
+          aws_tags: 21,  
+          aws_application_name: "lucky" }  
+ 
+

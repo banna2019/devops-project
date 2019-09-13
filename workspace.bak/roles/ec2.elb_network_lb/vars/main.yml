@@ -1,0 +1,8 @@
+---
+
+# Asia Pacific (Singapore)
+elb_region: "ap-southeast-1"
+
+elb_vpc_id: "vpc-035ee494714289371"
+elb_resource_state: "present"
+

@@ -1,0 +1,17 @@
+---
+
+- name: PHP Installition
+  hosts: nodes_data
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: os.repo-remi }
+    - { role: os.nginx-cgi } 
+    - { role: os.php-versions, php_version: '5.6' }
+    - { role: os.php }
+    - { role: os.php-mysql }
+    - { role: os.php-pecl }
+    - { role: os.php-redis }
+   

@@ -1,0 +1,17 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_H5
+  #hosts: nodes_CESHI_H5
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  vars:
+    language: "JAVA"
+ 
+  roles:
+    # Docker for CMS
+    - { role: docker.deploy_project, docker_image_name: "lottery-h5api", project_is_h5api: 1, project_tag: "rls-201903181355-b1" }
+    - { role: docker.deploy_project, docker_image_name: "gw", project_port: 9354, project_tag: "latest" }
+
+   

@@ -1,0 +1,8 @@
+---
+
+- name: Create CMS Application Load Balancer
+  include_tasks: cms.yml
+
+- name: Create H5API Application Load Balancer
+  include_tasks: h5api.yml
+

@@ -1,0 +1,25 @@
+---
+
+- name: Resizing EC2 vHost
+  hosts: local
+  connection: local
+
+  roles:
+    # 022-nodes-bet1
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "r5.large" }
+    # 022-nodes-bet2
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "r5.large" }
+    # 022-nodes-bill
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "m5.large" }
+    # 022-nodes-chat
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "r5.large" }
+    # 022-nodes-CMS
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "m5.large" }
+    # 022-nodes-data
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "m5.large" }
+    # 022-nodes-dock
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "r5.large" }
+    # 022-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "", ec2_instance_type: "m5.xlarge" }
+    # 022-nodes-MQ
+    - { role: ec2.resizing, ec2_instance_ids: "i-0f4661468d059ce89", ec2_instance_type: "c5.xlarge" }

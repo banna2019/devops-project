@@ -1,0 +1,7 @@
+---
+
+- name: restart vernemq
+  become: yes
+  service:
+    name: vernemq
+    state: restarted
