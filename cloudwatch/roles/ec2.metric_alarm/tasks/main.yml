@@ -1,5 +1,0 @@
----
-
-- include: alarms.yml instance_id={{ item }}
-  with_items:
-    - "{{ list_of_instance_ids }}"
