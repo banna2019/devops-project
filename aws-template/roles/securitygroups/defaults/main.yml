@@ -1,0 +1,15 @@
+---
+# defaults file for roles/securitygroups
+security_cms: nodes-CMS
+security_bill: nodes-Bill
+security_gw: nodes-GW
+security_mq: nodes-MQ
+security_admin: nodes-Admin
+security_rds: nodes-RDS
+security_ssh: nodes-SSH
+security_all: nodes-All
+security_ips: Admin-IPs
+security_myips: my-IPs
+security_lb_cms: elb-CMS
+security_lb_web: elb-WEB
+your_public_ip: 218.189.125.122/32

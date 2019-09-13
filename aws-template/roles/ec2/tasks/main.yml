@@ -1,0 +1,33 @@
+---
+- include: vpc_subnet_facts.yml
+- include: creata_keys.yml 
+
+- include_tasks: h5.yml
+  when: app_name == "h5"
+
+- include_tasks: data.yml
+  when: app_name == "data"
+
+- include_tasks: bill.yml
+  when: app_name == "bill"
+  
+- include_tasks: bet1.yml
+  when: app_name == "bet1"
+  
+- include_tasks: bet2.yml
+  when: app_name == "bet2"
+  
+- include_tasks: broker.yml
+  when: app_name == "broker"
+  
+- include_tasks: mq1.yml
+  when: app_name == "mq1"
+  
+- include_tasks: dock.yml
+  when: app_name == "dock"
+
+- include_tasks: chat.yml
+  when: app_name == "chat"
+
+- include_tasks: cms.yml
+  when: app_name == "cms"

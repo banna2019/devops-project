@@ -1,0 +1,42 @@
+---
+- name: Create, launch and configure our basic AWS environment
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    ec2_env: "banna"
+    ec2_region: "ap-southeast-1"
+
+  roles:
+    - roles/vpc
+    - roles/subnets
+    - roles/gateway
+    - roles/securitygroups
+
+
+- name: create, ec2 instances
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+
+  vars:
+    ec2_env: "banna"
+    ec2_ami_Id: "ami-0aa090aa4fd0093a4" 
+    ec2_instance_type: t2.micro
+    ec2_region: "ap-southeast-1"
+    vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}"
+    ssh_user: centos
+    
+  roles:
+    - { role: ec2,app_name: "h5",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_H5 } 
+    - { role: ec2,app_name: "data",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Data } 
+    - { role: ec2,app_name: "bill",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Bill } 
+    - { role: ec2,app_name: "bet1",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Betting1 } 
+    - { role: ec2,app_name: "bet2",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Betting2 } 
+    - { role: ec2,app_name: "broker",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Broker } 
+    - { role: ec2,app_name: "mq1",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_MQ } 
+    - { role: ec2,app_name: "dock",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Dock } 
+    - { role: ec2,app_name: "chat",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_Chat } 
+    - { role: ec2,app_name: "cms",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,aws_tags: 21,ec2_key_Pair: Nodes_CMS } 

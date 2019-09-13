@@ -1,0 +1,45 @@
+---
+# tasks file for roles/subnets
+
+- name: ensure that the subnets are present
+  ec2_vpc_subnet:
+    region: "{{ ec2_region }}"
+    state: present
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    cidr: "{{ item.subnet }}"
+    az: "{{ ec2_region }}{{ item.az }}"
+    resource_tags: 
+      "Name" : "{{ ec2_env }}_{{ item.use }}_{{ ec2_region }}{{ item.az }}"
+      "Environment" : "{{ ec2_env }}"
+      "Use" : "{{ item.use }}"
+  with_items: "{{ the_subnets }}"
+
+- name: gather information about the ec2 subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ ec2_region }}"
+    filters:
+      "tag:Use": "ec2"
+      "tag:Environment": "{{ ec2_env }}"
+  register: subnets_ec2
+
+#- name: gather information about the elb subnets
+#  ec2_vpc_subnet_facts:
+#    region: "{{ ec2_region }}"
+#    filters:
+#      "tag:Use": "elb"
+#      "tag:Environment": "{{ ec2_env }}"
+#  register: subnets_elb
+
+- name: gather information about the rds subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ ec2_region }}"
+    filters:
+      "tag:Use": "rds"
+      "tag:Environment": "{{ ec2_env }}"
+  register: subnets_rds
+
+- name: register just the IDs for each of the subnets
+  set_fact:
+    subnet_ec2_ids: "{{ subnets_ec2.subnets | sort(attribute='cidr_block') | map(attribute='id') |list  }}"
+#    subnet_elb_ids: "{{ subnets_elb.subnets | map(attribute='id') | list  }}"
+    subnet_rds_ids: "{{ subnets_rds.subnets | sort(attribute='cidr_block') | map(attribute='id') | list }}"

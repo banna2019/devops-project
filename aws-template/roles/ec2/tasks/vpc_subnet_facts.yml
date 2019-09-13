@@ -1,0 +1,26 @@
+---
+# find the VPC by name
+- name: VPC facts
+  ec2_vpc_net_facts:
+    filters:
+      "tag:Name": "{{ ec2_env }}"
+  register: vpc_facts
+
+# parse the facts output and extract the VPC ID
+- name: "set fact: VPC ID"
+  set_fact:
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+
+# find our subnets by VPC ID that was just defined
+- name: VPC subnet facts
+  ec2_vpc_subnet_facts:
+    filters:
+      vpc-id: "{{ vpc_id }}"
+  register: vpc_subnet_facts
+
+
+
+- name: register just the IDs for each of the groups
+  set_fact:
+    subnet_ec2_ids: "{{ vpc_subnet_facts.subnets | sort(attribute='cidr_block') | map(attribute='id') |list  }}"
+

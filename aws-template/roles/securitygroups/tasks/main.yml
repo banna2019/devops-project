@@ -1,0 +1,267 @@
+---
+# tasks file for roles/securitygroups
+- name: provision cms elb security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_lb_cms }}"
+    description: "opens port 80 443 8881 9354 to the world"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_lb_cms }}"
+      "Environment": "{{ ec2_env }}-{{ security_lb_cms }}"
+    rules:
+      - proto: "tcp"
+        from_port: "80"
+        to_port: "80"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 80"
+      - proto: "tcp"
+        from_port: "443"
+        to_port: "443"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 443"
+      - proto: "tcp"
+        from_port: "8881"
+        to_port: "8881"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 8881"
+      - proto: "tcp"
+        from_port: "9354"
+        to_port: "9354"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 9354"
+  register: sg_cms_elb
+
+- name: provision web elb security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_lb_web }}"
+    description: "opens port 80 and 443 to the world"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_lb_web }}"
+      "Environment": "{{ ec2_env }}-{{ security_lb_web }}"
+    rules:
+      - proto: "tcp"
+        from_port: "80"
+        to_port: "80"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 80"
+      - proto: "tcp"
+        from_port: "443"
+        to_port: "443"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 443"
+  register: sg_web_elb
+
+- name: provision cms security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_cms }}"
+    description: "opens port 80 8888 8881 8883"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_cms }}"
+      "Environment": "{{ ec2_env }}-{{ security_cms }}"
+    rules:
+      - proto: "tcp"
+        from_port: "80"
+        to_port: "80"
+        cidr_ip: 0.0.0.0/0
+        rule_desc: "allow all on port 80"
+      - proto: "tcp"
+        from_port: "8888"
+        to_port: "8888"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow {{ your_public_ip }} 8888"
+      - proto: "tcp"
+        from_port: "8881"
+        to_port: "8881"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow {{ your_public_ip }} 8881"
+      - proto: "tcp"
+        from_port: "8883"
+        to_port: "8883"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow {{ your_public_ip }} 8883"
+  register: sg_cms
+
+- name: provision bill security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_bill }}"
+    description: "opens port 8030"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_bill }}"
+      "Environment": "{{ ec2_env }}-{{ security_bill }}"
+    rules:
+      - proto: "tcp"
+        from_port: "8030"
+        to_port: "8030"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow {{ your_public_ip }} 8030"
+  register: sg_bill
+
+- name: provision gw security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_gw }}"
+    description: "opens port 9354"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_gw }}"
+      "Environment": "{{ ec2_env }}-{{ security_gw }}"
+    rules:
+      - proto: "tcp"
+        from_port: "9354"
+        to_port: "9354"
+        cidr_ip: 0.0.0.0/0
+        rule_desc: "allow all on port 9354"
+  register: sg_gw
+
+- name: provision mq security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_mq }}"
+    description: "opens port 1883 18083"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_mq }}"
+      "Environment": "{{ ec2_env }}-{{ security_mq }}"
+    rules:
+      - proto: "tcp"
+        from_port: "1883"
+        to_port: "1883"
+        cidr_ip: 0.0.0.0/0
+        rule_desc: "allow all on port 1883"
+      - proto: "tcp"
+        from_port: "18083"
+        to_port: "18083"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow {{ your_public_ip }} port 18083"
+  register: sg_mq
+
+- name: provision admin security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_admin }}"
+    description: "opens port 6655 6565"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_admin }}"
+      "Environment": "{{ ec2_env }}-{{ security_admin }}"
+    rules:
+      - proto: "tcp"
+        from_port: "6655"
+        to_port: "6655"
+        cidr_ip: 0.0.0.0/0
+        rule_desc: "allow all on port 6655"
+      - proto: "tcp"
+        from_port: "6565"
+        to_port: "6565"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow all on port 6565"
+  register: sg_admin
+
+- name: provision ssh security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_ssh }}"
+    description: "opens port 22"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_ssh }}"
+      "Environment": "{{ ec2_env }}-{{ security_ssh }}"
+    rules:
+      - proto: "tcp"
+        from_port: "22"
+        to_port: "22"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow {{ your_public_ip }} on port 22"
+  register: sg_ssh
+
+- name: provision all security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_all }}"
+    description: "opens all ports"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_all }}"
+      "Environment": "{{ ec2_env }}-{{ security_all }}"
+    rules:
+      - proto: "tcp"
+        ports:
+          - 0-65535
+#        from_port: "all"
+#        to_port: "all"
+        cidr_ip: 10.10.0.0/16
+        rule_desc: "private allow all on ports"
+  register: sg_all
+
+- name: provision admin ips security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_ips }}"
+    description: "opens port 5656 6656"
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_ips }}"
+      "Environment": "{{ ec2_env }}-{{ security_ips }}"
+    rules:
+      - proto: "tcp"
+        from_port: "5656"
+        to_port: "5656"
+        cidr_ip: 0.0.0.0/0
+        rule_desc: "allow all on port 5656"
+      - proto: "tcp"
+        from_port: "6656"
+        to_port: "6656"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "allow all on port 6565"
+  register: sg_ips
+
+- name: provision myips security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_myips }}"
+    description: "opens ports 8088"  
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_myips }}"
+      "Environment": "{{ ec2_env }}-{{ security_myips }}"
+    rules:
+      - proto: "tcp"
+        from_port: "8088"
+        to_port: "8088"
+        cidr_ip: "{{ your_public_ip }}"
+        rule_desc: "private allow all on ports"
+  register: sg_myips
+
+- name: provision rds security group
+  ec2_group:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    name: "{{ ec2_env }}-{{ security_rds }}"
+    description: "opens port 3306 6379 5432 "
+    tags:
+      "Name": "{{ ec2_env }}-{{ security_rds }}"
+      "Environment": "{{ ec2_env }}-{{ security_rds }}"
+    rules:
+      - proto: "tcp"
+        from_port: "3306"
+        to_port: "3306"
+        group_id: "{{ sg_all.group_id }}"
+        rule_desc: "allow {{ sg_all.group_id }} access to port 3306"
+      - proto: "tcp"
+        from_port: "6379"
+        to_port: "6379"
+        group_id: "{{ sg_all.group_id }}"
+        rule_desc: "allow {{ sg_all.group_id }} access to port 6379"
+      - proto: "tcp"
+        from_port: "5432"
+        to_port: "5432"
+        group_id: "{{ sg_all.group_id }}" 
+        rule_desc: "allow {{ sg_all.group_id }} access to port 5432"
+  register: sg_rds
