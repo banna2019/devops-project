@@ -1,0 +1,26 @@
+---
+# find the VPC by name
+- name: VPC facts
+  ec2_vpc_net_facts:
+    filters:
+      "tag:Name": "{{ vpc_name }}"
+  register: vpc_facts
+
+# parse the facts output and extract the VPC ID
+- name: "set fact: VPC ID"
+  set_fact:
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+
+# - iterate each subnet id found by the facts query
+- name: capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ vpc_id }}"
+  register: running_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    instance_ids: '{{ running_instance_facts.instances|map(attribute="instance_id")|list }}'
+    #instance_ids: '{{ running_instance_facts.instances|map(attribute="id")|list }}'

@@ -1,0 +1,6 @@
+---
+
+- include: instance_id_fact.yml 
+- include: alarms.yml instance_id={{ item }}
+  with_items:
+    - "{{ instance_ids }}"
