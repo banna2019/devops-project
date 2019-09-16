@@ -1,4 +1,0 @@
----
-
-fqdn: "{{ inventory_hostname_short }}.{{ domain_name }}"
-

@@ -1,4 +1,0 @@
----
-docker_daemon_flags:
-  - "-H unix://"
-

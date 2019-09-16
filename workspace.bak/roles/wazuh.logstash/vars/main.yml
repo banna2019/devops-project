@@ -1,3 +1,0 @@
----
-# vars file for wazuh.logstash
-logstash_input_beats: true

@@ -1,4 +1,0 @@
----
-# vars file for sys.ntpserver
-ntp_timezone: Asia/Shanghai
-ntp_manage_config: true

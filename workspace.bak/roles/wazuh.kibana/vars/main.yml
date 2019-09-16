@@ -1,3 +1,0 @@
----
-# vars file for wazuh.kibana
-elasticsearch_http_port: "443"
