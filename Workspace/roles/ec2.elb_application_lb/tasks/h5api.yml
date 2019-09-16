@@ -1,0 +1,79 @@
+---
+
+- name: Create H5 Websocket target group
+  elb_target_group:
+    name: "{{ '%03d'|format(aws_tags|int) }}-H5API-7070"
+    region: "{{ elb_region }}"
+    state: "{{ elb_resource_state }}"
+    tags:
+      env: "{{ ec2_env }}"
+    protocol: http
+    port: 7070
+    vpc_id: "{{ elb_vpc_id }}"
+    health_check_path: /
+    successful_response_codes: "200"
+    target_type: ip
+    targets:
+      - Id: "10.101.3.{{ aws_tags }}"
+        Port: 7070
+  register: ws_tg
+
+- name: Create H5 API target group
+  elb_target_group:
+    name: "{{ '%03d'|format(aws_tags|int) }}-H5API-8080"
+    region: "{{ elb_region }}"
+    state: "{{ elb_resource_state }}"
+    tags:
+      env: "{{ ec2_env }}"
+    protocol: http
+    port: 8080
+    vpc_id: "{{ elb_vpc_id }}"
+    health_check_path: /
+    successful_response_codes: "200"
+    target_type: ip
+    targets:
+      - Id: "10.101.3.{{ aws_tags }}"
+        Port: 8080
+  register: h5api_tg
+
+- name: Create an ELB Application Load Balancer and attach H5API listener
+  elb_application_lb:
+    name: "elb-{{ '%03d'|format(aws_tags|int) }}-h5api"
+    region: "{{ elb_region }}"
+    security_groups:
+      - sg-052365812c2839d63
+    subnets:
+      - subnet-02535dd198e7106dc   # 1a
+      - subnet-00c841cb6cff25494   # 1c
+      - subnet-01bafabdad9be0103   # 1b
+    idle_timeout: 600  #seconds
+    tags:
+      env: "{{ ec2_env }}"
+    deletion_protection: true
+    listeners:
+      - Protocol: HTTPS
+        Port: 443
+        Certificates:
+          - CertificateArn: "{{ elb_certificate_arn }}"
+        SslPolicy: ELBSecurityPolicy-2016-08
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: "{{ ws_tg.target_group_name }}"
+        Rules:
+          - Conditions:
+              - Field: path-pattern
+                Values:
+                  - '/websocket'
+            Priority: '1'
+            Actions:
+              - Type: forward
+                TargetGroupName: "{{ ws_tg.target_group_name }}"
+          - Conditions:
+              - Field: path-pattern
+                Values:
+                  - '/h5api/*'
+            Priority: '2'
+            Actions:
+              - Type: forward
+                TargetGroupName: "{{ h5api_tg.target_group_name }}"
+    state: "{{ elb_resource_state }}"

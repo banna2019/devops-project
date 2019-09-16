@@ -1,0 +1,16 @@
+---
+
+- name: Debug inventory group_vars
+  hosts: local
+  connection: local
+  vars:
+   private_ip: "1.1.1.1"
+   app_name: "nodes_betting"
+
+  tasks:
+    - name: Add all instance public IPs to host group
+      add_host:
+         hostname: "021-nodes-betting"
+         groupname: "{{ app_name }}"
+         ansible_host: "ansible_host={{ private_ip }}"
+         inventory_dir: "inventory"

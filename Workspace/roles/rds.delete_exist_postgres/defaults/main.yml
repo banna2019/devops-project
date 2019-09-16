@@ -1,0 +1,13 @@
+---
+# defaults file for rds.mysql
+
+aws_application_name: my-application
+aws_tags: {}
+
+rds_instance_name: ""
+
+# Remove Existing RDS instance if True
+deleteExisting: false
+
+# if no snapshot name is provided then no snapshot is taken
+rds_snapshot_name: ""

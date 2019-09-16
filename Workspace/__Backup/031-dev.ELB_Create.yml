@@ -1,0 +1,23 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    #######################
+    #
+    # Please confirm that the MQ EC2 Instance is installed before running this playbook.
+    #
+    #######################
+    - { role: ec2.elb_application_lb }
+    - { role: ec2.elb_network_lb }
+
+
+
+  vars:
+    ec2_env: "bigPanda"
+    aws_tags: 56
+    
+

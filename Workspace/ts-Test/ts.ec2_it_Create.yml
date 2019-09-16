@@ -1,0 +1,10 @@
+---
+
+- name: Create EC2 vHost
+  hosts: local
+  connection: local
+
+  roles:
+    - { role: ec2.it_vm, deleteExisting: false, subnet_zone: "1a", 
+          app_name: "zabbix-server",  aws_tags: 1, ec2_instance_type: t3.medium }
+

@@ -1,0 +1,5 @@
+---
+
+filebeat_output_logstash_hosts: "10.210.12.21:5000"
+wazuh_manager_node_type: "worker"
+wazuh_manager_node_tags: 2

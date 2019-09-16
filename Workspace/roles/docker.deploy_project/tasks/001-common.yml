@@ -1,0 +1,83 @@
+---
+## ts-TESTING
+- include_tasks: common/249-facts.yml
+  when: docker_tags == 249
+
+- include_tasks: common/006-facts.yml
+  when: docker_tags == 6
+
+- include_tasks: common/007-facts.yml
+  when: docker_tags == 7
+
+- include_tasks: common/008-facts.yml
+  when: docker_tags == 8
+
+- include_tasks: common/009-facts.yml
+  when: docker_tags == 9
+
+- include_tasks: common/010-facts.yml
+  when: docker_tags == 10
+
+- include_tasks: common/011-facts.yml
+  when: docker_tags == 11
+
+- include_tasks: common/012-facts.yml
+  when: docker_tags == 12
+
+- include_tasks: common/015-facts.yml
+  when: docker_tags == 15
+
+- include_tasks: common/016-facts.yml
+  when: docker_tags == 16
+
+- include_tasks: common/017-facts.yml
+  when: docker_tags == 17
+
+- include_tasks: common/018-facts.yml
+  when: docker_tags == 18
+
+- include_tasks: common/019-facts.yml
+  when: docker_tags == 19
+
+- include_tasks: common/021-facts.yml
+  when: docker_tags == 21
+
+- include_tasks: common/022-facts.yml
+  when: docker_tags == 22
+
+- include_tasks: common/023-facts.yml
+  when: docker_tags == 23
+
+- include_tasks: common/025-facts.yml
+  when: docker_tags == 25
+
+- include_tasks: common/026-facts.yml
+  when: docker_tags == 26
+
+- include_tasks: common/027-facts.yml
+  when: docker_tags == 27
+
+- include_tasks: common/030-facts.yml
+  when: docker_tags == 30
+
+- include_tasks: common/036-facts.yml
+  when: docker_tags == 36
+
+- include_tasks: common/038-facts.yml
+  when: docker_tags == 38
+
+- include_tasks: common/039-facts.yml
+  when: docker_tags == 39
+
+- include_tasks: common/040-facts.yml
+  when: docker_tags == 40
+
+- include_tasks: common/056-facts.yml
+  when: docker_tags == 56
+
+- include_tasks: logserver/001-logserver.yml
+  when: docker_tags > 0 and docker_tags <= 30
+
+- include_tasks: logserver/002-logserver.yml
+  when: docker_tags > 30  and docker_tags <= 80
+

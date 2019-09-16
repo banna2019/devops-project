@@ -1,0 +1,66 @@
+## ----------------------------
+## Private nodes subnet
+## ----------------------------
+[nodes_config_multi]
+preview-nodes-config-openner-api ansible_ssh_host=10.101.2.21
+preview-nodes-config-admin-api ansible_ssh_host=10.101.2.21
+preview-nodes-config-mq-consumer ansible_ssh_host=10.101.2.21
+preview-nodes-config-remoteservice-provider ansible_ssh_host=10.101.2.21
+
+[nodes_config_api]
+preview-nodes-config-api ansible_ssh_host=10.101.2.22
+
+[nodes_config_timer]
+preview-nodes-config-timer ansible_ssh_host=10.101.2.23
+
+[nodes_lottery_sync]
+preview-nodes-lottery-mysql2es-sync ansible_ssh_host=10.101.1.21
+preview-nodes-lottery-es ansible_ssh_host=10.101.1.21
+
+[nodes_lottery_commission_task]
+preview-nodes-lottery-commission-task ansible_ssh_host=10.101.3.22
+
+[nodes_lottery_task]
+preview-nodes-lottery-task ansible_ssh_host=10.101.2.33
+
+[nodes_lottery_api]
+preview-nodes-lottery-api ansible_ssh_host=10.101.3.21
+
+[nodes_lottery_multi]
+preview-nodes-admin-api ansible_ssh_host=10.101.1.22
+preview-nodes-lottery-mqtt ansible_ssh_host=10.101.1.22
+preview-nodes-lottery-mq-consumer ansible_ssh_host=10.101.1.22
+preview-nodes-lottery-remote ansible_ssh_host=10.101.1.22
+
+[node_zuuls1]
+preview-nodes-zuul1 ansible_ssh_host=10.101.3.24
+
+[node_zuuls2]
+preview-nodes-zuul2 ansible_ssh_host=10.101.2.24
+
+[nodes_eurekas1]
+preview-nodes-eureka1 ansible_ssh_host=10.101.2.25
+
+[nodes_eurekas2]
+preview-nodes-eureka2 ansible_ssh_host=10.101.3.25
+
+[nodes_commons]
+preview-nodes-common-api ansible_ssh_host=10.101.2.29
+
+[nodes_nginx]
+preview-nodes-nginx ansible_ssh_host=10.101.2.26
+
+[nodes_opener]
+preview-nodes-opener ansible_ssh_host=10.101.2.28
+
+[nodes_backend]
+preview-nodes-superbackend ansible_ssh_host=10.101.2.27
+preview-nodes-merchant ansible_ssh_host=10.101.2.27
+
+
+[nodes_MQ1]
+preview-nodes-mqtt1 ansible_ssh_host=10.101.1.60
+[nodes_MQ2]
+preview-nodes-mqtt2 ansible_ssh_host=10.101.2.60
+
+#preview-nodes-MQ1 ansible_ssh_host=10.101.1.80

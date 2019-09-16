@@ -1,0 +1,43 @@
+---
+
+- name: Resizingi H5 EC2 vHost
+  hosts: local
+  connection: local
+
+  roles:
+    # 006-nodes-H5
+    - { role: ec2.resizing, ec2_instance_ids: "i-040ae335bb64efc8d", ec2_instance_type: "r5.large" }
+    # 007-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-014512d8634aa42b2", ec2_instance_type: "r5.large" }
+    # 008-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0f20b7c9ff8dc1578", ec2_instance_type: "r5.large" }
+    # 009-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-04ea30279860bd376", ec2_instance_type: "r5.large" }
+    # 010-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0a317993c6f2cb3ec", ec2_instance_type: "r5.large" }
+    # 011-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-01429983eee7daf3a", ec2_instance_type: "r5.large" }
+    # 012-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-07f2b9e148009dee9", ec2_instance_type: "r5.large" }
+    # 015-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0d63cdc03b7a2450f", ec2_instance_type: "r5.large" }
+    # 016-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0cc2baec4c99b257b", ec2_instance_type: "r5.large" }
+    # 017-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0dbba78b2f15924f7", ec2_instance_type: "r5.large" }
+    # 018-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0e0fcb14bc1d8e582", ec2_instance_type: "r5.large" }
+    # 019-nodes-H5
+    - { role: ec2.resizing, ec2_instance_ids: "i-0573e1b2f3b4a80cc", ec2_instance_type: "r5.large" }
+    # 021-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0f70fd9782fe3a54e", ec2_instance_type: "r5.large" }
+    # 022-nodes-H5
+    - { role: ec2.resizing, ec2_instance_ids: "i-0dadcde31c81977f6", ec2_instance_type: "r5.large" }
+    # 023-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-081ad1303b3a9eec9", ec2_instance_type: "r5.large" }
+    # 025-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-0be0ec85e8c44c5cd", ec2_instance_type: "r5.large" }
+    # 026-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-094f6f31dec2a6874", ec2_instance_type: "r5.large" }
+    # 027-nodes-H5
+    #- { role: ec2.resizing, ec2_instance_ids: "i-004f69872e54c15eb", ec2_instance_type: "r5.large" }

@@ -1,0 +1,13 @@
+---
+
+- name: Create RDS MySQL Instance
+  hosts: local
+  connection: local
+
+  roles:
+    - { role: rds.mysql, 
+          deleteExisting: false,
+          aws_tags: 21,  
+          aws_application_name: "test-IN",  
+          rds_admin_username: "dbAdmin", 
+          rds_admin_password: "3Iyhw2scUedlXN-Qv2" }

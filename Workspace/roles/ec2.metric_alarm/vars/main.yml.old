@@ -1,0 +1,67 @@
+---
+alarm_app_name: "{{ env }}-{{ tag_instance_id}}"
+alarm_region: "{{region}}"
+
+
+metric_alarms:
+  cpu_util:
+    metric: "CPUUtilization"
+    unit: "Percent"
+    statistic: "Average"
+    comparison: ">="
+    alarm_name: "{{ alarm_app_name }}-cpu-util"
+    period: 60
+    threshold: 95
+    namespace: "AWS/EC2"
+    evaluation_periods: 3
+    dimensions: {'InstanceId':'{{this_instance_id.stdout}}'}
+    alarm_recipients: "{{ alarm_util_recipients }}"
+  disk_util:
+    metric: "DiskSpaceUtilization"
+    unit: "Percent"
+    statistic: "Average"
+    comparison: ">="
+    alarm_name: "{{ alarm_app_name }}-disk-util"
+    period: 300
+    threshold: 80
+    namespace: "System/Linux"
+    evaluation_periods: 3
+    dimensions: 'InstanceId={{this_instance_id.stdout}},Filesystem=/dev/xvda1,MountPath=/'
+    alarm_recipients: "{{ alarm_util_recipients }}"
+  memory_util:
+    metric: "MemoryUtilization"
+    unit: "Percent"
+    statistic: "Average"
+    comparison: ">="
+    alarm_name: "{{ alarm_app_name }}-memory-util"
+    period: 300
+    threshold: 80
+    namespace: "System/Linux"
+    evaluation_periods: 3
+    dimensions: {'InstanceId':'{{this_instance_id.stdout}}'}
+    alarm_recipients: "{{ alarm_util_recipients }}"
+  swap_util:
+    metric: "SwapUtilization"
+    unit: "Percent"
+    statistic: "Average"
+    comparison: ">="
+    alarm_name: "{{ alarm_app_name }}-swap-util"
+    period: 300
+    threshold: 80
+    namespace: "System/Linux"
+    evaluation_periods: 3
+    dimensions: {'InstanceId':'{{this_instance_id.stdout}}'}
+    alarm_recipients: "{{ alarm_util_recipients }}"
+  status_failed:
+    metric: "StatusCheckFailed"
+    unit: "Seconds"
+    statistic: "Maximum"
+    comparison: ">="
+    alarm_name: "{{ alarm_app_name }}-cpu-util"
+    period: 60
+    threshold: 1
+    namespace: "AWS/EC2"
+    evaluation_periods: 2
+    dimensions: {'InstanceId':'{{this_instance_id.stdout}}'}
+    alarm_recipients: "{{ alarm_failed_recipients }}"
+

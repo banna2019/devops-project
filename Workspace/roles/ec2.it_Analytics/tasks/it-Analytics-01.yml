@@ -1,0 +1,11 @@
+---
+
+- name: Define Betting fact
+  set_fact:
+    ec2_key_Pair: "One_IT_Analytics"
+    vpc_subnet_Id: "subnet-0f73ee23d2e07c6e5"
+    ec2_subnet_ipv4_cidr: "10.8.208."
+    #
+    ec2_security_group_Id:
+      - sg-0f30717fd83a94f7e    # it-SSH
+      - sg-08f8b60765b0f3da4    # nodes-All

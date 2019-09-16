@@ -1,0 +1,21 @@
+---
+# vars file for rds.mysql
+
+rds_instance_tags: "{{ '%03d'|format(aws_tags|int) }}"
+#rds_instance_name: "{{ aws_application_name }}-{{ rds_instance_tags }}db-mysql"
+rds_instance_name: "failover{{ rds_instance_tags }}-{{ aws_application_name }}-mysql56"
+rds_instance_region: "us-east-1"
+rds_instance_subnet: "failover_220_rdsgroups"
+rds_parameter_group: "failoverdb-220-mysql56"
+rds_engine_version: "5.6.40"
+rds_license_model: "general-public-license"
+
+rds_instance_sg_name: "sg-09f8a4ddc8ab1eadd"
+
+rds_instance_type: "db.m5.large"
+
+rds_backup_retention: 3
+rds_backup_window: "8:30-9:30"
+rds_maint_window: "SUN:18:30-SUN:19:30"
+
+

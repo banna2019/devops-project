@@ -1,0 +1,38 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 249
+    platform_name: "TS"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec249-testing-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    #aws_rds: "db249-testing-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    #aws_rds_username: "dbAdmin"
+    #aws_rds_password: "FQ8VywtuCg-PQMn315"
+    aws_rds: "db249-6haoclone-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "FQ8VywtuCg-PQMn315"
+    #
+    mq_username: "tsUser"
+    mq_password: "O-jDj5hkzRs0x80qbG"
+    home_page_url: "http://pp6.me"
+    home_page_title: "TEST-ING"
+    pay_url: "https://pay-pp6.h5api.co"
+    api_turn_url: "https://tp-pp6.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+
+    aws_s3_bucketname: "testing-249-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-pp6.h5api.co"
+    online_service_url: ""
+
+    # UMENG
+    umeng_andorid_app_key: ""
+    umeng_andorid_master_secret: ""
+    umeng_ios_app_key: ""
+    umeng_ios_master_secret: ""
+

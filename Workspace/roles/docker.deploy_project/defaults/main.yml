@@ -1,0 +1,86 @@
+---
+
+aws_tags: 0
+platform_name: ""
+language: ""
+
+## Basic Settings (Need to Change)
+
+# Tag name
+project_tag: latest
+
+# Host for binding app port on docker server
+project_host: "127.0.0.1"
+
+#  Binding app port on docker server
+project_port: 8080
+
+# Exposed port in docker container
+project_app_port: 80
+
+# (optional): Ports pool
+project_port_pool: ""
+
+# (required): This name used in name of home folder path, hostname and in name of container
+project_name: ""
+
+project_is_h5api: 0
+
+# 
+project_hostname: "{{ project_tag }}.{{ project_name }}.localhost"
+
+project_configs: []
+
+# Docker registry username
+registry_username: ""
+
+# Docker registry password
+registry_password: ""
+
+# Docker registry address
+registry_hostname: localhost
+
+#  Image name in registry
+registry_container: ""
+
+## Docker Cell Settings (May have been Modified)
+
+# (optional) Command to execute when the container starts
+docker_project_command:
+
+# 
+docker_project_env: 
+
+docker_project_directory_mode: '0755'
+
+docker_project_directory_owner: root
+
+docker_project_directory_group: root
+
+docker_project_directory_volumes: []
+
+docker_project_file_volumes: []
+
+# (optional): Additional applications ports
+docker_project_ports: []
+
+# (default: host): Connect the container to a network
+docker_project_network_mode:
+
+# (optional): List of networks the container belongs to
+docker_project_networks: []
+
+docker_project_restart: no
+
+docker_project_remove_existing_container: yes
+
+docker_project_pull_image: yes
+
+# (default: json-file): Specify the logging driver
+docker_project_log_driver: syslog
+
+# (optional): Dictionary of options specific to the chosen log_driver
+docker_project_log_options:
+  syslog-facility: local0
+  tag: "{{ docker_project_name }}"
+  

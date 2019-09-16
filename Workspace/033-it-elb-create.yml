@@ -1,0 +1,14 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    - { role: ec2.elb_application_lb }
+    - { role: ec2.elb_network_lb }
+
+  vars:
+    ec2_env: "simon"
+    aws_tags: 40

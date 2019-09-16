@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 56 
+    platform_name: "S056"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec056-bigpanda-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db056-bigpanda-mysql56.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "J9orK0lV4JDvPj-qQw"
+    #
+    mq_username: "panda"
+    mq_password: "J9orK0lV4JDvPj-qQw"
+    home_page_url: "https://1286.com"
+    home_page_title: "大熊猫"
+    pay_url: "https://pay-1286.h5api.co"
+    api_turn_url: "https://tp-1286.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "bigpanda-056-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-1286.h5api.co"
+    online_service_url: ""
+
+    # UMENG
+    umeng_andorid_app_key: "5c86040b3fc19583fa00063a"
+    umeng_andorid_master_secret: "a7f4t9qxpzjodq6qkjulz87kgokvbnmp"
+    umeng_ios_app_key: "5c8600fe3fc19578df0002cf"
+    umeng_ios_master_secret: "y8ewrz4hej1rbwtjg55gq2k4iaoltwhe"

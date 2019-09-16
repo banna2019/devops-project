@@ -1,0 +1,11 @@
+---
+
+- name: Docker & Docker-Compose Installition
+  hosts: all
+  serial: 3
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: os.docker-daemon }
+   

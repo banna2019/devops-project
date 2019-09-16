@@ -1,0 +1,42 @@
+---
+# defaults file for ec2
+
+# CentOS Linux 7 1801_01 2018-Jan-14
+# ap-southeast-1  Asia Pacific (Singapore)
+# ap-southeast-2  Asia Pacific (Seoul)
+# ap-southeast-2  Asia Pacific (Sydney)
+# ami-f4cc1de2  # Ubuntu 16.04 LTS
+
+ec2_ami_Id: "" 
+ec2_instance_type: t2.micro
+
+# Remove old ec2 instances if 'deleteExisting' is true or 'tear_down' is true
+deleteExisting: false
+tear_down: false
+
+# Hosts Group Name 
+app_name: ""
+
+ec2_env: "it"
+
+# Location
+ec2_instance_region: "ap-southeast-1"
+
+#
+#ebs_volume_Device_Name: /dev/sdb
+
+# Throughput Optimized HDD (st1)
+# Low-cost HDD volume designed for frequently accessed, throughput-intensive workloads
+#ebs_volume_type: st1
+# Volume Size: 500 GiB - 16 TiB
+#ebs_volume_Size: 500
+
+#
+ec2_volume_Device_Name: /dev/sda1
+#
+## ssd gp2 root volume
+ec2_volume_type: gp2
+#
+##
+ec2_volume_Size: 8
+#

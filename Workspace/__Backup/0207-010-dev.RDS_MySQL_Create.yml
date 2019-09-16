@@ -1,0 +1,63 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+    #- { role: rds.mysql, 
+    #       aws_tags: 8,  
+    #       aws_application_name: "rrcai",  
+    #       rds_admin_username: "dbAdmin", 
+    #       rds_admin_password: "75BpLEmW-CJUlsLGV3" }
+
+    #- { role: rds.mysql, 
+    #       aws_tags: 19,  
+    #       aws_application_name: "z3yuan",  
+    #       rds_admin_username: "dbAdmin", 
+    #       rds_admin_password: "Q334iXoqbyzFO6o-pM" }
+
+    #- { role: rds.mysql, 
+    #       aws_tags: 249,  
+    #       aws_application_name: "tesing",  
+    #       rds_admin_username: "dbAdmin", 
+    #       rds_admin_password: "Q7JFdIBsM1cbk-6Mh2" }
+
+    #- { role: rds.mysql, 
+    #       aws_tags: 21,  
+    #       aws_application_name: "lucky",  
+    #       rds_admin_username: "dbAdmin", 
+    #       rds_admin_password: "S78xcGU7fUVLj-AJfQ" }
+
+    #- { role: rds.mysql, 
+    #       aws_tags: 22,  
+    #       aws_application_name: "dafa",  
+    #       rds_admin_username: "dbAdmin", 
+    #       rds_admin_password: "AQxM61Uk-DrUs2Ff2I" }
+
+    #- { role: rds.mysql,
+    #       aws_tags: 9,
+    #       aws_application_name: "daddi",
+    #       rds_admin_username: "dbAdmin",
+    #       rds_admin_password: "eG-xTGVP2WUhTvqIph" }
+
+    #- { role: rds.mysql,
+    #       aws_tags: 23,
+    #       aws_application_name: "union",
+    #       rds_admin_username: "dbAdmin",
+    #       rds_admin_password: "N4Bng-GKU1zjrC5iTA" }
+
+    #- { role: rds.mysql,
+    #       aws_tags: 25,
+    #       aws_application_name: "kuai6",
+    #       rds_admin_username: "dbAdmin",
+    #       rds_admin_password: "BEeVm22l7-EiGxPEdC" }
+
+    - { role: rds.mysql,
+           aws_tags: 26,
+           aws_application_name: "csgj",
+           rds_admin_username: "dbAdmin",
+           rds_admin_password: "CCymm-CPEViwq7IrGf" }
+

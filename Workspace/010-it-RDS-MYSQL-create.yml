@@ -1,0 +1,15 @@
+---
+
+- name: Create AWS RDS Instance vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+    - { role: rds.mysql,
+           aws_tags: 10,
+           aws_application_name: "v2-preview",
+           rds_admin_username: "dbUser",
+           rds_admin_password: "opuUjcEVp0xH" }
+

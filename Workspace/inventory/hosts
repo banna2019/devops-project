@@ -1,0 +1,19 @@
+[local]
+localhost
+
+[it_Analytics]
+
+[it_Monitor]
+#wazuh-master001               ansible_ssh_host=10.210.12.101
+#wazuh-kibana                  ansible_ssh_host=10.210.11.120
+
+#wazuh-worker002               ansible_ssh_host=10.210.12.31
+#wazuh-worker003               ansible_ssh_host=10.210.13.31
+#wazuh-logstash001             ansible_ssh_host=10.210.11.21
+#wazuh-logstash002             ansible_ssh_host=10.210.12.21
+#wazuh-logstash003             ansible_ssh_host=10.210.13.21
+
+rancher2-server           ansible_ssh_host=10.210.11.200
+
+[it_Kubectl]
+kubectl-cli               ansible_ssh_host=10.210.11.201

@@ -1,0 +1,59 @@
+---
+
+- name: Create MQ-1883 target group
+  elb_target_group:
+    name: "{{ '%03d'|format(aws_tags|int) }}-MQ-1883"
+    region: "{{ elb_region }}"
+    state: "{{ elb_resource_state }}"
+    tags:
+      env: "{{ ec2_env }}"
+    protocol: tcp
+    port: 1883
+    vpc_id: "{{ elb_vpc_id }}"
+    target_type: ip
+    targets:
+      - Id: "10.101.3.{{ aws_tags }}"
+        Port: 1883
+  register: mq1883_tg
+
+- name: Create MQ-19999 target group
+  elb_target_group:
+    name: "{{ '%03d'|format(aws_tags|int) }}-MQ-19999"
+    region: "{{ elb_region }}"
+    state: "{{ elb_resource_state }}"
+    tags:
+      env: "{{ ec2_env }}"
+    protocol: tcp
+    port: 1883
+    vpc_id: "{{ elb_vpc_id }}"
+    target_type: ip
+    targets:
+      - Id: "10.101.3.{{ aws_tags }}"
+        Port: 1883
+  register: mq19999_tg
+
+- name: Create MQ Network Load Balancer
+  elb_network_lb:
+    name: "elb-{{ '%03d'|format(aws_tags|int) }}-MQ"
+    region: "{{ elb_region }}"
+    tags:
+      env: "{{ ec2_env }}"
+    subnets:
+      - subnet-00c841cb6cff25494  # 1c
+      - subnet-01bafabdad9be0103  # 1b
+      - subnet-02535dd198e7106dc  # 1a
+    deletion_protection: yes
+    listeners:
+      - Protocol: TCP
+        Port: 1883
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: "{{ mq1883_tg.target_group_name }}"
+      - Protocol: TCP
+        Port: 19999
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: "{{ mq19999_tg.target_group_name }}"
+    state: "{{ elb_resource_state }}"
+    wait: yes
+

@@ -1,0 +1,29 @@
+---
+
+docker_users:
+  - "{{ ansible_ssh_user }}"
+
+docker_pip_dependencies:
+  - "python-setuptools"
+  - "python{{ '3' if ansible_python.version.major == 3 else '' }}-pip"
+
+docker_pip_virtualenv: "/usr/local/lib/docker/virtualenv"
+
+docker_default_pip_packages:
+  - name: "docker"
+    state: "{{ docker_pip_state }}"
+  - name: "docker-compose"
+    version: "{{ docker_compose_version }}"
+    path: "{{ docker_compose_path }}"
+    src: "{{ docker_pip_virtualenv + '/bin/docker-compose' }}"
+    state: "{{ docker_pip_compose_state }}"
+
+docker_cron_jobs:
+  - name: "Docker disk clean up"
+    job: "docker system prune -{{ docker_cron_jobs_prune_flags }} > /dev/null 2>&1"
+    schedule: ["0", "0", "*", "*", "0"]
+    cron_file: "docker-disk-clean-up"
+    user: "{{ (docker_users | first) | d('root') }}"
+
+docker_daemon_flags:
+  - "-H tcp://0.0.0.0:2375 --insecure-registry=10.8.209.198:7149 -H unix://var/run/docker.sock"

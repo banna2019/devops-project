@@ -1,0 +1,12 @@
+---
+
+- name: Define Betting fact
+  set_fact:
+    vpc_subnet_Id: "subnet-0b3dec381f6c17bf7"
+    ec2_subnet_ipv4_cidr: "10.8.13."
+    #
+    ec2_security_group_Id:
+      - sg-02ce1346bec2de89d #nodes-SSH
+      - sg-08f8b60765b0f3da4 # nodes-All
+    #
+    ec2_volume_Size: 20

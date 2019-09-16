@@ -1,0 +1,15 @@
+---
+
+- name: Docker dock Installition
+  hosts: nodes_dock
+  #hosts: nodes_CESHI_dock
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  vars:
+    language: "JAVA"
+ 
+  roles:
+    # Docker for Dock
+    - { role: docker.deploy_project, docker_image_name: "dock", project_port: 8009, project_tag: "rls_20190219_b1"  }
+   

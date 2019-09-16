@@ -1,0 +1,7 @@
+---
+# vars file for rds.mysql
+
+rds_instance_tags: "{{ '%03d'|format(aws_tags|int) }}"
+rds_instance_name: "{{ aws_application_name }}-{{ rds_instance_tags }}db-mysql"
+rds_instance_region: "ap-southeast-1"
+

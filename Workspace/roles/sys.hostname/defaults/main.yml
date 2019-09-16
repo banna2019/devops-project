@@ -1,0 +1,10 @@
+---
+
+domain_name: "localdomain"
+fqdn: "{{ inventory_hostname }}"
+hostname: "{{ inventory_hostname_short }}"
+ipv4_address: "{{ ansible_default_ipv4.address }}"
+ip_address: "{{ ansible_ssh_host }}"
+
+# Defines if the node should reboot after changing the hostname
+change_hostname_reboot: false

@@ -1,0 +1,18 @@
+---
+
+# CentOS-7 x86_64
+ec2_ami_Id: "ami-8e0205f2"
+
+# Ubuntu 16.04 TLS
+#ec2_ami_Id: "ami-0eb1f21bbd66347fe"
+
+# Asia Pacific (Singapore)
+ec2_instance_region: "ap-southeast-1"
+
+ec2_server_count: 1
+
+ansible_Configuration_Port: 22
+
+ec2_instance_private_Ip: "{{ ec2_subnet_ipv4_cidr }}{{ aws_tags }}"
+ec2_instance_tag_name: "{{ ec2_env }}{{ app_name }}"
+

@@ -1,0 +1,16 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_betting
+  #hosts: nodes_CESHI_betting
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  vars:
+    language: "JAVA"
+ 
+  roles:
+    # Docker for Betting
+    - { role: docker.deploy_project, docker_image_name: "swan", project_port: 8033, project_tag: "rls_201903161100_b5" }
+    - { role: docker.deploy_project, docker_image_name: "niuniu", project_port: 8011, project_tag: "rls_20190211_b1" }
+

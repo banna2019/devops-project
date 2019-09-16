@@ -1,0 +1,31 @@
+---
+# tasks file for rds.mysql
+
+- name: Check ElastiCache redis Cluster
+  elasticache_facts:
+    region: "{{ redis_cluster_region }}"
+    name: "{{ redis_cluster_name }}"
+  register: redis_facts
+
+#- debug: var=redis_facts
+
+- name: Create AWS elastiCache redis cluster
+  elasticache:
+    engine: redis
+    cache_engine_version: "{{ redis_engine_version }}"
+    cache_parameter_group: "{{ redis_parameter_group }}"
+    cache_port: "{{ redis_port}}"    
+    cache_subnet_group: "{{ redis_subnet_group }}"
+    hard_modify: no
+    region: "{{ redis_cluster_region }}"
+    name: "{{ redis_cluster_name }}"
+    node_type: "{{ redis_cluster_type }}"
+    num_nodes: "{{ redis_num_nodes }}"
+    security_group_ids: "{{ redis_security_group_ids }}"
+    state: present
+    wait: yes
+  register: redis
+  when: redis_facts.elasticache_clusters == []
+
+- debug: var=redis
+

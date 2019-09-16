@@ -1,0 +1,10 @@
+---
+
+# Asia Pacific (Singapore)
+elb_region: "ap-southeast-1"
+
+elb_certificate_arn: "arn:aws:acm:ap-southeast-1:010204192142:certificate/6a58e05f-1158-479d-8387-9142e64f0d1d"
+
+elb_vpc_id: "vpc-035ee494714289371"
+elb_resource_state: "present"
+

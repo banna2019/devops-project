@@ -1,0 +1,29 @@
+---
+
+graylog_supported_os_families:
+  - "Debian"
+  - "RedHat"
+
+#graylog_server_version:                      "2.5.1" # Optional, if not provided the lastest version will be installed.
+graylog_is_master:                            True
+# echo -n Your_Desired_Password | sha256sum
+# echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
+# password: "admin@2018"
+graylog_root_password_sha2:                    "4478365a94f0e848d6365460d0938cbae194d3ebf236a771b0a0688759e91292"
+
+graylog_root_timezone:                         "Asia/Shanghai"
+
+# Elasticsearch message retention
+#graylog_elasticsearch_max_docs_per_index:      20000000
+#graylog_elasticsearch_max_number_of_indices:   20
+#graylog_elasticsearch_shards:                  4
+#graylog_elasticsearch_replicas:                0
+
+graylog_rest_listen_uri:                       "http://0.0.0.0:9000/api/"
+graylog_web_listen_uri:                        "http://0.0.0.0:9000"
+graylog_web_endpoint_uri:                      "http://0.0.0.0:9000/api/"
+
+
+# Search
+graylog_elasticsearch_hosts:                   "http://10.8.208.118:9200,http://10.8.209.118:9200,http://10.8.210.118:9200"
+ 

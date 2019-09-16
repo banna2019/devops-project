@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 23
+    platform_name: "UN"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "union-023ec-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "union-023db-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "N4Bng-GKU1zjrC5iTA"
+    #
+    mq_username: "unUser"
+    mq_password: "MHrBwoF-t26eRuCU9"
+    home_page_url: "https://8cslm.com"
+    home_page_title: "创世联盟"
+    pay_url: "https://pay-cslm.h5api.co"
+    api_turn_url: "https://tp-cslm.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "5c480bd7f1f5562b81000a19"
+    umeng_andorid_master_secret: "ijyzwzqv2icjk0d299hem7tdw9bim052"
+    umeng_ios_app_key: "5c480285f1f5569e2700146d"
+    umeng_ios_master_secret: "p0vv4emxplrxbxs5iuj2oz0b8ca1wyfd"
+

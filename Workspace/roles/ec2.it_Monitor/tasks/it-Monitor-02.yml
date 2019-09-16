@@ -1,0 +1,11 @@
+---
+
+- name: Define Betting fact
+  set_fact:
+    ec2_key_Pair: "M210_IT_Monitor"
+    vpc_subnet_Id: "subnet-09b2a8762c43beaa2"
+    ec2_subnet_ipv4_cidr: "10.210.12."
+    #
+    ec2_security_group_Id:
+      - sg-0359a4c6b1fd943ec    # nodes-SSH
+      - sg-067a5bbec01b1ce7a    # nodes-All

@@ -1,0 +1,24 @@
+---
+# tasks file for rds.mysql
+
+- name: Check ElastiCache redis Cluster
+  elasticache_facts:
+    region: "{{ redis_cluster_region }}"
+    name: "{{ redis_cluster_name }}"
+  register: redis_facts
+
+- name: Upgrade AWS elastiCache redis cluster
+  command: >
+    aws elasticache modify-cache-cluster \
+        --region {{ redis_cluster_region }} \
+        --cache-cluster-id {{ redis_cluster_name }} \
+        --num-cache-nodes {{ redis_num_nodes }} \
+        --cache-node-type {{ redis_node_type }} \
+        --snapshot-retention-limit 0 \
+        --snapshot-window 20:00-21:00 \
+        --preferred-maintenance-window sun:18:30-sun:19:30 \
+        --apply-immediately
+  when: redis_facts.elasticache_clusters[0].cache_cluster_id|lower == redis_cluster_name|lower
+
+- debug: var=redis_facts
+

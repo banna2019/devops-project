@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 16
+    platform_name: "HY"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec016-hy56-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db016-hy56-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "r-UKZ13CvmUbwfQT9F"
+    #
+    mq_username: "haoyun"
+    mq_password: "ieVoif2oudweaefu6qu"
+    home_page_url: "http://565566.com"
+    home_page_title: "纵天豪云"
+    pay_url: "https://pay-565566.h5api.co"
+    api_turn_url: "https://tp-565566.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "5c2c6d6bb465f545f20000e6"
+    umeng_andorid_master_secret: "rdlga258uyfxg3ivpxttn1yx0evyavm0"
+    umeng_ios_app_key: "5c2c968db465f5809300004c"
+    umeng_ios_master_secret: "gpuazthojszufab49mmocn2b6i2j4ukd"
+

@@ -1,0 +1,36 @@
+---
+- name: fqdn | Configure Debian
+  include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: fqdn | Configure Redhat
+  include: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: Set Hostname with hostname command
+  hostname:
+    name: "{{ hostname }}"
+  notify:
+    - restart hostname
+    - restart systemd-logind
+
+- name: Re-gather facts
+  action: setup
+  when: ansible_hostname != fqdn
+
+- debug: var=ipv4_address
+
+- debug:
+    msg: "{{ ip_address }} {{ fqdn }} {{ hostname }}"
+
+- name: Build hosts file (backups will be made)
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "^{{ ip_address }}"
+    line: "{{ ip_address }} {{ fqdn }} {{ hostname }}"
+    state: present
+    backup: yes
+  when: ip_address is defined
+  notify:
+    - restart hostname
+    - restart systemd-logind

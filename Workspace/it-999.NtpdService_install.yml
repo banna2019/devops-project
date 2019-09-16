@@ -1,0 +1,12 @@
+---
+
+- name: Ntpd Service Installition
+  hosts: it_Monitor
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: sys.ntpserver }
+
+   

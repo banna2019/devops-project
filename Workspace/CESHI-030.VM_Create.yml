@@ -1,0 +1,23 @@
+---
+
+- name: Create testing  EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+
+    #- { role: ec2.ceshi_vm, app_name: "bet1", ec2_instance_type: "t3.medium" }
+    - { role: ec2.ceshi_vm, app_name: "bet2", ec2_instance_type: "t3.medium" }
+    #- { role: ec2.ceshi_vm, app_name: "bill", ec2_instance_type: "t3.medium" }
+    #- { role: ec2.ceshi_vm, app_name: "chat", ec2_instance_type: "t3.medium" }
+    #- { role: ec2.ceshi_vm, app_name: "data", ec2_instance_type: "t3.medium" }
+    #- { role: ec2.ceshi_vm, app_name: "dock", ec2_instance_type: "t3.medium" }
+    #- { role: ec2.ceshi_vm, app_name: "H5",   ec2_instance_type: "t3.medium" }
+    #- { role: ec2.ceshi_vm, app_name: "CMS",  ec2_instance_type: "t3.medium" }
+
+  vars:
+    ec2_env: "testing"
+    aws_tags: 249
+    
+

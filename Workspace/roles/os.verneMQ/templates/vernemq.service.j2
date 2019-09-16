@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=VerneMQ is a MQTT message broker
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/vernemq start
+ExecStop=/usr/sbin/vernemq stop
+User=vernemq
+PIDFile=/var/run/vernemq/vernemq.pid
+RuntimeDirectory=vernemq
+
+
+[Install]
+WantedBy=multi-user.target

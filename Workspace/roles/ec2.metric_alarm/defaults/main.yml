@@ -1,0 +1,11 @@
+---
+
+list_of_instance_ids: ""
+env: "awsec2"
+region: "ap-southeast-1"
+
+#
+alarm_recipients: []
+# 
+alarm_failed_recipients: [] 
+

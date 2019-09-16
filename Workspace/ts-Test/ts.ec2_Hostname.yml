@@ -1,0 +1,10 @@
+---
+
+- name: Testing  EC2 vHost Change Hostname
+  hosts: all
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    - { role: sys.hostname, domain_name: "v9cp.com" }
+    
+

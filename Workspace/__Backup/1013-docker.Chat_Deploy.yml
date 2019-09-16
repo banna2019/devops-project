@@ -1,0 +1,17 @@
+---
+
+- name: Docker Installition
+  hosts: nodes_chat
+  #hosts: nodes_CESHI_chat
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  vars:
+    language: "JAVA"
+ 
+  roles:
+    # Docker for Chat
+    - { role: docker.deploy_project, docker_image_name: "chat", project_port: 8081, project_tag: "rsl_201902209146_b1" }
+    - { role: docker.deploy_project, docker_image_name: "api", project_port: 8038, project_tag: "rls_201902202130_b1" }
+
+   

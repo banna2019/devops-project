@@ -1,0 +1,47 @@
+---
+
+- name: Create IT TiDB EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    #
+    - { role: ec2.it_Analytics,
+             app_name: "TiDB-PD01",
+             ec2_instance_type: "m5.2xlarge",
+             ebs_volume_Size: 20,
+             aws_tags: 58,
+             subnet_zone: "1a" }
+    - { role: ec2.it_Analytics,
+             app_name: "TiDB-PD02",
+             ec2_instance_type: "m5.2xlarge",
+             ebs_volume_Size: 20,
+             aws_tags: 58,
+             subnet_zone: "1b" }
+    - { role: ec2.it_Analytics,
+             app_name: "TiDB-PD03",
+             ec2_instance_type: "m5.2xlarge",
+             ebs_volume_Size: 20,
+             aws_tags: 58,
+             subnet_zone: "1c" }
+    - { role: ec2.it_Analytics,
+             app_name: "TiDB-TiKV-01",
+             ec2_instance_type: "m5.2xlarge",
+             ebs_volume_Size: 20,
+             aws_tags: 56,
+             subnet_zone: "1c" }
+    - { role: ec2.it_Analytics,
+             app_name: "TiDB-TiKV-02",
+             ec2_instance_type: "m5.2xlarge",
+             ebs_volume_Size: 20,
+             aws_tags: 56,
+             subnet_zone: "1b" }
+    - { role: ec2.it_Analytics,
+             app_name: "TiDB-TiKV-03",
+             ec2_instance_type: "m5.2xlarge",
+             ebs_volume_Size: 20,
+             aws_tags: 56,
+             subnet_zone: "1a" }
+
+

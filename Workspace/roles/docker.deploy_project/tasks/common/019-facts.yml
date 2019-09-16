@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 19
+    platform_name: "ZS"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec019-z3y-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db019-z3y-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbuser"
+    aws_rds_password: "Z8lPvuTrPG5-kxP4gkd5"
+    #
+    mq_username: "zhgsan"
+    mq_password: "4S-0gGxs-svX25oDd8yf"
+    home_page_url: "http://77199.com"
+    home_page_title: "中三元"
+    pay_url: "https://pay.77199cpc.com"
+    api_turn_url: "https://tp.77199cpc.com"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "z3y-019-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "api.77199c.com"
+    online_service_url: "https://messenger.providesupport.net/messenger/0vy3n2ku5r3pi15roalwoawkr3.html"
+    # UMENG
+    umeng_andorid_app_key: "5bcee19ab465f57da900009e"
+    umeng_andorid_master_secret: "lojkihrgl0lco4jbbmswvi0rlr0wm7ka"
+    umeng_ios_app_key: "5bcef127f1f5562bc40000f4"
+    umeng_ios_master_secret: "fvavdizhydgwfft2x7dygsbcycculzk2"
+

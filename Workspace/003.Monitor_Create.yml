@@ -1,0 +1,22 @@
+---
+
+- name: Create IT Monitor EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    #
+    #- { role: ec2.it_Monitor,
+    #         app_name: "Rancher2-Server",
+    #         ec2_instance_type: "m5.large",
+    #         ebs_volume_Size: 20,
+    #         aws_tags: 200,
+    #         subnet_zone: "1a" }
+    - { role: ec2.it_Monitor,
+             app_name: "kubectl-cli",
+             ec2_instance_type: "t3.medium",
+             ebs_volume_Size: 20,
+             aws_tags: 201,
+             subnet_zone: "1a",
+             ec2_ami_Id: "ami-0dad20bd1b9c8c004" }

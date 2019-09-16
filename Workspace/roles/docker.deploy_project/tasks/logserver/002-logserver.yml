@@ -1,0 +1,6 @@
+---
+
+- name: Define Docker Project facts for log server
+  set_fact:
+    Project_LOG_SERVER_HOST: "10.8.209.108"
+    Project_LOG_SERVER_UDP_PORT: "12201"

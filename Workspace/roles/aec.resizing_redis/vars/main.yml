@@ -1,0 +1,8 @@
+---
+# vars file for rds.mysql
+
+rds_instance_tags: "{{ '%03d'|format(aws_tags|int) }}"
+#redis_cluster_name: "{{ aws_application_name }}-{{ rds_instance_tags }}ec-redis"
+redis_cluster_name: "ec{{ rds_instance_tags }}-{{ aws_application_name }}-redis"
+
+redis_cluster_region: "ap-southeast-1"

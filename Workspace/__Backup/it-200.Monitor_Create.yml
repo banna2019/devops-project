@@ -1,0 +1,34 @@
+---
+
+- name: Create IT Monitor EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    #
+    - { role: ec2.it_Monitor,
+             app_name: "DeploySolution-001",
+             ec2_instance_type: "r5.large",
+             ebs_volume_Size: 30,
+             aws_tags: 191,
+             subnet_zone: "1a" }
+    #- { role: ec2.it_Monitor,
+    #         app_name: "XtraBackup_Backup-001",
+    #         ec2_instance_type: "m5.xlarge",
+    #         ebs_volume_Size: 20,
+    #         aws_tags: 201,
+    #         subnet_zone: "1a" }
+    #- { role: ec2.it_Monitor,
+    #         app_name: "XtraBackup_Backup-002",
+    #         ec2_instance_type: "m5.xlarge",
+    #         ebs_volume_Size: 20,
+    #         aws_tags: 201,
+    #         subnet_zone: "1b" }
+    #- { role: ec2.it_Monitor,
+    #         app_name: "XtraBackup_Backup-003",
+    #         ec2_instance_type: "m5.xlarge",
+    #         ebs_volume_Size: 20,
+    #         aws_tags: 201,
+    #         subnet_zone: "1c" }
+

@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 10
+    platform_name: "SN"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec010-6hao-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db010-6hao-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "FQ8VywtuCg-PQMn315"
+    #
+    mq_username: "sixnet"
+    mq_password: "quo1lohwoo6eNgohlo"
+    home_page_url: "https://6hao999.vip"
+    home_page_title: "6号娱乐"
+    pay_url: "https://pay-6hao999.h5api.co"
+    api_turn_url: "https://tp-6hao999.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "myth-039-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cfcp.h5api.co"
+    online_service_url: ""
+    # UMENG
+    umeng_andorid_app_key: "59a1336cf43e487b6a000adf"
+    umeng_andorid_master_secret: "1hrlkrz7gbh0viwt7jtdyr688e5zznqf"
+    umeng_ios_app_key: "59a12df58f4a9d59ea001258"
+    umeng_ios_master_secret: "fdtt74yau5arvisw7trnaavascnrpggq"
+

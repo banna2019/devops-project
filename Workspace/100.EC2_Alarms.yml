@@ -1,0 +1,16 @@
+---
+
+- name: Create IT Monitor EC2 vHost
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+  roles:
+    - role: ec2.metric_alarm
+
+  vars:
+    alarm_recipients: ["arn:aws:sns:ap-southeast-1:831869343743:ec2-health"]
+    alarm_failed_recipients: ["arn:aws:sns:ap-southeast-1:831869343743:ec2-health", "arn:aws:swf:ap-southeast-1:831869343743:action/actions/AWS_EC2.InstanceId.Reboot/1.0"]
+    list_of_instance_ids:
+      - i-0e1743ecf1ce1686b
+      - i-0ad8def485a5e6060  

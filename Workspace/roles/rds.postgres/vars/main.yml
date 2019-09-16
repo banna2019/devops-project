@@ -1,0 +1,23 @@
+---
+# vars file for rds.mysql
+
+rds_instance_tags: "{{ '%03d'|format(aws_tags|int) }}"
+rds_instance_name: "{{ aws_application_name }}-{{ rds_instance_tags }}db-postgres"
+rds_instance_region: "ap-southeast-1"
+rds_instance_subnet: "rds-postgre-subnetgroup"
+rds_parameter_group: "rds-postgres96-db-parameters"
+
+rds_license_model: "postgresql-license"
+rds_engine_version: "9.6.11"
+
+rds_instance_sg_name: "sg-0717f46e4d2b639ee"
+
+#rds_instance_type: "db.m5.large"
+#rds_ebs_iops: 1000
+#rds_instance_size_gb: 100
+
+rds_backup_retention: 7
+rds_backup_window: "18:30-19:30"
+rds_maint_window: "SUN:19:30-SUN:20:30"
+
+

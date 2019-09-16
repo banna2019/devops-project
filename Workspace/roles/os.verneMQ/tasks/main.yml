@@ -1,0 +1,16 @@
+---
+
+- name: Install VerneMQ
+  include_tasks: build.yml
+  tags:
+    - build
+
+- name: Setup VerneMQ systemd unit.
+  include_tasks: systemd.yml
+  tags:
+    - systemd
+
+- name: Configure VerneMQ
+  include_tasks: configure.yml
+  tags:
+    - configure

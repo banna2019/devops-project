@@ -1,0 +1,8 @@
+---
+
+- name: Stop the ec2 instance
+  ec2:
+    state: stopped
+    region: "{{ ec2_instance_region }}"
+    instance_ids: "{{ ec2_instance_ids }}"
+    wait: yes

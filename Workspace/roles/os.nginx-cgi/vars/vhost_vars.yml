@@ -1,0 +1,28 @@
+---
+
+nginx_extra_conf_options: |
+  worker_rlimit_nofile  65335;
+
+nginx_vhosts:
+      - listen: "8080"
+        server_name: "_"
+        root: "/data/www/admin"
+        state: "present"
+        template: "{{ nginx_vhost_template }}"
+        filename: "vhost.8080.conf"
+        extra_parameters: |
+          location / {
+            index  index.html admin.php;
+            autoindex off;
+          }
+
+          location ~ \.php(.*)$ {
+              fastcgi_pass                  127.0.0.1:9000;
+              fastcgi_split_path_info       ^((?U).+\.php)(/?.+)$;
+              fastcgi_index                 index.php;
+              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+              fastcgi_param PATH_INFO       $fastcgi_path_info;
+              fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+              include fastcgi_params;
+          }
+

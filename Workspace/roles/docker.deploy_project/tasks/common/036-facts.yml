@@ -1,0 +1,34 @@
+---
+
+- name: Define Docker Project facts
+  set_fact:
+    aws_tags: 36
+    platform_name: "S036"
+    is_push_h5api: 1
+    # AWS Redis
+    aws_elasticache: "ec036-fortuna-redis.k5wenu.0001.apse1.cache.amazonaws.com"
+    # AWS RDS
+    aws_rds: "db036-fortuna-mysql.csi9kqkuml0k.ap-southeast-1.rds.amazonaws.com"
+    aws_rds_username: "dbAdmin"
+    aws_rds_password: "H8kZSkv2bO2-ur6x5O"
+    #
+    mq_username: "cshhsd"
+    mq_password: "HQE-8BW7fdaCzTwhke"
+    home_page_url: "https://cscp8.net"
+    home_page_title: "财神国际"
+    pay_url: "https://pay-cscp.h5api.co"
+    api_turn_url: "https://tp-cscp.h5api.co"
+    # Private docker registry
+    registry_container: "{{ docker_image_name }}"
+    # H5API
+    aws_s3_bucketname: "fortuna-036-sucai"
+    aws_s3_accesskey: "AKIAJ6EOSWXKAKQK2ACA"
+    aws_s3_secretkey: "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"
+    h5api_websocket_url: "ws-cscp.h5api.co"
+    online_service_url: "https://e-142535.chatnow.meiqia.com/dist/standalone.html"
+    # UMENG
+    umeng_andorid_app_key: "5c81d74c3fc1959510000b49"
+    umeng_andorid_master_secret: "rtuztc1p1can8v2asn0sfp898kda9wo5"
+    umeng_ios_app_key: "5c83a7012036579be200166b"
+    umeng_ios_master_secret: "u5nvmvpyvxdkezyllqvtik827gccxyrd"
+

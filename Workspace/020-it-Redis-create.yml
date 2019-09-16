@@ -1,0 +1,14 @@
+---
+
+- name: Create ElastiCache Redis instance
+  hosts: local
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  roles:
+    - { role: aec.redis,
+           aws_tags: 10,
+           redis_cluster_type: cache.m5.large,
+           aws_application_name: "simon" }
+

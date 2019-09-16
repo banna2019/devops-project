@@ -1,0 +1,12 @@
+---
+# tasks file for sql.mysql_db
+
+- name: Run SQL Command against DB 
+  mysql_db:
+    login_host: "{{ db_login_host }}"
+    login_user: "{{ db_login_user }}"
+    login_password: "{{ db_login_password }}"
+    login_port: "{{ db_login_port }}"
+    name: "{{ db_database_name }}"
+    state: import
+    target: "{{ run_target_sql_command }}"

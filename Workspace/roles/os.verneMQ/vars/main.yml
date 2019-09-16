@@ -1,0 +1,16 @@
+---
+
+#vernemq_cluster_discovery_node: "vernemq-{{ group_names[1] }}-1@{{ hostvars['vernemq-' + group_names[1] + '-1'].ansible_eth0.ipv4.address }}"
+vernemq_configuration:
+   allow_anonymous: no
+   allow_unsubscribe_during_netsplit: yes
+   allow_subscribe_during_netsplit: yes
+   allow_publish_during_netsplit: yes
+   allow_register_during_netsplit: yes
+   distributed_cookie: "vmq_{{ platform_name|lower }}_{{ '%03d'|format(aws_tags|int) }}_nodes_cluster"
+   listener.vmq.clustering: "{{ ansible_default_ipv4.address }}:44053"
+   nodename: "VerneMQ-{{ '%03d'|format(aws_tags|int) }}@{{ ansible_default_ipv4.address }}"
+   listener.tcp.default: "0.0.0.0:1883"
+   erlang.distribution.port_range.minimum: 6000
+   erlang.distribution.port_range.maximum: 7999
+   listener.max_connections: 1000000
