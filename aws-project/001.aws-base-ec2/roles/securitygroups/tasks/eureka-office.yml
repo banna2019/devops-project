@@ -1,0 +1,19 @@
+---
+# tasks file for roles/securitygroups
+- name: provision 8135 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-eureka-office"
+    description: "opens port 8135 to the user"
+    tags:
+      "Name": "{{ vpc_env }}-eureka-office"
+      "Environment": "{{ vpc_env }}-eureka-office"
+    rules:
+      - proto: "tcp"
+        from_port: "8135"
+        to_port: "8135"
+        cidr_ip: "127.0.0.1/16"
+        rule_desc: "allow all on port 8135"
+  register: sg_eureka_office
+

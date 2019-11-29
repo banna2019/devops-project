@@ -1,0 +1,55 @@
+---
+- name: fqdn | Configure Debian
+  include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: fqdn | Configure Redhat
+  include: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: fqdn | Configure Linux
+  include: linux.yml
+  when: ansible_system in  [ 'Linux' ]
+
+- name: main | changing hostname to match inventory_hostname_short
+  hostname:
+    name: "{{ inventory_hostname_short }}"
+  register: "hostname_status"
+  become: true
+  when: ansible_fqdn != inventory_hostname_short
+
+- debug: var=ansible_fqdn 
+
+- debug: var=ansible_ssh_host
+
+- debug: var=ansible_hostname
+
+- debug: var=inventory_hostname
+- debug: var=inventory_hostname_short
+
+- block:
+    - name: main | restarting machine
+      shell: sleep 2 && shutdown -r now "rebooting to complete hostname change"
+      async: 1
+      poll: 0
+      ignore_errors: true
+      become: true
+      when: >
+          (change_hostname_reboot is defined and
+          change_hostname_reboot ) and
+          hostname_status.changed
+
+    - name: main | waiting for server to come back
+      wait_for:
+        host: "{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}"
+        port: 22
+        search_regex: OpenSSH
+        delay: 10
+      vars:
+        ansible_connection: local
+      become: false
+      when: >
+          (change_hostname_reboot is defined and
+          change_hostname_reboot ) and
+          hostname_status.changed
+  when: selinux.changed and reboot

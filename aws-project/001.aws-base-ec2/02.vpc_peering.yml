@@ -1,0 +1,19 @@
+---
+- name: Create a peer-to-peer connection between VPCs 
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    connection_name: "one-banna"
+    vpc_name: "one-banna"
+
+    owner_vpc_name: "banna"
+    acc_vpc_name: "one-banna"
+    profile: "606724181858"
+    region: "ap-southeast-1"
+
+  roles:
+    - roles/vpc_peering
+
+  

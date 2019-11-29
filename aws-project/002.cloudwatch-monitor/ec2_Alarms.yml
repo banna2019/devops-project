@@ -1,0 +1,23 @@
+---
+- name: Create IT Monitor EC2 vHost
+  hosts: localhost
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    alarm_recipients: ["arn:aws:sns:ap-southeast-1:607624181858:ec2-health"]
+    alarm_failed_recipients: ["arn:aws:sns:ap-southeast-1:607624181858:ec2-health", "arn:aws:swf:ap-southeast-1:607624181858:action/actions/AWS_EC2.InstanceId.Reboot/1.0"]
+
+    env: "awsec2"
+    region: "ap-southeast-1"
+    stage_one: "80"
+    stage_two: "98"
+    vpc_name: "one-banna"
+#    instance_ids:
+#      - i-0732efe8b7fab18f2
+#      - i-0bdab7e87d8641c79
+
+
+  roles:
+    - role: ec2.metric_alarm

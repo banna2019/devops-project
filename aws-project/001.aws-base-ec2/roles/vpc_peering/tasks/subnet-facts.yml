@@ -1,0 +1,21 @@
+---
+- name: gather information about the ec2 subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:Use": "ec2"
+      "tag:Environment": "{{ acc_vpc_name }}"
+  register: subnets_ec2
+
+- name: gather information about the rds subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:Use": "rds"
+      "tag:Environment": "{{ acc_vpc_name }}"
+  register: subnets_rds
+
+- name: register just the IDs for each of the subnets
+  set_fact:
+    subnet_ec2_ids: "{{ subnets_ec2.subnets | sort(attribute='cidr_block') | map(attribute='id') | list }}"
+    subnet_rds_ids: "{{ subnets_rds.subnets | sort(attribute='cidr_block') | map(attribute='id') | list }}"

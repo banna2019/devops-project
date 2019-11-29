@@ -1,0 +1,52 @@
+---
+
+- name: Enable pam limits
+  lineinfile:
+    dest: "/etc/pam.d/{{ item }}"
+    regexp: "^session    required   pam_limits.so"
+    line: "session    required   pam_limits.so"
+    state: present
+  with_items:  "{{ limits_pamd_files }}"
+  tags: ['limits']
+
+- name: Configure limits
+  template:
+    src: limits.conf.j2
+    dest: "{{ limits_path }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update sysctl
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    ignoreerrors: "{{ limits_sysctl_ignore }}"
+  with_items:  "{{ limits_sysctl }}"
+  tags: ['sysctl']
+
+- name: Update Limit NOFILE
+  lineinfile:
+    dest: /etc/systemd/system.conf
+    create: no
+    regexp: "^DefaultLimitNOFILE="
+    line: "DefaultLimitNOFILE={{ default_limit_no_file }}"
+  tags: ['system']
+
+- name: Update Limit NPROC
+  lineinfile:
+    dest: /etc/systemd/system.conf
+    create: no
+    regexp: "^DefaultLimitNPROC="
+    line: "DefaultLimitNPROC={{ default_limit_no_file }}"
+  tags: ['system']
+
+- name: Update hosts.allow
+  template:
+    src: hosts.allow.j2
+    dest: /etc/hosts.allow
+
+- name: Update hosts.deny
+  template:
+    src: hosts.deny.j2
+    dest: /etc/hosts.deny

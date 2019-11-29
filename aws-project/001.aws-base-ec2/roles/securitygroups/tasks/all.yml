@@ -1,0 +1,19 @@
+---
+# tasks file for roles/securitygroups
+- name: provision vpc ec2 netwokr  all security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-all"
+    description: "opens all ports to the world"
+    tags:
+      "Name": "{{ vpc_env }}-all"
+      "Environment": "{{ vpc_env }}-all"
+    rules:
+      - proto: all
+      #- proto: "tcp"
+      #  ports:
+      #    - 0-65535
+        cidr_ip: "{{ vpc_facts.vpcs[0].cidr_block }}"
+        rule_desc: "private ec2 allow all on ports"
+  register: sg_all

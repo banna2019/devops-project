@@ -1,0 +1,19 @@
+---
+# tasks file for roles/securitygroups
+- name: provision private 18083 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-emqtt-office"
+    description: "opens port 18083 to the user"
+    tags:
+      "Name": "{{ vpc_env }}-emqtt-office"
+      "Environment": "{{ vpc_env }}-emqtt-office"
+    rules:
+      - proto: "tcp"
+        from_port: "18083"
+        to_port: "18083"
+        cidr_ip: "127.0.0.1/16"
+        rule_desc: "private allow all on port 18083"
+  register: sg_emqtt_office
+

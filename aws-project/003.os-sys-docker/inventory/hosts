@@ -1,0 +1,73 @@
+
+[one-banna-zuul]
+10.100.10.199 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-nginx]
+10.100.11.216 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-nacos]
+10.100.12.232 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-operation]
+10.100.10.205 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-eureka]
+10.100.11.7 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-emqtt3.2]
+10.100.12.144 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-superbackend]
+10.100.10.224 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-merchant]
+10.100.11.252 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-productionopt-h5]
+10.100.12.241 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-common-api]
+10.100.10.253 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-issue-api]
+10.100.11.29 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-admin-api]
+10.100.12.81 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-api]
+10.100.10.162 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-mq-consumer]
+10.100.11.113 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-open-api]
+10.100.12.95 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-task]
+10.100.10.58 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-timer]
+10.100.11.241 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-config-remoteservice-provider]
+10.100.12.186 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-shareregister-api]
+10.100.10.100 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-thirdgame-api]
+10.100.11.116 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-mqtt]
+10.100.12.220 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-opener]
+10.100.10.221 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-es]
+10.100.11.177 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-task]
+10.100.12.84 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-api]
+10.100.10.93 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-hb-api]
+10.100.11.219 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-admin-api]
+10.100.11.225 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-commission-task]
+10.100.10.25 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-login-api]
+10.100.11.124 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-mq-consumer]
+10.100.12.28 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-mysql2es-sync]
+10.100.10.154 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-order-api]
+10.100.11.30 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-payment-api]
+10.100.12.40 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-payment-proxy]
+10.100.10.167 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-remoteservice-provider]
+10.100.11.194 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[one-banna-lottery-thirdorder-collector]
+10.100.12.79 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh

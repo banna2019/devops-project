@@ -1,0 +1,11 @@
+---
+- name: "Open ec2 instance termination"
+  ec2:
+    instance_ids: "{{ item }}"
+    state: restarted
+    region: "{{ vpc_region | default('ap-southeast-1') }}"
+    termination_protection: no
+  with_items: "{{ instance_ids }}"
+  register: ec2_instance
+
+

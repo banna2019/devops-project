@@ -1,0 +1,14 @@
+---
+- name: Create IT Monitor EC2 vHost
+  hosts: localhost
+  connection: local
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    vpc_env: "one-banna"
+    vpc_region: "ap-southeast-1"
+
+
+  roles:
+    - role: ec2_drop

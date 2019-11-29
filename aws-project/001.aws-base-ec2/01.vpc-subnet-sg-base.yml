@@ -1,0 +1,38 @@
+---
+- name: Create,launch and configure our basic AWS VPC
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "one-banna"
+    vpc_region: "ap-southeast-1"
+
+  roles:
+    - roles/vpc
+    - roles/subnets
+    - roles/gateway
+
+- name: create securitygroups
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+
+  vars:
+    vpc_env: "one-banna"
+    vpc_region: "ap-southeast-1"
+    
+  roles:
+    - { role: securitygroups,sec_name: "elb-ng-80-443-all" } 
+    - { role: securitygroups,sec_name: "merchant-80" } 
+    - { role: securitygroups,sec_name: "zuul-all" } 
+    - { role: securitygroups,sec_name: "emqtt" } 
+    - { role: securitygroups,sec_name: "nacos" } 
+    - { role: securitygroups,sec_name: "all" } 
+    - { role: securitygroups,sec_name: "rds" } 
+    - { role: securitygroups,sec_name: "ssh" } 
+    - { role: securitygroups,sec_name: "eureka-office" } 
+    - { role: securitygroups,sec_name: "office-access" } 
+    - { role: securitygroups,sec_name: "windows-ops" } 
+    - { role: securitygroups,sec_name: "emqtt-office" } 

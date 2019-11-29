@@ -1,0 +1,45 @@
+---
+- name: Setup  Owner internet gateway
+  ec2_vpc_igw:
+    region: "{{ region }}"
+    vpc_id: "{{ owner_vpc_id }}"
+  register: owner_igw
+
+- name: Setup Accept internet gateway
+  ec2_vpc_igw:
+    region: "{{ region }}"
+    vpc_id: "{{ acc_vpc_id }}"
+  register: acc_igw
+
+- name: Owner VPC Public Router Table 
+  ec2_vpc_route_table:
+    tags:
+      "Name": "{{ owner_vpc_name }}-public"
+    region: "{{ region }}"
+    vpc_id: "{{ owner_vpc_id }}"
+    purge_routes: false
+    routes:
+      - dest: "{{ acc_cidr_block }}"
+        vpc_peering_connection_id: "{{ peer_id }}" 
+
+- name: Accept VPC Public Route Table
+  ec2_vpc_route_table:
+    vpc_id: "{{ acc_vpc_id }}"
+    purge_routes: false
+    tags:
+      Name: "{{ acc_vpc_name }}_ec2_public"
+    routes:
+      - dest: "{{ owner_cidr_block }}"
+        vpc_peering_connection_id: "{{ peer_id }}" 
+    region: "{{ region }}"
+
+- name: Accept VPC Public Route Table
+  ec2_vpc_route_table:
+    vpc_id: "{{ acc_vpc_id }}"
+    purge_routes: false
+    tags:
+      Name: "{{ acc_vpc_name }}_rds_private"
+    routes:
+      - dest: "{{ owner_cidr_block }}"
+        vpc_peering_connection_id: "{{ peer_id }}" 
+    region: "{{ region }}"

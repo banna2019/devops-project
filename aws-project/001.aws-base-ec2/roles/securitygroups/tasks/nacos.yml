@@ -1,0 +1,19 @@
+---
+# tasks file for roles/securitygroups
+- name: provision 8080 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-nacos"
+    description: "opens port 8080 to the user"
+    tags:
+      "Name": "{{ vpc_env }}-nacos"
+      "Environment": "{{ vpc_env }}-nacos"
+    rules:
+      - proto: "tcp"
+        from_port: "8080"
+        to_port: "8080"
+        cidr_ip: "127.0.0.1/16"
+        rule_desc: "allow all on port 8080"
+  register: sg_nacos
+

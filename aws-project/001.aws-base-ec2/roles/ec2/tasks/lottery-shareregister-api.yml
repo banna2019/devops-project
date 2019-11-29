@@ -1,0 +1,87 @@
+---
+- name: Get SSH SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_ssh }}"
+  register: sg_ssh
+
+- name: list of ssh the security group id.
+  set_fact:
+    sg_ssh_id: "{{ item.group_id }}"
+  with_items: "{{ sg_ssh.security_groups }}"
+
+- name: Get ALL SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_all }}"
+  register: sg_all
+
+- name: list of all the security group id.
+  set_fact:
+    sg_all_id: "{{ item.group_id }}"
+  with_items: "{{ sg_all.security_groups }}"
+
+- name: Get ELB SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_elb }}"
+  register: sg_elb_80_443_all
+
+- name: list of elb 80 443 all the security group id.
+  set_fact:
+    sg_elb_id: "{{ item.group_id }}"
+  with_items: "{{ sg_elb_80_443_all.security_groups }}"
+
+- name: "Provision ec2 instance"
+  ec2:
+    key_name: "{{ ec2_key_Pair }}"
+    region: "{{ vpc_region | default('ap-southeast-1') }}"
+    group_id:
+      - "{{ sg_elb_id }}"
+      - "{{ sg_ssh_id }}"
+      - "{{ sg_all_id }}"
+    instance_type: "{{ ec2_instance_type | default('t2.micro') }}"
+    image: "{{ ec2_ami_Id }}"
+    wait: true
+    exact_count: "{{ ec2_instance_count }}"
+    count_tag:
+      Name: "{{ ec2_instance_tag_name }}"
+    instance_tags:
+      Name: "{{ ec2_instance_tag_name }}"
+      env: "{{ vpc_env }}"
+    vpc_subnet_id: "{{ vpc_subnet_Id }}"
+    assign_public_ip: yes
+    instance_profile_name: "{{ ec2_instance_profile_name | default('') }}"
+    termination_protection: yes
+    volumes:
+      - device_name: "{{ ec2_volume_Device_Name }}"
+        volume_type: "{{ ec2_volume_type }}"
+        volume_size: "{{ ec2_volume_Size }}"
+        delete_on_termination: false
+    monitoring: yes
+  register: ec2_lottery_shareregister_api
+
+- name: Assign EIP address for web instances
+  ec2_eip:
+    in_vpc: yes
+    reuse_existing_ip_allowed: yes
+    state: present
+    region: "{{ vpc_region }}"
+    device_id: "{{ item.id }}"
+  with_items: "{{ ec2_lottery_shareregister_api.instances }}"
+  register: elastic_ip
+
+- name: Get only running instance IP addresses.
+  set_fact:
+    private_ips: "{{ ec2_lottery_shareregister_api.tagged_instances|map(attribute='private_ip')|list }}"
+
+- name: Configure hostname in /home/centos/new-project/aws-project/002.os-sys-docker/inventory/hosts
+  lineinfile:
+    state: present
+    dest: "{{ hosts_dir }}"/aws-project/003.os-sys-docker/inventory/hosts
+    regexp: "{{ ec2_instance_tag_name }}"
+    line: "[{{ ec2_instance_tag_name }}]{{'\n'}}{{ private_ips[0] }} ansible_ssh_user={{ ssh_user }} ansible_ssh_private_key_file=/home/centos/.keys/{{ ec2_key_Pair }}{{'\n'}}"
+

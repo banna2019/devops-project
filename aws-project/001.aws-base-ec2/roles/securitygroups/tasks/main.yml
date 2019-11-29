@@ -1,0 +1,38 @@
+---
+- include: vpc_subnet_facts.yml
+
+- include_tasks: elb-ng-80-443-all.yml
+  when: sec_name == "elb-ng-80-443-all"
+
+- include_tasks: merchant-80.yml
+  when: sec_name == "merchant-80"
+
+- include_tasks: zuul-all.yml
+  when: sec_name == "zuul-all"
+  
+- include_tasks: emqtt.yml
+  when: sec_name == "emqtt"
+  
+- include_tasks: nacos.yml
+  when: sec_name == "nacos"
+  
+- include_tasks: all.yml
+  when: sec_name == "all"
+  
+- include_tasks: rds.yml
+  when: sec_name == "rds"
+  
+- include_tasks: ssh.yml
+  when: sec_name == "ssh"
+
+- include_tasks: eureka-office.yml
+  when: sec_name == "eureka-office"
+
+- include_tasks: office-access.yml
+  when: sec_name == "office-access"
+
+- include_tasks: windows-ops.yml
+  when: sec_name == "windows-ops"
+
+- include_tasks: emqtt-office.yml
+  when: sec_name == "emqtt-office"

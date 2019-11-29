@@ -1,0 +1,4 @@
+---
+- include: instance_id_fact.yml 
+- include: termination_clos.yml
+- include: delete.yml 

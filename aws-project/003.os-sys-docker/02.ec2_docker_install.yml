@@ -1,0 +1,13 @@
+---
+
+- name: Docker & Docker-Compose Installition
+  hosts: all
+  #hosts: rancher_server
+  serial: 1
+  max_fail_percentage: 0
+  become: true
+  
+  roles:
+    - { role: os.repo-epel }
+    - { role: os.docker }
+   
