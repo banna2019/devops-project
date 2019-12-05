@@ -6,7 +6,7 @@
   max_fail_percentage: 0
 
   vars:
-    vpc_env: "one-banna"
+    vpc_env: "M100"
     vpc_region: "ap-southeast-1"
 
 

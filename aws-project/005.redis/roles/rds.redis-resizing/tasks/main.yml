@@ -1,0 +1,16 @@
+---
+- name: Upgrade AWS elastiCache redis replication
+  command: >
+    aws elasticache modify-replication-group \
+        --region {{ region }} \
+        --replication-group-id {{ redis_name }} \
+        --primary-cluster-id {{ primary_name }} \
+        --node-group-id {{ node_name }} \
+        --cache-node-type {{ redis_node_type }} \
+        --snapshotting-cluster-id {{ primary_name }} \
+        --snapshot-retention-limit 3 \
+        --snapshot-window 21:00-22:00 \
+        --preferred-maintenance-window sun:22:00-sun:23:00 \
+        --apply-immediately
+
+

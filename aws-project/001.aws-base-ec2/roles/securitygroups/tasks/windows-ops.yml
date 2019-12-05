@@ -13,7 +13,7 @@
       - proto: "tcp"
         from_port: "3389"
         to_port: "3389"
-        cidr_ip: "127.0.0.1/16"
+        cidr_ip: "154.197.29.34/32"
         rule_desc: "private allow all on port 3389"
   register: sg_windows_ops
 

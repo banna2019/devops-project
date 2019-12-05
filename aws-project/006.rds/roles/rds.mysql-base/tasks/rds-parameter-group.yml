@@ -1,0 +1,15 @@
+---
+- name: "Create {{ vpc_name }}  parameter group"
+  rds_param_group:
+    name: "{{ vpc_name }}-{{ rds_mysql_version }}"
+    engine: "{{ rds_engine }}"
+    description: "{{ vpc_name }} This is a rds parameter group"
+    state: 'present'
+    params:
+     character_set_database: utf8
+     character_set_server: utf8
+     character_set_client: utf8
+     character_set_connection: utf8
+    tags:
+      Environment: "{{ rds_engine }}"
+      Application: "{{ vpc_name }}-{{ rds_mysql_version }}"

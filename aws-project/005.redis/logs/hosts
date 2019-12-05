@@ -1,0 +1,736 @@
+
+2019-12-05 01:55:46,624 p=19193 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/aws-project/005.redis/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-05 01:55:46,625 p=19193 u=root |  Using /home/centos/new-project/aws-project/005.redis/ansible.cfg as config file
+2019-12-05 01:55:46,633 p=19193 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:55:46,633 p=19193 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:55:46,633 p=19193 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:55:46,637 p=19193 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-05 01:55:46,638 p=19193 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-05 01:55:46,849 p=19193 u=root |  ERROR! Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/home/centos/new-project/aws-project/005.redis/redis.yml': line 17, column 40, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - { role: rds.redis-base }         //创建基础环境
+                                       ^ here
+
+2019-12-05 01:56:00,790 p=19202 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/aws-project/005.redis/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-05 01:56:00,791 p=19202 u=root |  Using /home/centos/new-project/aws-project/005.redis/ansible.cfg as config file
+2019-12-05 01:56:00,798 p=19202 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:56:00,799 p=19202 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:56:00,799 p=19202 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:56:00,802 p=19202 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-05 01:56:00,804 p=19202 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-05 01:56:01,099 p=19202 u=root |  PLAYBOOK: redis.yml *************************************************************************************************************************************************************************************************
+2019-12-05 01:56:01,100 p=19202 u=root |  1 plays in redis.yml
+2019-12-05 01:56:01,131 p=19202 u=root |  PLAY [Create ElastiCache Redis instance] ****************************************************************************************************************************************************************************
+2019-12-05 01:56:01,147 p=19202 u=root |  TASK [Gathering Facts] **********************************************************************************************************************************************************************************************
+2019-12-05 01:56:01,148 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/redis.yml:2
+2019-12-05 01:56:01,160 p=19202 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:01,160 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:01,168 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998 `" && echo ansible-tmp-1575510961.16-71886470820998="` echo /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998 `" ) && sleep 0'
+2019-12-05 01:56:01,625 p=19202 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-12-05 01:56:01,626 p=19202 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19202lGpUck/tmpm6yga7 TO /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998/AnsiballZ_setup.py
+2019-12-05 01:56:01,627 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998/ /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998/AnsiballZ_setup.py && sleep 0'
+2019-12-05 01:56:01,636 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998/AnsiballZ_setup.py && sleep 0'
+2019-12-05 01:56:01,992 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575510961.16-71886470820998/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:02,030 p=19202 u=root |  ok: [localhost]
+2019-12-05 01:56:02,031 p=19202 u=root |  META: ran handlers
+2019-12-05 01:56:02,049 p=19202 u=root |  TASK [rds.redis-base : include_tasks] *******************************************************************************************************************************************************************************
+2019-12-05 01:56:02,049 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/main.yml:2
+2019-12-05 01:56:02,218 p=19202 u=root |  included: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/redis-subnet-group.yml for localhost
+2019-12-05 01:56:02,237 p=19202 u=root |  TASK [rds.redis-base : gather information about the rds subnets] ****************************************************************************************************************************************************
+2019-12-05 01:56:02,238 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/redis-subnet-group.yml:2
+2019-12-05 01:56:02,256 p=19202 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:02,257 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:02,266 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458 `" && echo ansible-tmp-1575510962.26-26854785952458="` echo /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458 `" ) && sleep 0'
+2019-12-05 01:56:02,500 p=19202 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet_facts.py
+2019-12-05 01:56:02,501 p=19202 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19202lGpUck/tmpLtRGGI TO /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458/AnsiballZ_ec2_vpc_subnet_facts.py
+2019-12-05 01:56:02,502 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458/ /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2019-12-05 01:56:02,511 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2019-12-05 01:56:03,255 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575510962.26-26854785952458/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:03,272 p=19202 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "tag:Environment": "M100", 
+                "tag:Use": "rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "subnet_ids": [], 
+            "validate_certs": true
+        }
+    }, 
+    "subnets": [
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1b", 
+            "availability_zone_id": "apse1-az1", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.30.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0f4b69a2b74c07236", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-0f4b69a2b74c07236", 
+            "subnet_id": "subnet-0f4b69a2b74c07236", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1b", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "availability_zone_id": "apse1-az3", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.31.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-048fed50386ec1729", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-048fed50386ec1729", 
+            "subnet_id": "subnet-048fed50386ec1729", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1c", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1a", 
+            "availability_zone_id": "apse1-az2", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.32.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-072796422e5c38382", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-072796422e5c38382", 
+            "subnet_id": "subnet-072796422e5c38382", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1a", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }
+    ]
+}
+2019-12-05 01:56:03,289 p=19202 u=root |  TASK [rds.redis-base : register just the IDs for each of the subnets] ***********************************************************************************************************************************************
+2019-12-05 01:56:03,289 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/redis-subnet-group.yml:10
+2019-12-05 01:56:03,312 p=19202 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_redis_ids": [
+            "subnet-0f4b69a2b74c07236", 
+            "subnet-048fed50386ec1729", 
+            "subnet-072796422e5c38382"
+        ]
+    }, 
+    "changed": false
+}
+2019-12-05 01:56:03,330 p=19202 u=root |  TASK [rds.redis-base : Add or change a subnet group] ****************************************************************************************************************************************************************
+2019-12-05 01:56:03,330 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/redis-subnet-group.yml:14
+2019-12-05 01:56:03,351 p=19202 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:03,352 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:03,360 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114 `" && echo ansible-tmp-1575510963.35-185379465938114="` echo /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114 `" ) && sleep 0'
+2019-12-05 01:56:03,592 p=19202 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/elasticache_subnet_group.py
+2019-12-05 01:56:03,592 p=19202 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19202lGpUck/tmpP8OB5W TO /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114/AnsiballZ_elasticache_subnet_group.py
+2019-12-05 01:56:03,593 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114/ /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114/AnsiballZ_elasticache_subnet_group.py && sleep 0'
+2019-12-05 01:56:03,602 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114/AnsiballZ_elasticache_subnet_group.py && sleep 0'
+2019-12-05 01:56:04,700 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575510963.35-185379465938114/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:04,712 p=19202 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "description": "M100 Fancy Ex Parrot Subnet Group", 
+            "ec2_url": null, 
+            "name": "m100-redis", 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "state": "present", 
+            "subnets": [
+                "subnet-0f4b69a2b74c07236", 
+                "subnet-048fed50386ec1729", 
+                "subnet-072796422e5c38382"
+            ], 
+            "validate_certs": true
+        }
+    }
+}
+2019-12-05 01:56:04,730 p=19202 u=root |  TASK [rds.redis-base : include_tasks] *******************************************************************************************************************************************************************************
+2019-12-05 01:56:04,730 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/main.yml:3
+2019-12-05 01:56:04,761 p=19202 u=root |  included: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/redis-single-parameter-group.yml for localhost
+2019-12-05 01:56:04,786 p=19202 u=root |  TASK [rds.redis-base : M100 Create a test parameter group] **********************************************************************************************************************************************************
+2019-12-05 01:56:04,786 p=19202 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-base/tasks/redis-single-parameter-group.yml:2
+2019-12-05 01:56:04,805 p=19202 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:04,806 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:04,814 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538 `" && echo ansible-tmp-1575510964.81-144759097661538="` echo /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538 `" ) && sleep 0'
+2019-12-05 01:56:05,048 p=19202 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/elasticache_parameter_group.py
+2019-12-05 01:56:05,048 p=19202 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19202lGpUck/tmp2r77JS TO /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538/AnsiballZ_elasticache_parameter_group.py
+2019-12-05 01:56:05,049 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538/ /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538/AnsiballZ_elasticache_parameter_group.py && sleep 0'
+2019-12-05 01:56:05,059 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538/AnsiballZ_elasticache_parameter_group.py && sleep 0'
+2019-12-05 01:56:05,668 p=19202 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575510964.81-144759097661538/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:05,682 p=19202 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "elasticache": {
+        "cache_parameter_group": {
+            "cache_parameter_group_family": "redis5.0", 
+            "cache_parameter_group_name": "m100-redis", 
+            "description": "M100 This is a cache parameter group"
+        }, 
+        "response_metadata": {
+            "http_headers": {
+                "content-length": "571", 
+                "content-type": "text/xml", 
+                "date": "Thu, 05 Dec 2019 01:56:04 GMT", 
+                "x-amzn-requestid": "c208143b-a633-4da2-9e3a-a815f6d01578"
+            }, 
+            "http_status_code": 200, 
+            "request_id": "c208143b-a633-4da2-9e3a-a815f6d01578", 
+            "retry_attempts": 0
+        }
+    }, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "description": "M100 This is a cache parameter group", 
+            "ec2_url": null, 
+            "group_family": "redis5.0", 
+            "name": "m100-redis", 
+            "profile": null, 
+            "region": null, 
+            "security_token": null, 
+            "state": "present", 
+            "validate_certs": true, 
+            "values": null
+        }
+    }
+}
+2019-12-05 01:56:05,683 p=19202 u=root |  META: ran handlers
+2019-12-05 01:56:05,683 p=19202 u=root |  META: ran handlers
+2019-12-05 01:56:05,685 p=19202 u=root |  PLAY RECAP **********************************************************************************************************************************************************************************************************
+2019-12-05 01:56:05,685 p=19202 u=root |  localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2019-12-05 01:56:51,698 p=19339 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/aws-project/005.redis/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-05 01:56:51,698 p=19339 u=root |  Using /home/centos/new-project/aws-project/005.redis/ansible.cfg as config file
+2019-12-05 01:56:51,706 p=19339 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:56:51,706 p=19339 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:56:51,706 p=19339 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 01:56:51,709 p=19339 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-05 01:56:51,711 p=19339 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-05 01:56:52,003 p=19339 u=root |  PLAYBOOK: redis.yml *************************************************************************************************************************************************************************************************
+2019-12-05 01:56:52,003 p=19339 u=root |  1 plays in redis.yml
+2019-12-05 01:56:52,034 p=19339 u=root |  PLAY [Create ElastiCache Redis instance] ****************************************************************************************************************************************************************************
+2019-12-05 01:56:52,049 p=19339 u=root |  TASK [Gathering Facts] **********************************************************************************************************************************************************************************************
+2019-12-05 01:56:52,049 p=19339 u=root |  task path: /home/centos/new-project/aws-project/005.redis/redis.yml:2
+2019-12-05 01:56:52,061 p=19339 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:52,061 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:52,069 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587 `" && echo ansible-tmp-1575511012.06-59984296311587="` echo /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587 `" ) && sleep 0'
+2019-12-05 01:56:52,499 p=19339 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-12-05 01:56:52,500 p=19339 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19339lK_RR0/tmpwicVBg TO /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587/AnsiballZ_setup.py
+2019-12-05 01:56:52,501 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587/ /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587/AnsiballZ_setup.py && sleep 0'
+2019-12-05 01:56:52,509 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587/AnsiballZ_setup.py && sleep 0'
+2019-12-05 01:56:52,846 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511012.06-59984296311587/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:52,880 p=19339 u=root |  ok: [localhost]
+2019-12-05 01:56:52,880 p=19339 u=root |  META: ran handlers
+2019-12-05 01:56:52,897 p=19339 u=root |  TASK [rds.redis : include_tasks] ************************************************************************************************************************************************************************************
+2019-12-05 01:56:52,897 p=19339 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis/tasks/main.yml:4
+2019-12-05 01:56:53,071 p=19339 u=root |  included: /home/centos/new-project/aws-project/005.redis/roles/rds.redis/tasks/redis.yml for localhost
+2019-12-05 01:56:53,089 p=19339 u=root |  TASK [rds.redis : Get ALL SG ID] ************************************************************************************************************************************************************************************
+2019-12-05 01:56:53,089 p=19339 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis/tasks/redis.yml:2
+2019-12-05 01:56:53,108 p=19339 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:53,109 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:53,117 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954 `" && echo ansible-tmp-1575511013.11-34832151018954="` echo /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954 `" ) && sleep 0'
+2019-12-05 01:56:53,344 p=19339 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_group_facts.py
+2019-12-05 01:56:53,345 p=19339 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19339lK_RR0/tmpkvBvhD TO /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954/AnsiballZ_ec2_group_facts.py
+2019-12-05 01:56:53,346 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954/ /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954/AnsiballZ_ec2_group_facts.py && sleep 0'
+2019-12-05 01:56:53,355 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954/AnsiballZ_ec2_group_facts.py && sleep 0'
+2019-12-05 01:56:54,084 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511013.11-34832151018954/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:54,099 p=19339 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "group-name": "M100-all"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }, 
+    "security_groups": [
+        {
+            "description": "opens all ports to the world", 
+            "group_id": "sg-050c75180f5084f76", 
+            "group_name": "M100-all", 
+            "ip_permissions": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "10.100.0.0/16", 
+                            "description": "private ec2 allow all on ports"
+                        }, 
+                        {
+                            "cidr_ip": "10.10.0.0/16"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "ip_permissions_egress": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "0.0.0.0/0"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "owner_id": "607624181858", 
+            "tags": {
+                "Environment": "M100-all", 
+                "Name": "M100-all"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }
+    ]
+}
+2019-12-05 01:56:54,116 p=19339 u=root |  TASK [rds.redis : list of all the security group id.] ***************************************************************************************************************************************************************
+2019-12-05 01:56:54,116 p=19339 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis/tasks/redis.yml:9
+2019-12-05 01:56:54,144 p=19339 u=root |  ok: [localhost] => (item={u'ip_permissions': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'description': u'private ec2 allow all on ports', u'cidr_ip': u'10.100.0.0/16'}, {u'cidr_ip': u'10.10.0.0/16'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'description': u'opens all ports to the world', u'tags': {u'Environment': u'M100-all', u'Name': u'M100-all'}, u'group_name': u'M100-all', u'vpc_id': u'vpc-0d32a5f9af5d2e04f', u'group_id': u'sg-050c75180f5084f76', u'ip_permissions_egress': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'cidr_ip': u'0.0.0.0/0'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'owner_id': u'607624181858'}) => {
+    "ansible_facts": {
+        "sg_all_id": "sg-050c75180f5084f76"
+    }, 
+    "ansible_loop_var": "item", 
+    "changed": false, 
+    "item": {
+        "description": "opens all ports to the world", 
+        "group_id": "sg-050c75180f5084f76", 
+        "group_name": "M100-all", 
+        "ip_permissions": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "10.100.0.0/16", 
+                        "description": "private ec2 allow all on ports"
+                    }, 
+                    {
+                        "cidr_ip": "10.10.0.0/16"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "ip_permissions_egress": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "0.0.0.0/0"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "owner_id": "607624181858", 
+        "tags": {
+            "Environment": "M100-all", 
+            "Name": "M100-all"
+        }, 
+        "vpc_id": "vpc-0d32a5f9af5d2e04f"
+    }
+}
+2019-12-05 01:56:54,164 p=19339 u=root |  TASK [rds.redis : Upgrade AWS elastiCache redis cluster] ************************************************************************************************************************************************************
+2019-12-05 01:56:54,164 p=19339 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis/tasks/redis.yml:15
+2019-12-05 01:56:54,181 p=19339 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 01:56:54,181 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 01:56:54,189 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030 `" && echo ansible-tmp-1575511014.18-92113925626030="` echo /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030 `" ) && sleep 0'
+2019-12-05 01:56:54,388 p=19339 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-12-05 01:56:54,388 p=19339 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19339lK_RR0/tmpJ79oOu TO /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030/AnsiballZ_command.py
+2019-12-05 01:56:54,389 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030/ /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030/AnsiballZ_command.py && sleep 0'
+2019-12-05 01:56:54,398 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030/AnsiballZ_command.py && sleep 0'
+2019-12-05 01:56:56,136 p=19339 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511014.18-92113925626030/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 01:56:56,148 p=19339 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": [
+        "aws", 
+        "elasticache", 
+        "create-replication-group", 
+        "--replication-group-id", 
+        "m100-redis5", 
+        "--replication-group-description", 
+        "Demo cluster with replicas", 
+        "--num-node-groups", 
+        "1", 
+        "--replicas-per-node-group", 
+        "1", 
+        "--cache-node-type", 
+        "cache.r5.large", 
+        "--cache-parameter-group", 
+        "m100-redis", 
+        "--engine", 
+        "redis", 
+        "--engine-version", 
+        "5.0.0", 
+        "--security-group-ids", 
+        "sg-050c75180f5084f76", 
+        "--cache-subnet-group-name", 
+        "m100-redis"
+    ], 
+    "delta": "0:00:01.638935", 
+    "end": "2019-12-05 01:56:56.124710", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "aws elasticache create-replication-group  --replication-group-id m100-redis5  --replication-group-description \"Demo cluster with replicas\"  --num-node-groups 1  --replicas-per-node-group 1  --cache-node-type cache.r5.large  --cache-parameter-group m100-redis  --engine redis  --engine-version 5.0.0  --security-group-ids sg-050c75180f5084f76  --cache-subnet-group-name m100-redis \n            \n", 
+            "_uses_shell": false, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-12-05 01:56:54.485775", 
+    "stderr": "", 
+    "stderr_lines": [], 
+    "stdout": "{\n    \"ReplicationGroup\": {\n        \"Status\": \"creating\", \n        \"Description\": \"Demo cluster with replicas\", \n        \"AtRestEncryptionEnabled\": false, \n        \"ClusterEnabled\": false, \n        \"ReplicationGroupId\": \"m100-redis5\", \n        \"SnapshotRetentionLimit\": 0, \n        \"AutomaticFailover\": \"disabled\", \n        \"TransitEncryptionEnabled\": false, \n        \"SnapshotWindow\": \"21:00-22:00\", \n        \"MemberClusters\": [\n            \"m100-redis5-001\", \n            \"m100-redis5-002\"\n        ], \n        \"CacheNodeType\": \"cache.r5.large\", \n        \"PendingModifiedValues\": {}\n    }\n}", 
+    "stdout_lines": [
+        "{", 
+        "    \"ReplicationGroup\": {", 
+        "        \"Status\": \"creating\", ", 
+        "        \"Description\": \"Demo cluster with replicas\", ", 
+        "        \"AtRestEncryptionEnabled\": false, ", 
+        "        \"ClusterEnabled\": false, ", 
+        "        \"ReplicationGroupId\": \"m100-redis5\", ", 
+        "        \"SnapshotRetentionLimit\": 0, ", 
+        "        \"AutomaticFailover\": \"disabled\", ", 
+        "        \"TransitEncryptionEnabled\": false, ", 
+        "        \"SnapshotWindow\": \"21:00-22:00\", ", 
+        "        \"MemberClusters\": [", 
+        "            \"m100-redis5-001\", ", 
+        "            \"m100-redis5-002\"", 
+        "        ], ", 
+        "        \"CacheNodeType\": \"cache.r5.large\", ", 
+        "        \"PendingModifiedValues\": {}", 
+        "    }", 
+        "}"
+    ]
+}
+2019-12-05 01:56:56,149 p=19339 u=root |  META: ran handlers
+2019-12-05 01:56:56,149 p=19339 u=root |  META: ran handlers
+2019-12-05 01:56:56,150 p=19339 u=root |  PLAY RECAP **********************************************************************************************************************************************************************************************************
+2019-12-05 01:56:56,151 p=19339 u=root |  localhost                  : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2019-12-05 02:02:44,149 p=19469 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/aws-project/005.redis/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-05 02:02:44,149 p=19469 u=root |  Using /home/centos/new-project/aws-project/005.redis/ansible.cfg as config file
+2019-12-05 02:02:44,158 p=19469 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 02:02:44,158 p=19469 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 02:02:44,158 p=19469 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 02:02:44,161 p=19469 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-05 02:02:44,163 p=19469 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-05 02:02:44,607 p=19469 u=root |  PLAYBOOK: redis.yml *************************************************************************************************************************************************************************************************
+2019-12-05 02:02:44,608 p=19469 u=root |  1 plays in redis.yml
+2019-12-05 02:02:44,639 p=19469 u=root |  PLAY [Create ElastiCache Redis instance] ****************************************************************************************************************************************************************************
+2019-12-05 02:02:44,648 p=19469 u=root |  TASK [Gathering Facts] **********************************************************************************************************************************************************************************************
+2019-12-05 02:02:44,648 p=19469 u=root |  task path: /home/centos/new-project/aws-project/005.redis/redis.yml:2
+2019-12-05 02:02:44,660 p=19469 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 02:02:44,660 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 02:02:44,668 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592 `" && echo ansible-tmp-1575511364.66-274424473065592="` echo /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592 `" ) && sleep 0'
+2019-12-05 02:02:45,057 p=19469 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-12-05 02:02:45,057 p=19469 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19469aePpDM/tmpnkDHw1 TO /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592/AnsiballZ_setup.py
+2019-12-05 02:02:45,058 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592/ /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592/AnsiballZ_setup.py && sleep 0'
+2019-12-05 02:02:45,067 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592/AnsiballZ_setup.py && sleep 0'
+2019-12-05 02:02:45,486 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511364.66-274424473065592/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 02:02:45,519 p=19469 u=root |  ok: [localhost]
+2019-12-05 02:02:45,520 p=19469 u=root |  META: ran handlers
+2019-12-05 02:02:45,538 p=19469 u=root |  TASK [rds.redis-resizing : Upgrade AWS elastiCache redis replication] ***********************************************************************************************************************************************
+2019-12-05 02:02:45,538 p=19469 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-resizing/tasks/main.yml:2
+2019-12-05 02:02:45,554 p=19469 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 02:02:45,554 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 02:02:45,562 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383 `" && echo ansible-tmp-1575511365.55-22965017569383="` echo /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383 `" ) && sleep 0'
+2019-12-05 02:02:45,765 p=19469 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-12-05 02:02:45,766 p=19469 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19469aePpDM/tmpoEbPGg TO /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383/AnsiballZ_command.py
+2019-12-05 02:02:45,766 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383/ /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383/AnsiballZ_command.py && sleep 0'
+2019-12-05 02:02:45,775 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383/AnsiballZ_command.py && sleep 0'
+2019-12-05 02:02:46,681 p=19469 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511365.55-22965017569383/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 02:02:46,694 p=19469 u=root |  fatal: [localhost]: FAILED! => {
+    "changed": true, 
+    "cmd": [
+        "aws", 
+        "elasticache", 
+        "modify-replication-group", 
+        "--region", 
+        "ap-southeast-1", 
+        "--replication-group-id", 
+        "m100-redis5-02", 
+        "--primary-cluster-id", 
+        "m100-redis5-02-001", 
+        "--node-group-id", 
+        "m100-redis5-02-002", 
+        "--cache-node-type", 
+        "cache.r5.large", 
+        "--snapshotting-cluster-id", 
+        "m100-redis5-02-001", 
+        "--snapshot-retention-limit", 
+        "3", 
+        "--snapshot-window", 
+        "21:00-22:00", 
+        "--preferred-maintenance-window", 
+        "sun:22:00-sun:23:00", 
+        "--apply-immediately"
+    ], 
+    "delta": "0:00:00.807509", 
+    "end": "2019-12-05 02:02:46.671629", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "aws elasticache modify-replication-group    --region ap-southeast-1    --replication-group-id m100-redis5-02    --primary-cluster-id m100-redis5-02-001    --node-group-id m100-redis5-02-002    --cache-node-type cache.r5.large    --snapshotting-cluster-id m100-redis5-02-001    --snapshot-retention-limit 3    --snapshot-window 21:00-22:00    --preferred-maintenance-window sun:22:00-sun:23:00    --apply-immediately\n", 
+            "_uses_shell": false, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "msg": "non-zero return code", 
+    "rc": 255, 
+    "start": "2019-12-05 02:02:45.864120", 
+    "stderr": "\nAn error occurred (ReplicationGroupNotFoundFault) when calling the ModifyReplicationGroup operation: Replication group 'm100-redis5-02' not found", 
+    "stderr_lines": [
+        "", 
+        "An error occurred (ReplicationGroupNotFoundFault) when calling the ModifyReplicationGroup operation: Replication group 'm100-redis5-02' not found"
+    ], 
+    "stdout": "", 
+    "stdout_lines": []
+}
+2019-12-05 02:02:46,694 p=19469 u=root |  NO MORE HOSTS LEFT **************************************************************************************************************************************************************************************************
+2019-12-05 02:02:46,694 p=19469 u=root |  NO MORE HOSTS LEFT **************************************************************************************************************************************************************************************************
+2019-12-05 02:02:46,696 p=19469 u=root |  PLAY RECAP **********************************************************************************************************************************************************************************************************
+2019-12-05 02:02:46,696 p=19469 u=root |  localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-12-05 02:03:14,846 p=19549 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/aws-project/005.redis/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-05 02:03:14,846 p=19549 u=root |  Using /home/centos/new-project/aws-project/005.redis/ansible.cfg as config file
+2019-12-05 02:03:14,854 p=19549 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 02:03:14,854 p=19549 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 02:03:14,854 p=19549 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-05 02:03:14,857 p=19549 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-05 02:03:14,859 p=19549 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-05 02:03:15,303 p=19549 u=root |  PLAYBOOK: redis.yml *************************************************************************************************************************************************************************************************
+2019-12-05 02:03:15,304 p=19549 u=root |  1 plays in redis.yml
+2019-12-05 02:03:15,337 p=19549 u=root |  PLAY [Create ElastiCache Redis instance] ****************************************************************************************************************************************************************************
+2019-12-05 02:03:15,346 p=19549 u=root |  TASK [Gathering Facts] **********************************************************************************************************************************************************************************************
+2019-12-05 02:03:15,346 p=19549 u=root |  task path: /home/centos/new-project/aws-project/005.redis/redis.yml:2
+2019-12-05 02:03:15,358 p=19549 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 02:03:15,358 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 02:03:15,366 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244 `" && echo ansible-tmp-1575511395.36-103578688405244="` echo /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244 `" ) && sleep 0'
+2019-12-05 02:03:15,755 p=19549 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-12-05 02:03:15,756 p=19549 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19549FP_Ux7/tmp3X4JjW TO /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244/AnsiballZ_setup.py
+2019-12-05 02:03:15,757 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244/ /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244/AnsiballZ_setup.py && sleep 0'
+2019-12-05 02:03:15,765 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244/AnsiballZ_setup.py && sleep 0'
+2019-12-05 02:03:16,113 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511395.36-103578688405244/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 02:03:16,146 p=19549 u=root |  ok: [localhost]
+2019-12-05 02:03:16,147 p=19549 u=root |  META: ran handlers
+2019-12-05 02:03:16,165 p=19549 u=root |  TASK [rds.redis-resizing : Upgrade AWS elastiCache redis replication] ***********************************************************************************************************************************************
+2019-12-05 02:03:16,165 p=19549 u=root |  task path: /home/centos/new-project/aws-project/005.redis/roles/rds.redis-resizing/tasks/main.yml:2
+2019-12-05 02:03:16,181 p=19549 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-05 02:03:16,181 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-05 02:03:16,190 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300 `" && echo ansible-tmp-1575511396.18-181614527832300="` echo /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300 `" ) && sleep 0'
+2019-12-05 02:03:16,396 p=19549 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-12-05 02:03:16,396 p=19549 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-19549FP_Ux7/tmpTDF4cs TO /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300/AnsiballZ_command.py
+2019-12-05 02:03:16,397 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300/ /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300/AnsiballZ_command.py && sleep 0'
+2019-12-05 02:03:16,406 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300/AnsiballZ_command.py && sleep 0'
+2019-12-05 02:03:17,516 p=19549 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575511396.18-181614527832300/ > /dev/null 2>&1 && sleep 0'
+2019-12-05 02:03:17,530 p=19549 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": [
+        "aws", 
+        "elasticache", 
+        "modify-replication-group", 
+        "--region", 
+        "ap-southeast-1", 
+        "--replication-group-id", 
+        "m100-redis5", 
+        "--primary-cluster-id", 
+        "m100-redis5-001", 
+        "--node-group-id", 
+        "m100-redis5-002", 
+        "--cache-node-type", 
+        "cache.r5.large", 
+        "--snapshotting-cluster-id", 
+        "m100-redis5-001", 
+        "--snapshot-retention-limit", 
+        "3", 
+        "--snapshot-window", 
+        "21:00-22:00", 
+        "--preferred-maintenance-window", 
+        "sun:22:00-sun:23:00", 
+        "--apply-immediately"
+    ], 
+    "delta": "0:00:01.009000", 
+    "end": "2019-12-05 02:03:17.504539", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "aws elasticache modify-replication-group    --region ap-southeast-1    --replication-group-id m100-redis5    --primary-cluster-id m100-redis5-001    --node-group-id m100-redis5-002    --cache-node-type cache.r5.large    --snapshotting-cluster-id m100-redis5-001    --snapshot-retention-limit 3    --snapshot-window 21:00-22:00    --preferred-maintenance-window sun:22:00-sun:23:00    --apply-immediately\n", 
+            "_uses_shell": false, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-12-05 02:03:16.495539", 
+    "stderr": "", 
+    "stderr_lines": [], 
+    "stdout": "{\n    \"ReplicationGroup\": {\n        \"Status\": \"modifying\", \n        \"Description\": \"Demo cluster with replicas\", \n        \"NodeGroups\": [\n            {\n                \"Status\": \"modifying\", \n                \"NodeGroupMembers\": [\n                    {\n                        \"CurrentRole\": \"primary\", \n                        \"PreferredAvailabilityZone\": \"ap-southeast-1b\", \n                        \"CacheNodeId\": \"0001\", \n                        \"ReadEndpoint\": {\n                            \"Port\": 6379, \n                            \"Address\": \"m100-redis5-001.xdo0xd.0001.apse1.cache.amazonaws.com\"\n                        }, \n                        \"CacheClusterId\": \"m100-redis5-001\"\n                    }, \n                    {\n                        \"CurrentRole\": \"replica\", \n                        \"PreferredAvailabilityZone\": \"ap-southeast-1a\", \n                        \"CacheNodeId\": \"0001\", \n                        \"ReadEndpoint\": {\n                            \"Port\": 6379, \n                            \"Address\": \"m100-redis5-002.xdo0xd.0001.apse1.cache.amazonaws.com\"\n                        }, \n                        \"CacheClusterId\": \"m100-redis5-002\"\n                    }\n                ], \n                \"ReaderEndpoint\": {\n                    \"Port\": 6379, \n                    \"Address\": \"m100-redis5-ro.xdo0xd.ng.0001.apse1.cache.amazonaws.com\"\n                }, \n                \"NodeGroupId\": \"0001\", \n                \"PrimaryEndpoint\": {\n                    \"Port\": 6379, \n                    \"Address\": \"m100-redis5.xdo0xd.ng.0001.apse1.cache.amazonaws.com\"\n                }\n            }\n        ], \n        \"AtRestEncryptionEnabled\": false, \n        \"ClusterEnabled\": false, \n        \"ReplicationGroupId\": \"m100-redis5\", \n        \"SnapshotRetentionLimit\": 3, \n        \"AutomaticFailover\": \"disabled\", \n        \"TransitEncryptionEnabled\": false, \n        \"SnapshotWindow\": \"21:00-22:00\", \n        \"SnapshottingClusterId\": \"m100-redis5-001\", \n        \"MemberClusters\": [\n            \"m100-redis5-001\", \n            \"m100-redis5-002\"\n        ], \n        \"CacheNodeType\": \"cache.r5.large\", \n        \"PendingModifiedValues\": {\n            \"PrimaryClusterId\": \"m100-redis5-001\"\n        }\n    }\n}", 
+    "stdout_lines": [
+        "{", 
+        "    \"ReplicationGroup\": {", 
+        "        \"Status\": \"modifying\", ", 
+        "        \"Description\": \"Demo cluster with replicas\", ", 
+        "        \"NodeGroups\": [", 
+        "            {", 
+        "                \"Status\": \"modifying\", ", 
+        "                \"NodeGroupMembers\": [", 
+        "                    {", 
+        "                        \"CurrentRole\": \"primary\", ", 
+        "                        \"PreferredAvailabilityZone\": \"ap-southeast-1b\", ", 
+        "                        \"CacheNodeId\": \"0001\", ", 
+        "                        \"ReadEndpoint\": {", 
+        "                            \"Port\": 6379, ", 
+        "                            \"Address\": \"m100-redis5-001.xdo0xd.0001.apse1.cache.amazonaws.com\"", 
+        "                        }, ", 
+        "                        \"CacheClusterId\": \"m100-redis5-001\"", 
+        "                    }, ", 
+        "                    {", 
+        "                        \"CurrentRole\": \"replica\", ", 
+        "                        \"PreferredAvailabilityZone\": \"ap-southeast-1a\", ", 
+        "                        \"CacheNodeId\": \"0001\", ", 
+        "                        \"ReadEndpoint\": {", 
+        "                            \"Port\": 6379, ", 
+        "                            \"Address\": \"m100-redis5-002.xdo0xd.0001.apse1.cache.amazonaws.com\"", 
+        "                        }, ", 
+        "                        \"CacheClusterId\": \"m100-redis5-002\"", 
+        "                    }", 
+        "                ], ", 
+        "                \"ReaderEndpoint\": {", 
+        "                    \"Port\": 6379, ", 
+        "                    \"Address\": \"m100-redis5-ro.xdo0xd.ng.0001.apse1.cache.amazonaws.com\"", 
+        "                }, ", 
+        "                \"NodeGroupId\": \"0001\", ", 
+        "                \"PrimaryEndpoint\": {", 
+        "                    \"Port\": 6379, ", 
+        "                    \"Address\": \"m100-redis5.xdo0xd.ng.0001.apse1.cache.amazonaws.com\"", 
+        "                }", 
+        "            }", 
+        "        ], ", 
+        "        \"AtRestEncryptionEnabled\": false, ", 
+        "        \"ClusterEnabled\": false, ", 
+        "        \"ReplicationGroupId\": \"m100-redis5\", ", 
+        "        \"SnapshotRetentionLimit\": 3, ", 
+        "        \"AutomaticFailover\": \"disabled\", ", 
+        "        \"TransitEncryptionEnabled\": false, ", 
+        "        \"SnapshotWindow\": \"21:00-22:00\", ", 
+        "        \"SnapshottingClusterId\": \"m100-redis5-001\", ", 
+        "        \"MemberClusters\": [", 
+        "            \"m100-redis5-001\", ", 
+        "            \"m100-redis5-002\"", 
+        "        ], ", 
+        "        \"CacheNodeType\": \"cache.r5.large\", ", 
+        "        \"PendingModifiedValues\": {", 
+        "            \"PrimaryClusterId\": \"m100-redis5-001\"", 
+        "        }", 
+        "    }", 
+        "}"
+    ]
+}
+2019-12-05 02:03:17,531 p=19549 u=root |  META: ran handlers
+2019-12-05 02:03:17,531 p=19549 u=root |  META: ran handlers
+2019-12-05 02:03:17,532 p=19549 u=root |  PLAY RECAP **********************************************************************************************************************************************************************************************************
+2019-12-05 02:03:17,533 p=19549 u=root |  localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

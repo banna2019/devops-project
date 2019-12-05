@@ -5,7 +5,7 @@
   gather_facts: True
 
   vars:
-    vpc_env: "one-banna"
+    vpc_env: "M100"
     vpc_region: "ap-southeast-1"
 
   roles:
@@ -20,7 +20,7 @@
 
 
   vars:
-    vpc_env: "one-banna"
+    vpc_env: "M100"
     vpc_region: "ap-southeast-1"
     
   roles:
@@ -36,3 +36,4 @@
     - { role: securitygroups,sec_name: "office-access" } 
     - { role: securitygroups,sec_name: "windows-ops" } 
     - { role: securitygroups,sec_name: "emqtt-office" } 
+    - { role: securitygroups,sec_name: "graylog" } 

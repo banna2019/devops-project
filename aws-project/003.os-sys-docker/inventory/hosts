@@ -1,73 +1,115 @@
 
-[one-banna-zuul]
-10.100.10.199 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-nginx]
-10.100.11.216 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-nacos]
-10.100.12.232 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-operation]
-10.100.10.205 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-eureka]
-10.100.11.7 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-emqtt3.2]
-10.100.12.144 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-superbackend]
-10.100.10.224 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-merchant]
-10.100.11.252 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-productionopt-h5]
-10.100.12.241 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-common-api]
-10.100.10.253 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-issue-api]
-10.100.11.29 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-admin-api]
-10.100.12.81 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-api]
-10.100.10.162 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-mq-consumer]
-10.100.11.113 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-open-api]
-10.100.12.95 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-task]
-10.100.10.58 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-timer]
-10.100.11.241 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-config-remoteservice-provider]
-10.100.12.186 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-shareregister-api]
-10.100.10.100 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-thirdgame-api]
-10.100.11.116 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-mqtt]
-10.100.12.220 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-opener]
-10.100.10.221 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-es]
-10.100.11.177 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-task]
-10.100.12.84 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-api]
-10.100.10.93 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-hb-api]
-10.100.11.219 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-admin-api]
-10.100.11.225 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-commission-task]
-10.100.10.25 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-login-api]
-10.100.11.124 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-mq-consumer]
-10.100.12.28 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-mysql2es-sync]
-10.100.10.154 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-order-api]
-10.100.11.30 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-payment-api]
-10.100.12.40 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-payment-proxy]
-10.100.10.167 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-remoteservice-provider]
-10.100.11.194 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
-[one-banna-lottery-thirdorder-collector]
-10.100.12.79 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/one-banna-ssh
+[M100-graylog]
+13.229.254.89 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+52.221.104.203 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+54.169.117.167 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-nginx]
+52.221.104.51 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-nacos]
+18.141.111.214 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-operation]
+54.254.169.82 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-eureka]
+52.77.64.7 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-emqtt3.2]
+52.221.133.10 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-superbackend]
+52.74.221.142 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-merchant]
+18.141.110.124 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-productionopt-h5]
+54.169.65.250 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-common-api]
+18.139.225.235 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-issue-api]
+18.138.102.200 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-admin-api]
+54.169.169.3 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-api]
+52.221.194.28 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-mq-consumer]
+18.140.197.108 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-open-api]
+13.250.52.173 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-task]
+13.229.115.78 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-timer]
+18.140.246.154 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-config-remoteservice-provider]
+13.229.63.236 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-shareregister-api]
+54.255.249.105 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-thirdgame-api]
+13.251.1.115 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-mqtt]
+52.77.209.75 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-opener]
+18.140.68.157 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-es]
+18.138.230.216 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-task]
+54.169.17.84 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-api]
+18.141.11.6 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-hb-api]
+18.138.242.54 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-admin-api]
+13.229.239.54 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-commission-task]
+18.140.50.155 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-login-api]
+18.141.25.122 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-mq-consumer]
+13.251.42.110 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-mysql2es-sync]
+13.229.81.213 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-order-api]
+18.140.56.80 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-payment-api]
+13.251.124.125 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-payment-proxy]
+52.221.213.108 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-remoteservice-provider]
+18.141.9.98 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-lottery-thirdorder-collector]
+52.76.95.37 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-zuul]
+13.228.75.155 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+52.221.224.59 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+

@@ -1,0 +1,41 @@
+---
+# tasks file for rds.mysql
+
+- name: Check MySQL DB instance
+  rds_instance_facts:
+    region: "{{ rds_instance_region }}"
+    db_instance_identifier: "{{ rds_instance_name }}"
+  register: rds_facts
+
+- name: Create AWS RDS instance
+  rds:
+    command: create
+    db_engine: MySQL
+    license_model: "{{ rds_license_model }}"
+    instance_name: "{{ rds_instance_name }}"
+    instance_type: "{{ rds_instance_type }}"
+    username: "{{ rds_admin_username }}"
+    password: "{{ rds_admin_password}}"
+    size: "{{ rds_instance_size_gb }}"
+    region: "{{ rds_instance_region }}"
+    subnet: "{{ rds_instance_subnet }}"
+    parameter_group: "{{ rds_parameter_group }}"
+    engine_version: "{{ rds_engine_version }}"
+    iops: "{{ rds_ebs_iops }}"
+    publicly_accessible: no
+    vpc_security_groups: "{{ rds_instance_sg_name }}"
+    multi_zone: "{{ rds_multi_zone }}"
+    backup_retention: "{{ rds_backup_retention }}"
+    backup_window: "{{ rds_backup_window }}"
+    maint_window: "{{ rds_maint_window }}"
+    db_name: "{{ rds_db_name }}"
+    wait: yes
+    wait_timeout: 1800
+    tags:
+      Environment: "{{ aws_application_name }}"
+      Application: "{{ rds_instance_tags }}"
+  register: rds_result
+  when: rds_facts.instances == []
+
+- debug: var=rds_result
+

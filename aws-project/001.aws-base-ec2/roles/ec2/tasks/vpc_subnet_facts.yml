@@ -15,10 +15,9 @@
 - name: VPC subnet facts
   ec2_vpc_subnet_facts:
     filters:
+      "tag:Use": "ec2"
       vpc-id: "{{ vpc_id }}"
   register: vpc_subnet_facts
-
-
 
 - name: register just the IDs for each of the groups
   set_fact:

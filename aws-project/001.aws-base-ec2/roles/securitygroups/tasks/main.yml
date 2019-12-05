@@ -36,3 +36,6 @@
 
 - include_tasks: emqtt-office.yml
   when: sec_name == "emqtt-office"
+
+- include_tasks: graylog.yml
+  when: sec_name == "graylog"

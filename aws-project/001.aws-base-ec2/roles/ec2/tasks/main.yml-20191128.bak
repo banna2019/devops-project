@@ -1,7 +1,0 @@
----
-- include: vpc_subnet_facts.yml
-#- include: sg_facts.yml 
-- include: creata_keys.yml 
-
-- include_tasks: zuul.yml
-  when: app_name == "zuul"

@@ -1,0 +1,12 @@
+---
+- name: Get RDS SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      group-name: "{{ security_rds }}"
+  register: sg_rds
+
+- name: list of rds the security group id.
+  set_fact:
+    sg_rds_id: "{{ item.group_id }}"
+  with_items: "{{ sg_rds.security_groups }}"

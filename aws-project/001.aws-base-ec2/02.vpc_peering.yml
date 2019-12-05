@@ -5,11 +5,11 @@
   gather_facts: True
 
   vars:
-    connection_name: "one-banna"
-    vpc_name: "one-banna"
+    connection_name: "M100"
+    vpc_name: "M100"
 
     owner_vpc_name: "banna"
-    acc_vpc_name: "one-banna"
+    acc_vpc_name: "M100"
     profile: "606724181858"
     region: "ap-southeast-1"
 

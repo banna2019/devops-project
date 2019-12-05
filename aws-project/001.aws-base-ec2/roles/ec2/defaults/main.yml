@@ -21,5 +21,6 @@ security_eureka_office: "{{ vpc_env }}-eureka-office"
 security_office: "{{ vpc_env }}-office-access"
 security_windows: "{{ vpc_env }}-windows-ops"
 security_emqtt_office: "{{ vpc_env }}-emqtt-office"
+security_graylog: "{{ vpc_env }}-graylog"
 
 

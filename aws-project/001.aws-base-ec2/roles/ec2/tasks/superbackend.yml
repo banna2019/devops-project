@@ -26,11 +26,11 @@
 - name: "Provision ec2 instance"
   ec2:
     key_name: "{{ ec2_key_Pair }}"
-    region: "{{ vpc_region | default('ap-southeast-1') }}"
+    region: "{{ vpc_region }}"
     group_id:
       - "{{ sg_ssh_id }}"
       - "{{ sg_all_id }}"
-    instance_type: "{{ ec2_instance_type | default('t2.micro') }}"
+    instance_type: "{{ ec2_instance_type }}"
     image: "{{ ec2_ami_Id }}"
     wait: true
     exact_count: "{{ ec2_instance_count }}"
@@ -63,12 +63,12 @@
 
 - name: Get only running instance IP addresses.
   set_fact:
-    private_ips: "{{ ec2_superbackend.tagged_instances|map(attribute='private_ip')|list }}"
+    ssh_ips: "{{ ec2_superbackend.tagged_instances|map(attribute='public_ip')|list }}"
 
-- name: Configure hostname in /home/centos/new-project/aws-project/002.os-sys-docker/inventory/hosts
+- name: Configure hostname in "{{ hosts_dir }}"
   lineinfile:
     state: present
-    dest: "{{ hosts_dir }}"/aws-project/003.os-sys-docker/inventory/hosts
+    dest: "{{ hosts_dir }}"
     regexp: "{{ ec2_instance_tag_name }}"
-    line: "[{{ ec2_instance_tag_name }}]{{'\n'}}{{ private_ips[0] }} ansible_ssh_user={{ ssh_user }} ansible_ssh_private_key_file=/home/centos/.keys/{{ ec2_key_Pair }}{{'\n'}}"
+    line: "[{{ ec2_instance_tag_name }}]{{'\n'}}{{ ssh_ips[0] }} ansible_ssh_user={{ ssh_user }} ansible_ssh_private_key_file=/home/centos/.keys/{{ ec2_key_Pair }}{{'\n'}}"
 

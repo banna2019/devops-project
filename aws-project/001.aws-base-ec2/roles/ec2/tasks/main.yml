@@ -6,6 +6,9 @@
 - include_tasks: zuul.yml
   when: app_name == "zuul"
 
+- include_tasks: graylog.yml
+  when: app_name == "graylog"
+
 - include_tasks: nginx.yml
   when: app_name == "nginx"
 

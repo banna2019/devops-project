@@ -1,0 +1,14 @@
+---
+- name: Upgrade AWS elastiCache redis cluster
+  command: >
+    aws elasticache modify-cache-cluster \
+        --region {{ region }} \
+        --cache-cluster-id {{ redis_name }} \
+        --num-cache-nodes {{ redis_num_nodes }} \
+        --cache-node-type {{ redis_node_type }} \
+        --snapshot-retention-limit 0 \
+        --snapshot-window 21:00-22:00 \
+        --preferred-maintenance-window sun:22:00-sun:23:00 \
+        --apply-immediately
+
+

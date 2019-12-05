@@ -13,7 +13,7 @@
       - proto: "tcp"
         from_port: "18083"
         to_port: "18083"
-        cidr_ip: "127.0.0.1/16"
+        cidr_ip: "154.197.29.34/32"
         rule_desc: "private allow all on port 18083"
   register: sg_emqtt_office
 
