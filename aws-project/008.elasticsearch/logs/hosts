@@ -1,0 +1,695 @@
+
+2019-12-07 08:00:45,761 p=12340 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/008.elasticsearch/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-07 08:00:45,761 p=12340 u=root |  Using /home/centos/new-project/008.elasticsearch/ansible.cfg as config file
+2019-12-07 08:00:45,770 p=12340 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-07 08:00:45,770 p=12340 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-07 08:00:45,770 p=12340 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-07 08:00:45,774 p=12340 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-07 08:00:45,775 p=12340 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-07 08:00:46,078 p=12340 u=root |  PLAYBOOK: es.yml *************************************************************************************************************************************************************************************************************
+2019-12-07 08:00:46,079 p=12340 u=root |  1 plays in es.yml
+2019-12-07 08:00:46,110 p=12340 u=root |  PLAY [Create ElastiCache Redis instance] *************************************************************************************************************************************************************************************
+2019-12-07 08:00:46,126 p=12340 u=root |  TASK [Gathering Facts] *******************************************************************************************************************************************************************************************************
+2019-12-07 08:00:46,126 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/es.yml:2
+2019-12-07 08:00:46,139 p=12340 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:00:46,139 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:00:46,147 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395 `" && echo ansible-tmp-1575705646.14-177289400919395="` echo /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395 `" ) && sleep 0'
+2019-12-07 08:00:46,591 p=12340 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-12-07 08:00:46,591 p=12340 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12340g7JUhI/tmpj336aJ TO /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395/AnsiballZ_setup.py
+2019-12-07 08:00:46,592 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395/ /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395/AnsiballZ_setup.py && sleep 0'
+2019-12-07 08:00:46,601 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395/AnsiballZ_setup.py && sleep 0'
+2019-12-07 08:00:46,949 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575705646.14-177289400919395/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:00:46,982 p=12340 u=root |  ok: [localhost]
+2019-12-07 08:00:46,983 p=12340 u=root |  META: ran handlers
+2019-12-07 08:00:47,000 p=12340 u=root |  TASK [aws.es : include_tasks] ************************************************************************************************************************************************************************************************
+2019-12-07 08:00:47,000 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/main.yml:2
+2019-12-07 08:00:47,182 p=12340 u=root |  included: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml for localhost
+2019-12-07 08:00:47,201 p=12340 u=root |  TASK [aws.es : gather information about the rds subnets] *********************************************************************************************************************************************************************
+2019-12-07 08:00:47,202 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:2
+2019-12-07 08:00:47,219 p=12340 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:00:47,220 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:00:47,228 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927 `" && echo ansible-tmp-1575705647.22-234201778580927="` echo /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927 `" ) && sleep 0'
+2019-12-07 08:00:47,456 p=12340 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet_facts.py
+2019-12-07 08:00:47,457 p=12340 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12340g7JUhI/tmpNZgi2t TO /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927/AnsiballZ_ec2_vpc_subnet_facts.py
+2019-12-07 08:00:47,457 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927/ /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2019-12-07 08:00:47,466 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2019-12-07 08:00:48,239 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575705647.22-234201778580927/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:00:48,255 p=12340 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "tag:Environment": "M100", 
+                "tag:Use": "rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "subnet_ids": [], 
+            "validate_certs": true
+        }
+    }, 
+    "subnets": [
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1b", 
+            "availability_zone_id": "apse1-az1", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.30.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0f4b69a2b74c07236", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-0f4b69a2b74c07236", 
+            "subnet_id": "subnet-0f4b69a2b74c07236", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1b", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "availability_zone_id": "apse1-az3", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.31.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-048fed50386ec1729", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-048fed50386ec1729", 
+            "subnet_id": "subnet-048fed50386ec1729", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1c", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1a", 
+            "availability_zone_id": "apse1-az2", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.32.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-072796422e5c38382", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-072796422e5c38382", 
+            "subnet_id": "subnet-072796422e5c38382", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1a", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }
+    ]
+}
+2019-12-07 08:00:48,273 p=12340 u=root |  TASK [aws.es : register just the IDs for each of the subnets] ****************************************************************************************************************************************************************
+2019-12-07 08:00:48,273 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:10
+2019-12-07 08:00:48,293 p=12340 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids": [
+            "subnet-0f4b69a2b74c07236", 
+            "subnet-048fed50386ec1729", 
+            "subnet-072796422e5c38382"
+        ]
+    }, 
+    "changed": false
+}
+2019-12-07 08:00:48,310 p=12340 u=root |  TASK [aws.es : Declaration ID number] ****************************************************************************************************************************************************************************************
+2019-12-07 08:00:48,310 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:14
+2019-12-07 08:00:48,328 p=12340 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids00": "subnet-0f4b69a2b74c07236"
+    }, 
+    "changed": false
+}
+2019-12-07 08:00:48,346 p=12340 u=root |  TASK [aws.es : Declaration ID number] ****************************************************************************************************************************************************************************************
+2019-12-07 08:00:48,346 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:18
+2019-12-07 08:00:48,364 p=12340 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids01": "subnet-048fed50386ec1729"
+    }, 
+    "changed": false
+}
+2019-12-07 08:00:48,381 p=12340 u=root |  TASK [aws.es : Declaration ID number] ****************************************************************************************************************************************************************************************
+2019-12-07 08:00:48,382 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:22
+2019-12-07 08:00:48,400 p=12340 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids02": "subnet-072796422e5c38382"
+    }, 
+    "changed": false
+}
+2019-12-07 08:00:48,418 p=12340 u=root |  TASK [aws.es : Get ALL SG ID] ************************************************************************************************************************************************************************************************
+2019-12-07 08:00:48,418 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:26
+2019-12-07 08:00:48,439 p=12340 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:00:48,439 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:00:48,448 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160 `" && echo ansible-tmp-1575705648.44-105058664261160="` echo /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160 `" ) && sleep 0'
+2019-12-07 08:00:48,673 p=12340 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_group_facts.py
+2019-12-07 08:00:48,674 p=12340 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12340g7JUhI/tmpBrD1kg TO /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160/AnsiballZ_ec2_group_facts.py
+2019-12-07 08:00:48,675 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160/ /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160/AnsiballZ_ec2_group_facts.py && sleep 0'
+2019-12-07 08:00:48,683 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160/AnsiballZ_ec2_group_facts.py && sleep 0'
+2019-12-07 08:00:49,402 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575705648.44-105058664261160/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:00:49,416 p=12340 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "group-name": "M100-all"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }, 
+    "security_groups": [
+        {
+            "description": "opens all ports to the world", 
+            "group_id": "sg-050c75180f5084f76", 
+            "group_name": "M100-all", 
+            "ip_permissions": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "10.100.0.0/16", 
+                            "description": "private ec2 allow all on ports"
+                        }, 
+                        {
+                            "cidr_ip": "10.10.0.0/16"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "ip_permissions_egress": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "0.0.0.0/0"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "owner_id": "607624181858", 
+            "tags": {
+                "Environment": "M100-all", 
+                "Name": "M100-all"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }
+    ]
+}
+2019-12-07 08:00:49,435 p=12340 u=root |  TASK [aws.es : list of all the security group id.] ***************************************************************************************************************************************************************************
+2019-12-07 08:00:49,435 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:33
+2019-12-07 08:00:49,464 p=12340 u=root |  ok: [localhost] => (item={u'ip_permissions': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'description': u'private ec2 allow all on ports', u'cidr_ip': u'10.100.0.0/16'}, {u'cidr_ip': u'10.10.0.0/16'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'description': u'opens all ports to the world', u'tags': {u'Environment': u'M100-all', u'Name': u'M100-all'}, u'group_name': u'M100-all', u'vpc_id': u'vpc-0d32a5f9af5d2e04f', u'group_id': u'sg-050c75180f5084f76', u'ip_permissions_egress': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'cidr_ip': u'0.0.0.0/0'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'owner_id': u'607624181858'}) => {
+    "ansible_facts": {
+        "sg_all_id": "sg-050c75180f5084f76"
+    }, 
+    "ansible_loop_var": "item", 
+    "changed": false, 
+    "item": {
+        "description": "opens all ports to the world", 
+        "group_id": "sg-050c75180f5084f76", 
+        "group_name": "M100-all", 
+        "ip_permissions": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "10.100.0.0/16", 
+                        "description": "private ec2 allow all on ports"
+                    }, 
+                    {
+                        "cidr_ip": "10.10.0.0/16"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "ip_permissions_egress": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "0.0.0.0/0"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "owner_id": "607624181858", 
+        "tags": {
+            "Environment": "M100-all", 
+            "Name": "M100-all"
+        }, 
+        "vpc_id": "vpc-0d32a5f9af5d2e04f"
+    }
+}
+2019-12-07 08:00:49,482 p=12340 u=root |  TASK [aws.es : include_tasks] ************************************************************************************************************************************************************************************************
+2019-12-07 08:00:49,482 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/main.yml:3
+2019-12-07 08:00:49,515 p=12340 u=root |  included: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es.yml for localhost
+2019-12-07 08:00:49,537 p=12340 u=root |  TASK [aws.es : Upgrade AWS elastiCache redis cluster] ************************************************************************************************************************************************************************
+2019-12-07 08:00:49,537 p=12340 u=root |  task path: /home/centos/new-project/008.elasticsearch/roles/aws.es/tasks/es.yml:2
+2019-12-07 08:00:49,556 p=12340 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:00:49,556 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:00:49,564 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298 `" && echo ansible-tmp-1575705649.56-225142001361298="` echo /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298 `" ) && sleep 0'
+2019-12-07 08:00:49,767 p=12340 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-12-07 08:00:49,767 p=12340 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12340g7JUhI/tmp0R7uMQ TO /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298/AnsiballZ_command.py
+2019-12-07 08:00:49,768 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298/ /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298/AnsiballZ_command.py && sleep 0'
+2019-12-07 08:00:49,777 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298/AnsiballZ_command.py && sleep 0'
+2019-12-07 08:00:50,458 p=12340 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575705649.56-225142001361298/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:00:50,470 p=12340 u=root |  fatal: [localhost]: FAILED! => {
+    "changed": true, 
+    "cmd": [
+        "aws", 
+        "es", 
+        "create-elasticsearch-domain", 
+        "--domain-name", 
+        "m100lottery01", 
+        "--elasticsearch-version", 
+        "6.8", 
+        "--elasticsearch-cluster-config", 
+        "InstanceType=m5.xlarge.elasticsearch,InstanceCount=3", 
+        "--ebs-options", 
+        "EBSEnabled=true,VolumeType=standard,VolumeSize=200", 
+        "--access-policies", 
+        "{\"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::607624181858:root\" }, \"Action\":\"es:*\", \"Resource\": \"arn:aws:es:ap-southeast-1:607624181858:domain/M100-6.8/*\" } ] }", 
+        "--vpc-options", 
+        "SubnetIds=subnet-0f4b69a2b74c07236,SecurityGroupIds=sg-050c75180f5084f76"
+    ], 
+    "delta": "0:00:00.583144", 
+    "end": "2019-12-07 08:00:50.448332", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "aws es create-elasticsearch-domain --domain-name m100lottery01 --elasticsearch-version 6.8  --elasticsearch-cluster-config InstanceType=m5.xlarge.elasticsearch,InstanceCount=3  --ebs-options EBSEnabled=true,VolumeType=standard,VolumeSize=200  --access-policies '{\"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::607624181858:root\" }, \"Action\":\"es:*\", \"Resource\": \"arn:aws:es:ap-southeast-1:607624181858:domain/M100-6.8/*\" } ] }'  --vpc-options SubnetIds=subnet-0f4b69a2b74c07236,SecurityGroupIds=sg-050c75180f5084f76\n", 
+            "_uses_shell": false, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": false
+        }
+    }, 
+    "msg": "non-zero return code", 
+    "rc": 255, 
+    "start": "2019-12-07 08:00:49.865188", 
+    "stderr": "\nAn error occurred (LimitExceededException) when calling the CreateElasticsearchDomain operation: Volume size must be between 10 and 100 for m5.xlarge.elasticsearch instance type and elasticsearch version 6.8", 
+    "stderr_lines": [
+        "", 
+        "An error occurred (LimitExceededException) when calling the CreateElasticsearchDomain operation: Volume size must be between 10 and 100 for m5.xlarge.elasticsearch instance type and elasticsearch version 6.8"
+    ], 
+    "stdout": "", 
+    "stdout_lines": []
+}
+2019-12-07 08:00:50,471 p=12340 u=root |  NO MORE HOSTS LEFT ***********************************************************************************************************************************************************************************************************
+2019-12-07 08:00:50,471 p=12340 u=root |  NO MORE HOSTS LEFT ***********************************************************************************************************************************************************************************************************
+2019-12-07 08:00:50,472 p=12340 u=root |  PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2019-12-07 08:00:50,472 p=12340 u=root |  localhost                  : ok=10   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2019-12-07 08:19:02,379 p=12569 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/new-project/aws-project/008.elasticsearch/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-12-07 08:19:02,379 p=12569 u=root |  Using /home/centos/new-project/aws-project/008.elasticsearch/ansible.cfg as config file
+2019-12-07 08:19:02,387 p=12569 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-07 08:19:02,388 p=12569 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-07 08:19:02,388 p=12569 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-12-07 08:19:02,391 p=12569 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-12-07 08:19:02,393 p=12569 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2019-12-07 08:19:02,687 p=12569 u=root |  PLAYBOOK: es.yml *************************************************************************************************************************************************************************************************************
+2019-12-07 08:19:02,688 p=12569 u=root |  1 plays in es.yml
+2019-12-07 08:19:02,719 p=12569 u=root |  PLAY [Create ElastiCache Redis instance] *************************************************************************************************************************************************************************************
+2019-12-07 08:19:02,734 p=12569 u=root |  TASK [Gathering Facts] *******************************************************************************************************************************************************************************************************
+2019-12-07 08:19:02,734 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/es.yml:2
+2019-12-07 08:19:02,746 p=12569 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:19:02,747 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:19:02,755 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173 `" && echo ansible-tmp-1575706742.75-22083648467173="` echo /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173 `" ) && sleep 0'
+2019-12-07 08:19:03,194 p=12569 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-12-07 08:19:03,195 p=12569 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12569666I9g/tmpn48FJ3 TO /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173/AnsiballZ_setup.py
+2019-12-07 08:19:03,196 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173/ /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173/AnsiballZ_setup.py && sleep 0'
+2019-12-07 08:19:03,204 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173/AnsiballZ_setup.py && sleep 0'
+2019-12-07 08:19:03,554 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575706742.75-22083648467173/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:19:03,587 p=12569 u=root |  ok: [localhost]
+2019-12-07 08:19:03,588 p=12569 u=root |  META: ran handlers
+2019-12-07 08:19:03,605 p=12569 u=root |  TASK [aws.es : include_tasks] ************************************************************************************************************************************************************************************************
+2019-12-07 08:19:03,605 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/main.yml:2
+2019-12-07 08:19:03,782 p=12569 u=root |  included: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml for localhost
+2019-12-07 08:19:03,801 p=12569 u=root |  TASK [aws.es : gather information about the rds subnets] *********************************************************************************************************************************************************************
+2019-12-07 08:19:03,802 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:2
+2019-12-07 08:19:03,819 p=12569 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:19:03,820 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:19:03,827 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880 `" && echo ansible-tmp-1575706743.82-198662978929880="` echo /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880 `" ) && sleep 0'
+2019-12-07 08:19:04,056 p=12569 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet_facts.py
+2019-12-07 08:19:04,056 p=12569 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12569666I9g/tmpFkKp3_ TO /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880/AnsiballZ_ec2_vpc_subnet_facts.py
+2019-12-07 08:19:04,057 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880/ /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2019-12-07 08:19:04,065 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2019-12-07 08:19:04,794 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575706743.82-198662978929880/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:19:04,810 p=12569 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "tag:Environment": "M100", 
+                "tag:Use": "rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "subnet_ids": [], 
+            "validate_certs": true
+        }
+    }, 
+    "subnets": [
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1b", 
+            "availability_zone_id": "apse1-az1", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.30.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0f4b69a2b74c07236", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-0f4b69a2b74c07236", 
+            "subnet_id": "subnet-0f4b69a2b74c07236", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1b", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "availability_zone_id": "apse1-az3", 
+            "available_ip_address_count": 251, 
+            "cidr_block": "10.100.31.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-048fed50386ec1729", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-048fed50386ec1729", 
+            "subnet_id": "subnet-048fed50386ec1729", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1c", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1a", 
+            "availability_zone_id": "apse1-az2", 
+            "available_ip_address_count": 242, 
+            "cidr_block": "10.100.32.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-072796422e5c38382", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "607624181858", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:607624181858:subnet/subnet-072796422e5c38382", 
+            "subnet_id": "subnet-072796422e5c38382", 
+            "tags": {
+                "Environment": "M100", 
+                "Name": "M100_rds_ap-southeast-1a", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }
+    ]
+}
+2019-12-07 08:19:04,828 p=12569 u=root |  TASK [aws.es : register just the IDs for each of the subnets] ****************************************************************************************************************************************************************
+2019-12-07 08:19:04,828 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:10
+2019-12-07 08:19:04,848 p=12569 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids": [
+            "subnet-0f4b69a2b74c07236", 
+            "subnet-048fed50386ec1729", 
+            "subnet-072796422e5c38382"
+        ]
+    }, 
+    "changed": false
+}
+2019-12-07 08:19:04,866 p=12569 u=root |  TASK [aws.es : Declaration ID number] ****************************************************************************************************************************************************************************************
+2019-12-07 08:19:04,866 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:14
+2019-12-07 08:19:04,885 p=12569 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids00": "subnet-0f4b69a2b74c07236"
+    }, 
+    "changed": false
+}
+2019-12-07 08:19:04,902 p=12569 u=root |  TASK [aws.es : Declaration ID number] ****************************************************************************************************************************************************************************************
+2019-12-07 08:19:04,902 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:18
+2019-12-07 08:19:04,920 p=12569 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids01": "subnet-048fed50386ec1729"
+    }, 
+    "changed": false
+}
+2019-12-07 08:19:04,938 p=12569 u=root |  TASK [aws.es : Declaration ID number] ****************************************************************************************************************************************************************************************
+2019-12-07 08:19:04,938 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:22
+2019-12-07 08:19:04,956 p=12569 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_es_ids02": "subnet-072796422e5c38382"
+    }, 
+    "changed": false
+}
+2019-12-07 08:19:04,974 p=12569 u=root |  TASK [aws.es : Get ALL SG ID] ************************************************************************************************************************************************************************************************
+2019-12-07 08:19:04,974 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:26
+2019-12-07 08:19:04,995 p=12569 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:19:04,995 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:19:05,004 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548 `" && echo ansible-tmp-1575706744.99-209161380230548="` echo /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548 `" ) && sleep 0'
+2019-12-07 08:19:05,227 p=12569 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_group_facts.py
+2019-12-07 08:19:05,228 p=12569 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12569666I9g/tmp8iRK29 TO /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548/AnsiballZ_ec2_group_facts.py
+2019-12-07 08:19:05,228 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548/ /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548/AnsiballZ_ec2_group_facts.py && sleep 0'
+2019-12-07 08:19:05,237 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548/AnsiballZ_ec2_group_facts.py && sleep 0'
+2019-12-07 08:19:05,967 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575706744.99-209161380230548/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:19:05,982 p=12569 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "group-name": "M100-all"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }, 
+    "security_groups": [
+        {
+            "description": "opens all ports to the world", 
+            "group_id": "sg-050c75180f5084f76", 
+            "group_name": "M100-all", 
+            "ip_permissions": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "10.100.0.0/16", 
+                            "description": "private ec2 allow all on ports"
+                        }, 
+                        {
+                            "cidr_ip": "10.10.0.0/16"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "ip_permissions_egress": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "0.0.0.0/0"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "owner_id": "607624181858", 
+            "tags": {
+                "Environment": "M100-all", 
+                "Name": "M100-all"
+            }, 
+            "vpc_id": "vpc-0d32a5f9af5d2e04f"
+        }
+    ]
+}
+2019-12-07 08:19:06,001 p=12569 u=root |  TASK [aws.es : list of all the security group id.] ***************************************************************************************************************************************************************************
+2019-12-07 08:19:06,001 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es-subnet-sec-fact.yml:33
+2019-12-07 08:19:06,030 p=12569 u=root |  ok: [localhost] => (item={u'ip_permissions': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'description': u'private ec2 allow all on ports', u'cidr_ip': u'10.100.0.0/16'}, {u'cidr_ip': u'10.10.0.0/16'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'description': u'opens all ports to the world', u'tags': {u'Environment': u'M100-all', u'Name': u'M100-all'}, u'group_name': u'M100-all', u'vpc_id': u'vpc-0d32a5f9af5d2e04f', u'group_id': u'sg-050c75180f5084f76', u'ip_permissions_egress': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'cidr_ip': u'0.0.0.0/0'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'owner_id': u'607624181858'}) => {
+    "ansible_facts": {
+        "sg_all_id": "sg-050c75180f5084f76"
+    }, 
+    "ansible_loop_var": "item", 
+    "changed": false, 
+    "item": {
+        "description": "opens all ports to the world", 
+        "group_id": "sg-050c75180f5084f76", 
+        "group_name": "M100-all", 
+        "ip_permissions": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "10.100.0.0/16", 
+                        "description": "private ec2 allow all on ports"
+                    }, 
+                    {
+                        "cidr_ip": "10.10.0.0/16"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "ip_permissions_egress": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "0.0.0.0/0"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "owner_id": "607624181858", 
+        "tags": {
+            "Environment": "M100-all", 
+            "Name": "M100-all"
+        }, 
+        "vpc_id": "vpc-0d32a5f9af5d2e04f"
+    }
+}
+2019-12-07 08:19:06,048 p=12569 u=root |  TASK [aws.es : include_tasks] ************************************************************************************************************************************************************************************************
+2019-12-07 08:19:06,048 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/main.yml:3
+2019-12-07 08:19:06,080 p=12569 u=root |  included: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es.yml for localhost
+2019-12-07 08:19:06,102 p=12569 u=root |  TASK [aws.es : Upgrade AWS elastiCache redis cluster] ************************************************************************************************************************************************************************
+2019-12-07 08:19:06,102 p=12569 u=root |  task path: /home/centos/new-project/aws-project/008.elasticsearch/roles/aws.es/tasks/es.yml:2
+2019-12-07 08:19:06,121 p=12569 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2019-12-07 08:19:06,121 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2019-12-07 08:19:06,129 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326 `" && echo ansible-tmp-1575706746.12-64937562014326="` echo /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326 `" ) && sleep 0'
+2019-12-07 08:19:06,328 p=12569 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-12-07 08:19:06,328 p=12569 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-12569666I9g/tmpriu_79 TO /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326/AnsiballZ_command.py
+2019-12-07 08:19:06,329 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326/ /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326/AnsiballZ_command.py && sleep 0'
+2019-12-07 08:19:06,337 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326/AnsiballZ_command.py && sleep 0'
+2019-12-07 08:19:07,029 p=12569 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1575706746.12-64937562014326/ > /dev/null 2>&1 && sleep 0'
+2019-12-07 08:19:07,041 p=12569 u=root |  fatal: [localhost]: FAILED! => {
+    "changed": true, 
+    "cmd": [
+        "aws", 
+        "es", 
+        "create-elasticsearch-domain", 
+        "--domain-name", 
+        "m100lottery01", 
+        "--elasticsearch-version", 
+        "6.8", 
+        "--elasticsearch-cluster-config", 
+        "InstanceType=m5.xlarge.elasticsearch,InstanceCount=3", 
+        "--ebs-options", 
+        "EBSEnabled=true,VolumeType=standard,VolumeSize=1000", 
+        "--access-policies", 
+        "{\"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::607624181858:root\" }, \"Action\":\"es:*\", \"Resource\": \"arn:aws:es:ap-southeast-1:607624181858:domain/M100-6.8/*\" } ] }", 
+        "--vpc-options", 
+        "SubnetIds=subnet-0f4b69a2b74c07236,SecurityGroupIds=sg-050c75180f5084f76"
+    ], 
+    "delta": "0:00:00.590564", 
+    "end": "2019-12-07 08:19:07.019565", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "aws es create-elasticsearch-domain --domain-name m100lottery01 --elasticsearch-version 6.8  --elasticsearch-cluster-config InstanceType=m5.xlarge.elasticsearch,InstanceCount=3  --ebs-options EBSEnabled=true,VolumeType=standard,VolumeSize=1000  --access-policies '{\"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::607624181858:root\" }, \"Action\":\"es:*\", \"Resource\": \"arn:aws:es:ap-southeast-1:607624181858:domain/M100-6.8/*\" } ] }'  --vpc-options SubnetIds=subnet-0f4b69a2b74c07236,SecurityGroupIds=sg-050c75180f5084f76\n", 
+            "_uses_shell": false, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": false
+        }
+    }, 
+    "msg": "non-zero return code", 
+    "rc": 255, 
+    "start": "2019-12-07 08:19:06.429001", 
+    "stderr": "\nAn error occurred (LimitExceededException) when calling the CreateElasticsearchDomain operation: Volume size must be between 10 and 100 for m5.xlarge.elasticsearch instance type and elasticsearch version 6.8", 
+    "stderr_lines": [
+        "", 
+        "An error occurred (LimitExceededException) when calling the CreateElasticsearchDomain operation: Volume size must be between 10 and 100 for m5.xlarge.elasticsearch instance type and elasticsearch version 6.8"
+    ], 
+    "stdout": "", 
+    "stdout_lines": []
+}
+2019-12-07 08:19:07,042 p=12569 u=root |  NO MORE HOSTS LEFT ***********************************************************************************************************************************************************************************************************
+2019-12-07 08:19:07,042 p=12569 u=root |  NO MORE HOSTS LEFT ***********************************************************************************************************************************************************************************************************
+2019-12-07 08:19:07,043 p=12569 u=root |  PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2019-12-07 08:19:07,043 p=12569 u=root |  localhost                  : ok=10   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   

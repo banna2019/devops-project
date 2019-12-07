@@ -1,0 +1,18 @@
+---
+ - name: Replace kafka cluster type values
+   command: sed -i "s/kafka_cluster_type/{{kafka_cluster_type}}/g"  {{ project_dir }}/templates/brokernodegroupinfo.json
+
+ - name: Replace subnet msk ids00 values
+   command: sed -i "s/subnet_msk_ids00/{{subnet_msk_ids00}}/g" {{ project_dir }}/templates/brokernodegroupinfo.json
+
+ - name: Replace subnet msk ids01 values
+   command: sed -i "s/subnet_msk_ids01/{{subnet_msk_ids01}}/g" {{ project_dir }}/templates/brokernodegroupinfo.json
+
+ - name: Replace subnet msk ids02 values
+   command: sed -i "s/subnet_msk_ids02/{{subnet_msk_ids02}}/g" {{ project_dir }}/templates/brokernodegroupinfo.json
+
+ - name: Replace kafka cluster type values
+   command: sed -i "s/sg_all_id/{{sg_all_id}}/g"  {{ project_dir }}/templates/brokernodegroupinfo.json
+
+ - name: Replace kafka cluster type values
+   command: sed -i "s/kafka_instance_size/{{kafka_instance_size}}/g" {{ project_dir }}/templates/brokernodegroupinfo.json

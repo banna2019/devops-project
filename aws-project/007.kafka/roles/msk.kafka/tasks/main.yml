@@ -1,0 +1,6 @@
+---
+- include_tasks: msk-subnet-sec-fact.yml
+- include_tasks: replace_tempate.yml
+- include_tasks: msk.yml 
+
+

@@ -1,0 +1,36 @@
+---
+- name: gather information about the rds subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:Use": "rds"
+      "tag:Environment": "{{ vpc_name }}"
+  register: subnets_msk
+
+- name: register just the IDs for each of the subnets
+  set_fact:
+    subnet_msk_ids: "{{ subnets_msk.subnets | sort(attribute='cidr_block') | map(attribute='id') | list }}"
+
+- name: Declaration ID number
+  set_fact:
+    subnet_msk_ids00: "{{ subnet_msk_ids[0] }}"
+
+- name: Declaration ID number
+  set_fact:
+    subnet_msk_ids01: "{{ subnet_msk_ids[1] }}"
+
+- name: Declaration ID number
+  set_fact:
+    subnet_msk_ids02: "{{ subnet_msk_ids[2] }}"
+
+- name: Get ALL SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      group-name: "{{ security_all }}"
+  register: sg_all
+
+- name: list of all the security group id.
+  set_fact:
+    sg_all_id: "{{ item.group_id }}"
+  with_items: "{{ sg_all.security_groups }}"

@@ -1,0 +1,8 @@
+---
+- name: Upgrade AWS elastiCache redis cluster
+  command: >
+    aws es create-elasticsearch-domain --domain-name {{ domain_name }} --elasticsearch-version {{ es_version }} \
+      --elasticsearch-cluster-config InstanceType={{ es_instance_type }},InstanceCount={{ es_instance_count }} \
+      --ebs-options EBSEnabled=true,VolumeType=standard,VolumeSize={{ es_instance_volumesize }} \
+      --access-policies '{"Version": "2012-10-17", "Statement": [ { "Effect": "Allow", "Principal": {"AWS": "arn:aws:iam::{{ aws_iam_id }}:root" }, "Action":"es:*", "Resource": "arn:aws:es:{{ region }}:{{ aws_iam_id }}:domain/{{ vpc_name }}-{{ es_version }}/*" } ] }' \
+      --vpc-options SubnetIds={{ subnet_es_ids00 }},SubnetIds={{ subnet_es_ids01 }},SubnetIds={{ subnet_es_ids02 }},SecurityGroupIds={{ sg_all_id }}
