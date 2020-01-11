@@ -1,0 +1,22 @@
+---
+#- name: Get ALL SG ID
+#  ec2_group_facts:
+#    region: "{{ region }}"
+#    filters:
+#      group-name: "{{ security_all }}"
+#  register: sg_all
+
+#- name: list of all the security group id.
+#  set_fact:
+#    sg_all_id: "{{ item.group_id }}"
+#  with_items: "{{ sg_all.security_groups }}"
+
+- name: Upgrade AWS elastiCache redis cluster
+  command: >
+    aws kafka create-cluster --cluster-name "{{ vpc_name }}-{{ kafka_name }}" \
+      --broker-node-group-info "{{ broker_node_file_path }}" \
+      --encryption-info "{{ encryption_file_path }}" \
+      --kafka-version "{{ kafka_version }}" \
+      --number-of-broker-nodes "{{ kafka_nodes }}" \
+      --enhanced-monitoring PER_TOPIC_PER_BROKER \
+      --region "{{ region }}"

@@ -1,0 +1,76 @@
+---
+- name: capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ emqtt_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: emqtt_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    emqtt_instance_ids: '{{ emqtt_instance_facts.instances|map(attribute="instance_id")|list }}'
+
+- name: create targets
+  set_fact:
+    targets: "{{ targets|default([]) + [ {'Id': item, 'Port': 1883 } ] }}"
+  with_items: "{{ emqtt_instance_ids }}"
+
+- name: Create MQ-1883 target group
+  elb_target_group:
+    name: "{{ elb_vpc_name }}-{{ elb_target_name }}"
+    region: "{{ region }}"
+    state: "{{ elb_resource_state }}"
+    tags:
+      env: "{{ elb_vpc_name }}-{{ elb_target_name }}"
+    protocol: tcp
+    port: 1883
+    vpc_id: "{{ elb_vpc_id }}"
+    target_type: instance
+    targets: "{{ targets }}"
+      #- Id: "{{ emqtt_instance_ids[0] }}"
+      #  Port: 1883
+  register: mq1883_tg
+
+#- name: Create MQ-19999 target group
+#  elb_target_group:
+#    name: "{{ elb_vpc_name }}-MQ-19999"
+#    region: "{{ region }}"
+#    state: "{{ elb_resource_state }}"
+#    tags:
+#      env: "{{ elb_vpc_name }}-MQ-19999"
+#    protocol: tcp
+#    port: 1883
+#    vpc_id: "{{ elb_vpc_id }}"
+#    target_type: instance
+#    targets:
+#      - Id: "{{ emqtt_instance_ids[0] }}"
+#        Port: 1883
+#  register: mq19999_tg
+
+- name: Create MQ Network Load Balancer
+  elb_network_lb:
+    name: "{{ elb_vpc_name }}-{{ elb_name }}"
+    region: "{{ region }}"
+    tags:
+      env: "{{ elb_vpc_name }}-{{ elb_target_name }}"
+    subnets:
+      - "{{ subnet_ec2_ids[0] }}"
+      - "{{ subnet_ec2_ids[1] }}"
+      - "{{ subnet_ec2_ids[2] }}"
+    deletion_protection: yes
+    listeners:
+      - Protocol: TCP
+        Port: 1883
+        DefaultActions:
+          - Type: forward
+            TargetGroupName: "{{ mq1883_tg.target_group_name }}"
+      #- Protocol: TCP
+      #  Port: 19999
+      #  DefaultActions:
+      #    - Type: forward
+      #      TargetGroupName: "{{ mq19999_tg.target_group_name }}"
+    state: "{{ elb_resource_state }}"
+    wait: yes
+

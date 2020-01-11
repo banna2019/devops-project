@@ -1,0 +1,4 @@
+---
+# defaults file for rds.mysql
+
+security_all: "{{ vpc_name }}-all"

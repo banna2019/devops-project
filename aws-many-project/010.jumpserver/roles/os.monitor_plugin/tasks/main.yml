@@ -1,0 +1,11 @@
+---
+- name: Copy create user scripts
+  template:
+    src: install_plugin.sh
+    dest: /tmp/install_plugin.sh
+    mode: 777
+    owner: root
+    group: root
+
+- name: use create user scripts
+  shell: /bin/bash /tmp/install_plugin.sh

@@ -1,0 +1,37 @@
+---
+- include: vpc_subnet_facts.yml
+#- include: sg_facts.yml 
+#- include: creata_keys.yml 
+
+#- include_tasks: zuul.yml
+#  when: app_name == "zuul"
+
+#- include_tasks: graylog.yml 
+#  when: app_name == "graylog"
+
+- ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ vpc_env }}-{{ item }}"
+      vpc-id: "{{ vpc_id }}"
+  with_items:
+    - "{{ securitys_names }}"
+  register: security_group_facts
+
+# make array our sec groups as like [sg-XXX,sg-YYY]
+- set_fact:
+    security_group_ids: "{{(security_group_facts.results|map(attribute='security_groups')|list)}}"
+    #security_group_ids: [ "{{(security_group_facts.results|map(attribute='security_groups')|list)[0][0].group_id}}","{{(security_group_facts.results|map(attribute='security_groups')|list)[1][0].group_id}}"]
+
+#- name: Get EC2 SG ID
+#  ec2_group_facts:
+#    region: "{{ vpc_region }}"
+#    filters:
+#      group-name: "{{ vpc_env }}-{{ item }}"
+#  with_items: "{{ securitys_names }}"
+#  register: ec2_sg
+
+- name: list of ec2 the security group id.
+  set_fact:
+    sgs_id: "{{ item.group_id }}"
+  with_items: "{{ security_group_ids }}"

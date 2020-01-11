@@ -1,0 +1,20 @@
+---
+- include_tasks: vpc_subnet_facts.yml
+#- include_tasks: ec2_facts.yml
+#- include_tasks: sg_facts.yml
+
+- include_tasks: ws.yml 
+  when: app_elb_tag == "ws"
+
+- include_tasks: operation.yml
+  when: app_elb_tag == "operation"
+
+- include_tasks: superbackend.yml
+  when: app_elb_tag == "superbackend"
+
+- include_tasks: merchant.yml
+  when: app_elb_tag == "merchant"
+
+- include_tasks: appgw.yml
+  when: app_elb_tag == "appgw"
+

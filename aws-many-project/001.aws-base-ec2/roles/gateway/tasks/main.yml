@@ -1,0 +1,38 @@
+---
+# tasks file for roles/gateway
+
+- name: ensure that there is an internet gateway
+  ec2_vpc_igw:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    state: present
+    tags:
+      "Name": "{{ vpc_env }}_internet_gateway"
+      "Environment": "{{ vpc_env }}"
+      "Use": "gateway"
+  register: igw_info
+
+- name: check that we can ec2 public route through internet gateway
+  ec2_vpc_route_table:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    subnets: "{{ subnet_ec2_ids }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ igw_info.gateway_id }}"
+    resource_tags:
+      "Name": "{{ vpc_env }}_ec2_public"
+      "Environment": "{{ vpc_env }}"
+
+- name: check that we can rds private route through internet gateway
+  ec2_vpc_route_table:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    subnets: "{{ subnet_rds_ids }}"
+    routes:
+      - dest: ""
+      #- dest: 0.0.0.0/0
+        gateway_id: "{{ igw_info.gateway_id }}"
+    resource_tags:
+      "Name": "{{ vpc_env }}_rds_private"
+      "Environment": "{{ vpc_env }}"

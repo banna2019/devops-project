@@ -1,0 +1,59 @@
+---
+- name: Create ec2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "M120"
+    vpc_region: "ap-southeast-1"
+
+    ec2_key_Pair: "m100-ssh"
+    ec2_ami_Id: "ami-0208d16fd11190da6" 
+    #vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}"
+    ssh_user: centos
+    hosts_dir: "/home/centos/aws-project"
+    #hosts_dir: "/home/centos/aws-project/003.os-sys-docker/inventory/hosts"
+    
+  roles:
+    - { role: ec2,app_name: "zuul",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}",app_names: [zull,lottery_api,lottery_login_api] }
+    - { role: ec2,app_name: "graylog",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "graylog",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "graylog",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "zuul",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "nginx",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "nacos",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "operation",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "eureka",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "emqtt3.2",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "superbackend",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "merchant",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "productionopt-h5",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "common-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "config-issue-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "config-admin-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "config-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "config-mq-consumer",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "config-open-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "config-task",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "config-timer",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "config-remoteservice-provider",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "lottery-shareregister-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "lottery-thirdgame-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "lottery-mqtt",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "lottery-opener",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "lottery-es",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "lottery-task",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "lottery-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "lottery-hb-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "lottery-admin-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "lottery-commission-task",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }     
+    - { role: ec2,app_name: "lottery-login-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "lottery-mq-consumer",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "lottery-mysql2es-sync",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }       
+    - { role: ec2,app_name: "lottery-order-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "lottery-payment-api",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+    - { role: ec2,app_name: "lottery-payment-proxy",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}" }
+    - { role: ec2,app_name: "lottery-remoteservice-provider",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}" }
+    - { role: ec2,app_name: "lottery-thirdorder-collector",ec2_instance_type: "t2.micro",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}" }
+

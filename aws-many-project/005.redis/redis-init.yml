@@ -1,0 +1,19 @@
+---
+- name: Create ElastiCache Redis instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    vpc_name: "M120"
+    region: "ap-southeast-1"  
+    redis_engine_version: "5.0.0"  
+    redis_parameter_version: "redis5.0" 
+    redis_global_name: 'm120-redis' 
+
+  roles:
+    - { role: rds.redis-resizing,redis_name: "m120-redis5-base",primary_name: "m120-redis5-base-001",node_name: "m120-redis5-base-002",redis_node_type: cache.r5.large }      #Redis Replication Clunster开启实例升级或开启备份及维护窗口需要等待redis实例新建完成才能继续执行此操作
+    - { role: rds.redis-resizing,redis_name: "m120-redis5-session",primary_name: "m120-redis5-session-001",node_name: "m120-redis5-session-002",redis_node_type: cache.r5.large }      #Redis Replication Clunster开启实例升级或开启备份及维护窗口需要等待redis实例新建完成才能继续执行此操作
+

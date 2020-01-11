@@ -1,0 +1,15 @@
+---
+- hosts: localhost  
+  connection: local  
+  gather_facts: no  
+
+  vars:
+    ec2_key_Pair: "bruce_banna"
+    ec2_region: "ap-southeast-1"
+
+  tasks:
+  - name: Delete a EC2 key
+    ec2_key:
+      name: "{{ ec2_key_Pair }}"
+      region: "{{ ec2_region | default('ap-southeast-1') }}"
+      state: absent

@@ -1,0 +1,14 @@
+---
+- name: Get ELB SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ item }}"
+  with_items: "{{ security_elb }}"
+  register: sg_all
+
+#- name: list of elb 80 443 all the security group id.
+#  set_fact:
+#    sg_elb_id: "{{ item.group_id }}"
+#  with_items: "{{ sg_elb_80_443_all.security_groups }}"
+

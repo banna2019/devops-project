@@ -1,0 +1,27 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: localhost
+  connection: local
+  gather_facts: True
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    region: "ap-southeast-1"
+    elb_vpc_name: "M120"
+    elb_resource_state: "present"
+    app_ws_group: "elb-80-443-all"
+    app_office_group: "office-access"
+    app_merchant_group: "elb-80-443-all"
+    app_appgw_group: "elb-80-443-all"
+    emqtt_env: "emqtt"
+    operation_env: "operation"
+    superbackend_env: "superbackend"
+    merchant_env: "merchant"
+    zuul_env: "zuul"
+    
+  roles:
+    - { role: ec2.elb_network_lb,elb_target_name: "1883-emqtt01",elb_name: "1883-emqtt01" }
+    - { role: ec2.elb_network_lb,elb_target_name: "1883-emqtt02",elb_name: "1883-emqtt02" }
+

@@ -1,0 +1,14 @@
+---
+
+list_of_instance_ids: ""
+env: "awsec2"
+region: "ap-southeast-1"
+stage_one: "80"
+stage_two: "98"
+#vpc_name: "banna"
+
+#
+alarm_recipients: []
+# 
+alarm_failed_recipients: [] 
+

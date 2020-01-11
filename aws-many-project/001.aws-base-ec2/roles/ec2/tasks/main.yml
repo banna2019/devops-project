@@ -1,0 +1,9 @@
+---
+- include: creata_keys.yml 
+- include: vpc_subnet_facts.yml
+
+- include_tasks: instances.yml
+  when: securitys_name == ""
+
+- include_tasks: instances_other_sg.yml
+  when: securitys_name != ""

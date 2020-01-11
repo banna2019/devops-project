@@ -1,0 +1,7 @@
+---
+- name: "{{ vpc_name }} Create a test parameter group"
+  elasticache_parameter_group:
+    name: "{{ redis_global_name }}"
+    group_family: "{{ redis_parameter_version }}"
+    description: "{{ vpc_name }} This is a cache parameter group"
+    state: 'present'

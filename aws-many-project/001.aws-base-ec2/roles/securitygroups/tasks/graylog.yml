@@ -1,0 +1,23 @@
+---
+# tasks file for roles/securitygroups
+- name: provision graylog tcp 9000 and udp 12201 all security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-graylog"
+    description: "opens port 9000 and 12201"
+    tags:
+      "Name": "{{ vpc_env }}-graylog"
+      "Environment": "{{ vpc_env }}-graylog"
+    rules:
+      - proto: "tcp"
+        from_port: "9000"
+        to_port: "9000"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "allow all on port 9000"
+      - proto: "udp"
+        from_port: "12201"
+        to_port: "12201"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "allow all on port 12201"
+  register: sg_graylog

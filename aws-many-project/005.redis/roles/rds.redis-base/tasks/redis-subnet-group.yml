@@ -1,0 +1,23 @@
+---
+- name: gather information about the rds subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:Use": "rds"
+      "tag:Environment": "{{ vpc_name }}"
+  register: subnets_rds
+
+- name: register just the IDs for each of the subnets
+  set_fact:
+    subnet_redis_ids: "{{ subnets_rds.subnets | sort(attribute='cidr_block') | map(attribute='id') | list }}"
+
+- name: "Add or change a subnet group"
+  elasticache_subnet_group:
+    region: "{{ region }}"
+    state: present
+    name: "{{ redis_global_name }}"
+    description: "{{ vpc_name }} Fancy Ex Parrot Subnet Group"
+    subnets:
+      - "{{ subnet_redis_ids[0] }}"
+      - "{{ subnet_redis_ids[1] }}"
+      - "{{ subnet_redis_ids[2] }}"

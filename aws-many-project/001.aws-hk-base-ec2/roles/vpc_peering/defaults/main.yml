@@ -1,0 +1,6 @@
+---
+# defaults file for roles/subnet
+#owner_vpc_name: "banna"
+#acc_vpc_name: "one-banna"
+#profile: "606724181858"
+#region: "ap-southeast-1"

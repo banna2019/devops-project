@@ -1,0 +1,6 @@
+{
+   "EncryptionInTransit": {
+        "InCluster": false,
+        "ClientBroker": "TLS_PLAINTEXT"
+    }
+}

@@ -1,0 +1,7 @@
+---
+- name: "{{ vpc_name }} Create clueter parameter group"
+  command: >
+    aws elasticache create-cache-parameter-group \
+      --cache-parameter-group-name {{ redis_cluster_parameter_group }} \
+      --cache-parameter-group-family {{ redis_parameter_version }} \
+      --description "My first parameter group" 

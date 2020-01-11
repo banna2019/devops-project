@@ -1,0 +1,19 @@
+---
+- name: Create ec2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "M120"
+    vpc_region: "ap-southeast-1"
+
+    ec2_key_Pair: "m120-ssh"
+    ec2_ami_Id: "ami-0208d16fd11190da6" 
+    ssh_user: centos
+    hosts_dir: "/home/centos/aws-project"
+    
+  roles:
+    - { role: ec2,app_name: "gopub",ec2_instance_type: "m5.large",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}",securitys_name: "",app_names: [gopub] }
+    #- { role: ec2,app_name: "operation",ec2_instance_type: "t2.medium",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}",securitys_name: "",app_names: [operation] }
+    #- { role: ec2,app_name: "nginx",ec2_instance_type: "t3.small",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}",securitys_name: "elb-80-443-all",app_names: [ngin] }

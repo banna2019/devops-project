@@ -1,0 +1,66 @@
+---
+# iterate each subnet id found by the facts query
+- name: emqtt capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ emqtt_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: emqtt_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    emqtt_instance_ids: '{{ emqtt_instance_facts.instances|map(attribute="instance_id")|list }}'
+
+- name: operation capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ operation_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: operation_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    operation_instance_ids: '{{ operation_instance_facts.instances|map(attribute="instance_id")|list }}'
+
+- name: superbackend capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ superbackend_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: superbackend_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    superbackend_instance_ids: '{{ superbackend_instance_facts.instances|map(attribute="instance_id")|list }}'
+
+- name: merchant capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ merchant_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: merchant_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    merchant_instance_ids: '{{ merchant_instance_facts.instances|map(attribute="instance_id")|list }}'
+
+- name: zuul capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ zuul_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: zuul_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    zuul_instance_ids: '{{ zuul_instance_facts.instances|map(attribute="instance_id")|list }}'

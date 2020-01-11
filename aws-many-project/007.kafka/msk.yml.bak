@@ -1,0 +1,17 @@
+---
+- name: Create ElastiCache Redis instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    vpc_name: "M120"
+    region: "ap-southeast-1"  
+    #project_dir: "/home/centos/new-project/kafka/roles/msk.kafka"
+    project_dir: "/home/centos/aws-project/007.kafka/roles/msk.kafka"
+
+  roles:
+    - { role: msk.kafka,kafka_cluster_type: "kafka.m5.large",kafka_version: "2.2.1",kafka_nodes: "3",kafka_instance_size: '100',json_file_dir: "file://{{ project_dir }}/templates/brokernodegroupinfo.json",encryption_file: "file://{{ project_dir }}/templates/encryptioninfo.json" } 
+

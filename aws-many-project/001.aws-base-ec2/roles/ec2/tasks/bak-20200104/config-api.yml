@@ -1,0 +1,78 @@
+---
+- name: Get SSH SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_ssh }}"
+  register: sg_ssh
+
+- name: list of ssh the security group id.
+  set_fact:
+    sg_ssh_id: "{{ item.group_id }}"
+  with_items: "{{ sg_ssh.security_groups }}"
+
+- name: Get ALL SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_all }}"
+  register: sg_all
+
+- name: list of all the security group id.
+  set_fact:
+    sg_all_id: "{{ item.group_id }}"
+  with_items: "{{ sg_all.security_groups }}"
+
+- name: "Provision ec2 instance"
+  ec2:
+    key_name: "{{ ec2_key_Pair }}"
+    region: "{{ vpc_region }}"
+    group_id:
+      - "{{ sg_ssh_id }}"
+      - "{{ sg_all_id }}"
+    instance_type: "{{ ec2_instance_type }}"
+    image: "{{ ec2_ami_Id }}"
+    wait: true
+    exact_count: "{{ ec2_instance_count }}"
+    count_tag:
+      Name: "{{ ec2_instance_tag_name }}"
+    instance_tags:
+      Name: "{{ ec2_instance_tag_name }}"
+      env: "{{ vpc_env }}"
+    vpc_subnet_id: "{{ vpc_subnet_Id }}"
+    assign_public_ip: yes
+    instance_profile_name: "{{ ec2_instance_profile_name | default('') }}"
+    termination_protection: yes
+    volumes:
+      - device_name: "{{ ec2_volume_Device_Name }}"
+        volume_type: "{{ ec2_volume_type }}"
+        volume_size: "{{ ec2_volume_Size }}"
+        delete_on_termination: false
+    monitoring: yes
+  register: ec2_config_api
+
+- name: create EIP
+  ec2_eip:
+    region: "{{ vpc_region }}"
+  register: result
+
+- name: "set eip fact"
+  set_fact:
+    eip: "{{ result.public_ip }}"
+
+- name: Assign EIP address for web instances
+  ec2_eip:
+    in_vpc: yes
+    reuse_existing_ip_allowed: yes
+    region: "{{ vpc_region }}"
+    public_ip: "{{ eip }}"
+    device_id: "{{ item.id }}"
+  with_items: "{{ ec2_config_api.instances }}"
+  register: config_api_eip
+
+- name: Configure hostname in "{{ hosts_dir }}"
+  lineinfile:
+    state: present
+    dest: "{{ hosts_dir }}/.inventory/hosts"
+    regexp: "{{ ec2_instance_tag_name }}"
+    line: "[{{ ec2_instance_tag_name }}]{{'\n'}}{{ eip }} ansible_ssh_user={{ ssh_user }} ansible_ssh_private_key_file={{ hosts_dir }}/.keys/{{ ec2_key_Pair }}{{'\n'}}"

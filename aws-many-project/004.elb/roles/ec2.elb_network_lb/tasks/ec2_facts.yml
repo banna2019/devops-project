@@ -1,0 +1,14 @@
+---
+# iterate each subnet id found by the facts query
+- name: capture instance facts
+  ec2_instance_facts:
+    region: "{{ region }}"
+    filters:
+      "tag:env": "{{ emqtt_env }}"
+      instance-state-name: [ "running" ]
+      vpc-id: "{{ elb_vpc_id }}"
+  register: emqtt_instance_facts
+
+- name: "set facts: instance IDs"
+  set_fact:
+    emqtt_instance_ids: '{{ emqtt_instance_facts.instances|map(attribute="instance_id")|list }}'

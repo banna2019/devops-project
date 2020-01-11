@@ -1,0 +1,11 @@
+---
+- name: Copy create user scripts
+  template:
+    src: user.sh
+    dest: /tmp/user.sh
+    mode: 777
+    owner: root
+    group: root
+
+- name: use create user scripts
+  shell: /bin/bash /tmp/user.sh 

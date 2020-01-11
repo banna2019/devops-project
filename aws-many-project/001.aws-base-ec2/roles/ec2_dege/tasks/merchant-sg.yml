@@ -1,0 +1,18 @@
+---
+# tasks file for roles/securitygroups
+- name: provision 8081 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-hk-merchant"
+    description: "opens port merchant to the user"
+    tags:
+      "Name": "{{ vpc_env }}-hk-merchant"
+      "Environment": "{{ vpc_env }}-hk-merchant"
+    rules:
+      - proto: "tcp"
+        from_port: "8081"
+        to_port: "8081"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "allow all on port 8081"
+  register: sg_merchant

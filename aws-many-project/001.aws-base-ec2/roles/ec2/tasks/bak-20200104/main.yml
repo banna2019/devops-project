@@ -1,0 +1,115 @@
+---
+- include: vpc_subnet_facts.yml
+#- include: sg_facts.yml
+- include: creata_keys.yml 
+
+- include_tasks: zuul.yml
+  when: app_name == "zuul"
+
+- include_tasks: graylog.yml
+  when: app_name == "graylog"
+
+- include_tasks: nginx.yml
+  when: app_name == "nginx"
+
+- include_tasks: nacos.yml
+  when: app_name == "nacos"
+  
+- include_tasks: operation.yml
+  when: app_name == "operation"
+  
+- include_tasks: eureka.yml
+  when: app_name == "eureka"
+  
+- include_tasks: emqtt3.2.yml
+  when: app_name == "emqtt3.2"
+  
+- include_tasks: superbackend.yml
+  when: app_name == "superbackend"
+  
+- include_tasks: merchant.yml
+  when: app_name == "merchant"
+
+- include_tasks: productionopt-h5.yml
+  when: app_name == "productionopt-h5"
+
+- include_tasks: common-api.yml
+  when: app_name == "common-api"
+
+- include_tasks: config-issue-api.yml
+  when: app_name == "config-issue-api"
+
+- include_tasks: config-admin-api.yml
+  when: app_name == "config-admin-api"
+
+- include_tasks: config-api.yml
+  when: app_name == "config-api"
+
+- include_tasks: config-mq-consumer.yml
+  when: app_name == "config-mq-consumer"
+
+- include_tasks: config-open-api.yml
+  when: app_name == "config-open-api"
+
+- include_tasks: config-task.yml
+  when: app_name == "config-task"
+
+- include_tasks: config-timer.yml
+  when: app_name == "config-timer"
+
+- include_tasks: config-remoteservice-provider.yml
+  when: app_name == "config-remoteservice-provider"
+
+- include_tasks: lottery-shareregister-api.yml
+  when: app_name == "lottery-shareregister-api"
+
+- include_tasks: lottery-thirdgame-api.yml
+  when: app_name == "lottery-thirdgame-api"
+
+- include_tasks: lottery-mqtt.yml
+  when: app_name == "lottery-mqtt"
+
+- include_tasks: lottery-opener.yml
+  when: app_name == "lottery-opener"
+
+- include_tasks: lottery-es.yml
+  when: app_name == "lottery-es"
+
+- include_tasks: lottery-task.yml
+  when: app_name == "lottery-task"
+
+- include_tasks: lottery-api.yml
+  when: app_name == "lottery-api"
+
+- include_tasks: lottery-hb-api.yml
+  when: app_name == "lottery-hb-api"
+
+- include_tasks: lottery-admin-api.yml
+  when: app_name == "lottery-admin-api"
+
+- include_tasks: lottery-commission-task.yml
+  when: app_name == "lottery-commission-task"
+
+- include_tasks: lottery-login-api.yml
+  when: app_name == "lottery-login-api"
+
+- include_tasks: lottery-mq-consumer.yml
+  when: app_name == "lottery-mq-consumer"
+
+- include_tasks: lottery-mysql2es-sync.yml
+  when: app_name == "lottery-mysql2es-sync"
+
+- include_tasks: lottery-order-api.yml
+  when: app_name == "lottery-order-api"
+
+- include_tasks: lottery-payment-proxy.yml
+  when: app_name == "lottery-payment-proxy"
+
+- include_tasks: lottery-remoteservice-provider.yml
+  when: app_name == "lottery-remoteservice-provider"
+
+- include_tasks: lottery-thirdorder-collector.yml
+  when: app_name == "lottery-thirdorder-collector"
+
+- include_tasks: lottery-payment-api.yml
+  when: app_name == "lottery-payment-api"

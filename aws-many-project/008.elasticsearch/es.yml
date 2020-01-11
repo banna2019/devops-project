@@ -1,0 +1,16 @@
+---
+- name: Create ElastiCache Redis instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    vpc_name: "M120"
+    region: "ap-southeast-1"  
+
+  roles:
+    - { role: aws.es,aws_iam_id: 'aws002',domain_name: 'm120-graylog',es_version: 6.8,es_instance_type: "m5.xlarge.elasticsearch",es_instance_count: "3",es_instance_volumesize: 100 } 
+    #- { role: aws.es,aws_iam_id: 'aws002',domain_name: 'm120lottery',es_version: 6.8,es_instance_type: "m5.xlarge.elasticsearch",es_instance_count: "3",es_instance_volumesize: 100 } 
+

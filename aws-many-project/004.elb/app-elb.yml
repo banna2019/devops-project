@@ -1,0 +1,32 @@
+---
+
+- name: Create cs-dafa all EC2 vHost
+  hosts: localhost
+  connection: local
+  gather_facts: True
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    region: "ap-southeast-1"
+    elb_vpc_name: "M120"
+    elb_resource_state: "present"
+    app_ws_group: "elb-80-443-all"
+    app_office_group: "office-access"
+    app_merchant_group: "elb-80-443-all"
+    app_appgw_group: "elb-80-443-all"
+    emqtt_env: "emqtt"
+    operation_env: "operation"
+    superbackend_env: "superbackend"
+    merchant_env: "merchant"
+    zuul_env: "zuul"
+    
+  roles:
+    #- { role: ec2.elb_application_lb,app_elb_tag: "ws",app_elb_name: "8083-emqtt01",app_target_name: "8083-mqtt01" }
+    #- { role: ec2.elb_application_lb,app_elb_tag: "ws",app_elb_name: "8083-emqtt02",app_target_name: "8083-mqtt02" }
+    #- { role: ec2.elb_application_lb,app_elb_tag: "operation",app_elb_name: "operation",app_target_name: "operation" }
+    #- { role: ec2.elb_application_lb,app_elb_tag: "superbackend",app_elb_name: "superbackend",app_target_name: "superbackend" }
+    #- { role: ec2.elb_application_lb,app_elb_tag: "merchant",app_elb_name: "merchant",app_target_name: "merchant" }
+    - { role: ec2.elb_application_lb,app_elb_tag: "appgw",app_elb_name: "appgw01",app_target_name: "appgw01" }
+    - { role: ec2.elb_application_lb,app_elb_tag: "appgw",app_elb_name: "appgw02",app_target_name: "appgw02" }
+

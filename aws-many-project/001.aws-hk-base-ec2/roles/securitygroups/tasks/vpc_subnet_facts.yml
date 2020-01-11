@@ -1,0 +1,15 @@
+---
+# find the VPC by name
+- name: VPC facts
+  ec2_vpc_net_facts:
+    region: "{{ vpc_region }}" 
+    filters:
+      "tag:Name": "{{ vpc_env }}"
+  register: vpc_facts
+
+# parse the facts output and extract the VPC ID
+#- name: "set fact: VPC ID"
+#  set_fact:
+#    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+
+

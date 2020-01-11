@@ -1,0 +1,19 @@
+---
+- name: Create ec2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "M120"
+    vpc_region: "ap-southeast-1"
+
+    ec2_key_Pair: "hk-Production-ssh"
+    ec2_ami_Id: "ami-0208d16fd11190da6" 
+    ssh_user: centos
+    hosts_dir: "/home/centos/aws-project"
+    
+  roles:
+    - { role: ec2_dege,app_name: "edge-backend-service",env_tag: "",ec2_instance_type: "t3.small",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}",securitys_name: "merchant",app_names: [merchant_6hao,share_agent_6hao,agent_6hao,share_site_agent_6hao] }
+    - { role: ec2_dege,app_name: "edge-download-service",env_tag: "",ec2_instance_type: "t3.small",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}",securitys_name: "backend",app_names: [download_site_6hao,customer_6hao] }
+    - { role: ec2_dege,app_name: "edge-h5",env_tag: "",ec2_instance_type: "t3.small",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}",securitys_name: "",app_names: [H5_6hao] }

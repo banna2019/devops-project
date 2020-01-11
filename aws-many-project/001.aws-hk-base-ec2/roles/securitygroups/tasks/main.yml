@@ -1,0 +1,18 @@
+---
+- include: vpc_subnet_facts.yml
+
+- include_tasks: ng-80-443-all.yml
+  when: sec_name == "ng-80-443-all"
+
+- include_tasks: merchant-8081.yml
+  when: sec_name == "merchant-8081"
+
+- include_tasks: agnet-acl.yml
+  when: sec_name == "agnet-acl"
+  
+- include_tasks: docker-manager-2375.yml
+  when: sec_name == "docker-manager-2375"
+ 
+- include_tasks: all.yml
+  when: sec_name == "all"
+  

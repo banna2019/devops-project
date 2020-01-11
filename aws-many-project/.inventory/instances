@@ -1,0 +1,3 @@
+
+{ "hostname": "M120-jumpserver","public_ip": "18.136.91.10","private_ip": "10.120.10.233","application_name": \[ "[u'jumpserver']" \] }
+{ "hostname": "M120-prometheus","public_ip": "18.141.18.140","private_ip": "10.120.10.144","application_name": \[ "[u'prometheus']" \] }

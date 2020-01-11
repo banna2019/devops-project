@@ -1,0 +1,144 @@
+---
+- name: Get ELB SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_elb }}"
+  register: sg_elb_80_443_all
+
+- name: list of elb 80 443 all the security group id.
+  set_fact:
+    sg_elb_id: "{{ item.group_id }}"
+  with_items: "{{ sg_elb_80_443_all.security_groups }}"
+
+- name: Get MERCHANT SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_merchant }}"
+  register: sg_merchant_80
+
+- name: list of merchant 80 the security group id.
+  set_fact:
+    sg_merchant_id: "{{ item.group_id }}"
+  with_items: "{{ sg_merchant_80.security_groups }}"
+
+- name: Get ZUUL SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_zuul_all }}"
+  register: sg_zuul_all
+
+- name: list of zuul all the security group id.
+  set_fact:
+    sg_zuul_id: "{{ item.group_id }}"
+  with_items: "{{ sg_zuul_all.security_groups }}"
+
+- name: Get EMQTT SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_emqtt }}"
+  register: sg_emqtt
+
+- name: list of emqtt the security group id.
+  set_fact:
+    sg_emqtt_id: "{{ item.group_id }}"
+  with_items: "{{ sg_emqtt.security_groups }}"
+
+- name: Get NACOS SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_nacos }}"
+  register: sg_nacos
+
+- name: list of nacos the security group id.
+  set_fact:
+    sg_nacos_id: "{{ item.group_id }}"
+  with_items: "{{ sg_nacos.security_groups }}"
+
+- name: Get ALL SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_all }}"
+  register: sg_all
+
+- name: list of all the security group id.
+  set_fact:
+    sg_all_id: "{{ item.group_id }}"
+  with_items: "{{ sg_all.security_groups }}"
+
+- name: Get RDS SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_rds }}"
+  register: sg_rds
+
+- name: list of rds the security group id.
+  set_fact:
+    sg_rds_id: "{{ item.group_id }}"
+  with_items: "{{ sg_rds.security_groups }}"
+
+- name: Get SSH SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_ssh }}"
+  register: sg_ssh
+
+- name: list of ssh the security group id.
+  set_fact:
+    sg_ssh_id: "{{ item.group_id }}"
+  with_items: "{{ sg_ssh.security_groups }}"
+
+- name: Get EUREKA SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_eureka_office }}"
+  register: sg_eureka_office
+
+- name: list of eureka office the security group id.
+  set_fact:
+    sg_eureka_office_id: "{{ item.group_id }}"
+  with_items: "{{ sg_eureka_office.security_groups }}"
+
+- name: Get OFFICE SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_office }}"
+  register: sg_office
+
+- name: list of office the security group id.
+  set_fact:
+    sg_office_id: "{{ item.group_id }}"
+  with_items: "{{ sg_office.security_groups }}"
+
+- name: Get WINDOWS SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_windows }}"
+  register: sg_windows
+
+- name: list of windows the security group id.
+  set_fact:
+    sg_windows_id: "{{ item.group_id }}"
+  with_items: "{{ sg_windows.security_groups }}"
+
+- name: Get EMQTT OFFICE SG ID
+  ec2_group_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      group-name: "{{ security_emqtt_office }}"
+  register: sg_emqtt_office
+
+- name: list of emqtt office the security group id.
+  set_fact:
+    sg_emqtt_office_id: "{{ item.group_id }}"
+  with_items: "{{ sg_emqtt_office.security_groups }}"

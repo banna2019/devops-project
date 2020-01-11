@@ -1,0 +1,14 @@
+---
+- name: Add Owner Network segment to accept security group
+  ec2_group:
+    region: "{{ region }}"
+    vpc_id: "{{ acc_vpc_id }}"
+    name: "{{ acc_vpc_name }}-all"
+    description: "opens all ports to the world"
+    tags:
+      "Name": "{{ acc_vpc_name }}-all"
+      "Environment": "{{ acc_vpc_name }}-all"
+    purge_rules: false
+    rules:
+      - proto: all
+        cidr_ip: "{{ owner_cidr_block }}"

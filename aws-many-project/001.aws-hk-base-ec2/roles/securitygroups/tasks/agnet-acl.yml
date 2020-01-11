@@ -1,0 +1,26 @@
+---
+# tasks file for roles/securitygroups
+- name: provision agnet acl 7880 7881 7882 all security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-agent-acl"
+    description: "opens port 7880 7881 7882 to the world"
+    tags:
+      "Name": "{{ vpc_env }}-agent-acl"
+      "Environment": "{{ vpc_env }}-agent-acl"
+    rules:
+      - proto: "tcp"
+        from_port: "7880"
+        to_port: "7880"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 7880"
+      - proto: "tcp"
+        from_port: "7881"
+        to_port: "7881"
+        rule_desc: "allow all on port 7881"
+      - proto: "tcp"
+        from_port: "7882"
+        to_port: "7882"
+        rule_desc: "allow all on port 7882"
+  register: sg_agent_acl

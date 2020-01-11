@@ -1,0 +1,28 @@
+---
+- name: Get ALL SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      group-name: "{{ security_all }}"
+  register: sg_all
+
+- name: list of all the security group id.
+  set_fact:
+    sg_all_id: "{{ item.group_id }}"
+  with_items: "{{ sg_all.security_groups }}"
+
+
+- name: Upgrade AWS elastiCache redis cluster
+  command: >
+    aws elasticache create-replication-group \
+      --replication-group-id {{ redis_name }} \
+      --replication-group-description "Demo cluster with replicas" \
+      --num-node-groups {{ redis_num_nodes }} \
+      --replicas-per-node-group {{ replicas_nodes }} \
+      --cache-node-type {{ redis_cluster_type }} \
+      --cache-parameter-group {{ redis_global_name }} \
+      --engine redis \
+      --engine-version {{ redis_engine_version }} \
+      --security-group-ids {{ sg_all_id }} \
+      --cache-subnet-group-name {{ redis_global_name }} 
+                

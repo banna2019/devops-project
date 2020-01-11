@@ -1,0 +1,19 @@
+---
+# tasks file for roles/securitygroups
+- name: provision 22 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-ssh"
+    description: "opens port ssh to the user"
+    tags:
+      "Name": "{{ vpc_env }}-ssh"
+      "Environment": "{{ vpc_env }}-ssh"
+    rules:
+      - proto: "tcp"
+        from_port: "22"
+        to_port: "22"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "allow all on port 22"
+  register: sg_ssh
+

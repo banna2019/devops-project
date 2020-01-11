@@ -1,0 +1,9 @@
+{
+   "EncryptionAtRest": {
+       "DataVolumeKMSKeyId": "your-CMK"
+    },
+   "EncryptionInTransit": {
+        "InCluster": false,
+        "ClientBroker": "TLS"
+    }
+}

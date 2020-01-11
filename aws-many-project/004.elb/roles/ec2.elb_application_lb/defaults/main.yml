@@ -1,0 +1,10 @@
+---
+
+# default Application TAG 
+aws_tags: 0
+elb_tags: ""
+
+elb_certificate_arn: ""
+
+elb_logs_s3_enabled: false
+

@@ -1,0 +1,14 @@
+{
+    "InstanceType": "kafka.m5.large",
+    "BrokerAZDistribution": "DEFAULT",
+    "ClientSubnets": [
+        "subnet-06c1d074817811db3",
+        "subnet-0046b05f2d4006487",
+        "subnet-0f699b5cd13046bcb"],
+    "SecurityGroups": ["sg-004a004e0482c5105"],
+    "StorageInfo": {
+      "EbsStorageInfo": {
+        "VolumeSize": 100
+      }
+   }
+}

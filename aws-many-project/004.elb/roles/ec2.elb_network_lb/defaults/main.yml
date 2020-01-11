@@ -1,0 +1,5 @@
+---
+
+# default Application TAG 
+aws_tags: 0
+ec2_env: ""

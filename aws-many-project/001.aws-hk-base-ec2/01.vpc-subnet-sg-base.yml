@@ -1,0 +1,31 @@
+---
+- name: Create,launch and configure our basic AWS VPC
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "M20"
+    vpc_region: "ap-east-1"
+
+  roles:
+    - roles/vpc
+    - roles/subnets
+    - roles/gateway
+
+- name: create securitygroups
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+
+  vars:
+    vpc_env: "M20"
+    vpc_region: "ap-east-1"
+    
+  roles:
+    - { role: securitygroups,sec_name: "ng-80-443-all" } 
+    - { role: securitygroups,sec_name: "merchant-8081" } 
+    - { role: securitygroups,sec_name: "agnet-acl" } 
+    - { role: securitygroups,sec_name: "docker-manager-2375" } 
+    - { role: securitygroups,sec_name: "all" } 

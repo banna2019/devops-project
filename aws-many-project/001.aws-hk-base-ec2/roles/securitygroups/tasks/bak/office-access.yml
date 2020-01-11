@@ -1,0 +1,24 @@
+---
+# tasks file for roles/securitygroups
+- name: provision private 80 and 443 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-office-access"
+    description: "opens port 80 and 443 to the user"
+    tags:
+      "Name": "{{ vpc_env }}-office-access"
+      "Environment": "{{ vpc_env }}-office-access"
+    rules:
+      - proto: "tcp"
+        from_port: "80"
+        to_port: "80"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "open private allow all on port 80"
+      - proto: "tcp"
+        from_port: "443"
+        to_port: "443"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "open private allow all on port 443"
+  register: sg_office_access
+

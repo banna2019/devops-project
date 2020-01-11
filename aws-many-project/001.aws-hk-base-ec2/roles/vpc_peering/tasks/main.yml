@@ -1,0 +1,7 @@
+---
+- include: vpc-facts.yaml
+- include: subnet-facts.yml 
+- include: peering.yml
+- include: peering-facts.yml
+- include: add-routing.yml
+- include: sec-group.yaml 

@@ -1,0 +1,6 @@
+---
+- include_tasks: redis-subnet-group.yml
+- include_tasks: redis-single-parameter-group.yml 
+#- include_tasks: redis-cluster-parameter-group.yml 
+
+

@@ -1,0 +1,44 @@
+{ "hostname": "M120-nacos","public_ip": "3.0.27.186","private_ip": "10.120.12.102","application_name": \[ "[u'nacos']" \] }
+{ "hostname": "M120-gopub","public_ip": "18.141.94.6","private_ip": "10.120.10.184","application_name": \[ "[u'gopub']" \] }
+{ "hostname": "M120-operation","public_ip": "52.220.132.237","private_ip": "10.120.11.46","application_name": \[ "[u'operation']" \] }
+{ "hostname": "M120-nginx","public_ip": "13.229.173.206","private_ip": "10.120.12.155","application_name": \[ "[u'nginx']" \] }
+{ "hostname": "M120-superbackend","public_ip": "18.141.136.116","private_ip": "10.120.10.154","application_name": \[ "[u'superbackend']" \] }
+{ "hostname": "M120-merchant","public_ip": "52.220.198.37","private_ip": "10.120.10.163","application_name": \[ "[u'merchant']" \] }
+{ "hostname": "M120-graylog","public_ip": "52.74.49.215","private_ip": "10.120.11.183","application_name": \[ "[u'graylog']" \] }
+{ "hostname": "M120-emqtt3.2_01","public_ip": "18.141.61.172","private_ip": "10.120.12.154","application_name": \[ "[u'emqtt3.2']" \] }
+{ "hostname": "M120-emqtt3.2_02","public_ip": "13.228.11.51","private_ip": "10.120.10.229","application_name": \[ "[u'emqtt3.2']" \] }
+{ "hostname": "M120-config-timer_01","public_ip": "13.250.150.204","private_ip": "10.120.11.198","application_name": \[ "[u'config-timer']" \] }
+{ "hostname": "M120-config-timer_02","public_ip": "13.228.157.91","private_ip": "10.120.12.131","application_name": \[ "[u'config-timer']" \] }
+{ "hostname": "M120-Front-service_01","public_ip": "52.76.37.254","private_ip": "10.120.10.238","application_name": \[ "[u'eureka', u'common-api', u'config-open-api']" \] }
+{ "hostname": "M120-Front-service_02","public_ip": "54.254.220.44","private_ip": "10.120.11.243","application_name": \[ "[u'eureka', u'common-api', u'config-open-api']" \] }
+{ "hostname": "M120-Front-service_03","public_ip": "18.140.223.119","private_ip": "10.120.12.246","application_name": \[ "[u'eureka', u'common-api', u'config-open-api']" \] }
+{ "hostname": "M120-Front-service_04","public_ip": "18.138.197.205","private_ip": "10.120.10.230","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-login-api']" \] }
+{ "hostname": "M120-Front-service_05","public_ip": "13.250.224.153","private_ip": "10.120.11.127","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-login-api']" \] }
+{ "hostname": "M120-Front-service_06","public_ip": "13.251.138.185","private_ip": "10.120.12.137","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-login-api']" \] }
+{ "hostname": "M120-Front-service_07","public_ip": "52.221.42.105","private_ip": "10.120.10.34","application_name": \[ "[u'zuul', u'config-api', u'config-admin-api']" \] }
+{ "hostname": "M120-Front-service_08","public_ip": "18.141.101.194","private_ip": "10.120.11.89","application_name": \[ "[u'zuul', u'config-api', u'config-admin-api']" \] }
+{ "hostname": "M120-Front-service_09","public_ip": "52.74.4.132","private_ip": "10.120.12.130","application_name": \[ "[u'zuul', u'config-api', u'config-admin-api']" \] }
+{ "hostname": "M120-Front-service_10","public_ip": "18.136.57.227","private_ip": "10.120.10.51","application_name": \[ "[u'zuul', u'config-api', u'config-admin-api', u'lottery-admin-api']" \] }
+{ "hostname": "M120-Front-service_11","public_ip": "3.0.155.15","private_ip": "10.120.11.222","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-admin-api']" \] }
+{ "hostname": "M120-Front-service_12","public_ip": "52.220.207.192","private_ip": "10.120.12.5","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-admin-api']" \] }
+{ "hostname": "M120-Front-service_13","public_ip": "54.169.207.190","private_ip": "10.120.10.87","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-payment-api']" \] }
+{ "hostname": "M120-Front-service_14","public_ip": "18.139.249.3","private_ip": "10.120.11.68","application_name": \[ "[u'zuul', u'lottery-api', u'lottery-payment-api']" \] }
+{ "hostname": "M120-Front-service_15","public_ip": "18.136.49.113","private_ip": "10.120.12.86","application_name": \[ "[u'zuul', u'config-issue-api', u'lottery-payment-api']" \] }
+{ "hostname": "M120-Front-service_16","public_ip": "52.74.197.85","private_ip": "10.120.10.235","application_name": \[ "[u'config-issue-api', u'lottery-thirdgame-api', u'lottery-shareregister-api']" \] }
+{ "hostname": "M120-Front-service_17","public_ip": "18.140.161.227","private_ip": "10.120.11.111","application_name": \[ "[u'config-issue-api', u'lottery-thirdgame-api', u'lottery-hb-api']" \] }
+{ "hostname": "M120-Front-Back-services_01","public_ip": "52.220.48.144","private_ip": "10.120.12.252","application_name": \[ "[u'config-issue-api', u'config-remoteservice-provider', u'config-mq-consumer']" \] }
+{ "hostname": "M120-Front-Back-services_02","public_ip": "52.220.51.243","private_ip": "10.120.10.97","application_name": \[ "[u'config-issue-api', u'config-remoteservice-provider', u'config-mq-consumer']" \] }
+{ "hostname": "M120-Front-Back-services_03","public_ip": "18.139.29.244","private_ip": "10.120.11.40","application_name": \[ "[u'config-issue-api', u'config-remoteservice-provider', u'config-mq-consumer']" \] }
+{ "hostname": "M120-Front-Back-services_04","public_ip": "54.251.172.25","private_ip": "10.120.12.41","application_name": \[ "[u'lottery-order-api', u'lottery-hb-api', u'nacos']" \] }
+{ "hostname": "M120-Front-Back-services_05","public_ip": "18.140.14.217","private_ip": "10.120.10.227","application_name": \[ "[u'lottery-order-api', u'lottery-mqtt-api', u'lottery-es']" \] }
+{ "hostname": "M120-Front-Back-services_06","public_ip": "18.138.46.91","private_ip": "10.120.11.176","application_name": \[ "[u'lottery-order-api', u'lottery-mqtt-api', u'lottery-es']" \] }
+{ "hostname": "M120-Front-Back-services_07","public_ip": "18.139.144.157","private_ip": "10.120.12.59","application_name": \[ "[u'lottery-order-api', u'lottery-mqtt-api', u'lottery-es']" \] }
+{ "hostname": "M120-Back-services_01","public_ip": "52.77.48.121","private_ip": "10.120.10.115","application_name": \[ "[u'lottery-task', u'lottery-mq-consumer', u'lottery-thirdorder-collector']" \] }
+{ "hostname": "M120-Back-services_02","public_ip": "18.139.242.155","private_ip": "10.120.11.199","application_name": \[ "[u'lottery-task', u'lottery-mq-consumer', u'config-task']" \] }
+{ "hostname": "M120-Back-services_03","public_ip": "52.221.8.125","private_ip": "10.120.12.4","application_name": \[ "[u'lottery-task', u'lottery-mq-consumer']" \] }
+{ "hostname": "M120-Back-services_04","public_ip": "52.76.89.196","private_ip": "10.120.10.202","application_name": \[ "[u'lottery-commission-task', u'lottery-mysql2es-sync']" \] }
+{ "hostname": "M120-Back-services_05","public_ip": "18.136.146.56","private_ip": "10.120.11.146","application_name": \[ "[u'lottery-commission-task', u'lottery-mysql2es-sync']" \] }
+{ "hostname": "M120-Back-services_06","public_ip": "13.229.163.231","private_ip": "10.120.12.7","application_name": \[ "[u'lottery-commission-task', u'lottery-mysql2es-sync']" \] }
+{ "hostname": "M120-Back-services_07","public_ip": "52.220.204.197","private_ip": "10.120.10.218","application_name": \[ "[u'lottery-opener', u'lottery-remoteservice-provider']" \] }
+{ "hostname": "M120-Back-services_08","public_ip": "18.140.140.121","private_ip": "10.120.11.254","application_name": \[ "[u'lottery-opener', u'lottery-remoteservice-provider']" \] }
+{ "hostname": "M120-Back-services_09","public_ip": "3.1.207.113","private_ip": "10.120.12.220","application_name": \[ "[u'lottery-opener', u'lottery-remoteservice-provider']" \] }

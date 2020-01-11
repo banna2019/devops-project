@@ -1,0 +1,132 @@
+[M120-nacos]
+3.0.27.186 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-gopub]
+18.141.94.6 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-operation]
+52.220.132.237 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-nginx]
+13.229.173.206 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-superbackend]
+18.141.136.116 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-merchant]
+52.220.198.37 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-graylog]
+52.74.49.215 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-emqtt3.2_01]
+18.141.61.172 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-emqtt3.2_02]
+13.228.11.51 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-config-timer_01]
+13.250.150.204 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-config-timer_02]
+13.228.157.91 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_01]
+52.76.37.254 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_02]
+54.254.220.44 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_03]
+18.140.223.119 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_04]
+18.138.197.205 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_05]
+13.250.224.153 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_06]
+13.251.138.185 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_07]
+52.221.42.105 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_08]
+18.141.101.194 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_09]
+52.74.4.132 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_10]
+18.136.57.227 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_11]
+3.0.155.15 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_12]
+52.220.207.192 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_13]
+54.169.207.190 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_14]
+18.139.249.3 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_15]
+18.136.49.113 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_16]
+52.74.197.85 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-service_17]
+18.140.161.227 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_01]
+52.220.48.144 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_02]
+52.220.51.243 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_03]
+18.139.29.244 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_04]
+54.251.172.25 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_05]
+18.140.14.217 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_06]
+18.138.46.91 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Front-Back-services_07]
+18.139.144.157 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_01]
+52.77.48.121 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_02]
+18.139.242.155 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_03]
+52.221.8.125 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_04]
+52.76.89.196 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_05]
+18.136.146.56 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_06]
+13.229.163.231 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_07]
+52.220.204.197 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_08]
+18.140.140.121 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+
+[M120-Back-services_09]
+3.1.207.113 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/aws-project/.keys/m120-ssh
+

@@ -1,0 +1,1820 @@
+
+2020-01-08 21:56:59,660 p=23677 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/aws-project/006.rds/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Aug  7 2019, 00:51:29) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
+2020-01-08 21:56:59,660 p=23677 u=root |  Using /home/centos/aws-project/006.rds/ansible.cfg as config file
+2020-01-08 21:56:59,668 p=23677 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2020-01-08 21:56:59,668 p=23677 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2020-01-08 21:56:59,668 p=23677 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2020-01-08 21:56:59,671 p=23677 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2020-01-08 21:56:59,673 p=23677 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2020-01-08 21:56:59,985 p=23677 u=root |  PLAYBOOK: rds-mysql.yml ************************************************************************************************************************************
+2020-01-08 21:56:59,985 p=23677 u=root |  1 plays in rds-mysql.yml
+2020-01-08 21:57:00,022 p=23677 u=root |  PLAY [Create AWS RDS Instance vHost] ***********************************************************************************************************************
+2020-01-08 21:57:00,039 p=23677 u=root |  TASK [Gathering Facts] *************************************************************************************************************************************
+2020-01-08 21:57:00,040 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/rds-mysql.yml:3
+2020-01-08 21:57:00,051 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:00,051 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:00,060 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106 `" && echo ansible-tmp-1578491820.05-147671970477106="` echo /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106 `" ) && sleep 0'
+2020-01-08 21:57:00,483 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2020-01-08 21:57:00,483 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpfnIHbK TO /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106/AnsiballZ_setup.py
+2020-01-08 21:57:00,484 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106/ /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106/AnsiballZ_setup.py && sleep 0'
+2020-01-08 21:57:00,493 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106/AnsiballZ_setup.py && sleep 0'
+2020-01-08 21:57:01,118 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491820.05-147671970477106/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 21:57:01,189 p=23677 u=root |  ok: [localhost]
+2020-01-08 21:57:01,190 p=23677 u=root |  META: ran handlers
+2020-01-08 21:57:01,230 p=23677 u=root |  TASK [rds.mysql-base : include_tasks] **********************************************************************************************************************
+2020-01-08 21:57:01,230 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/main.yml:2
+2020-01-08 21:57:01,412 p=23677 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml for localhost
+2020-01-08 21:57:01,453 p=23677 u=root |  TASK [rds.mysql-base : gather information about the rds subnets] *******************************************************************************************
+2020-01-08 21:57:01,453 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml:2
+2020-01-08 21:57:01,470 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:01,470 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:01,478 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455 `" && echo ansible-tmp-1578491821.47-258596030476455="` echo /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455 `" ) && sleep 0'
+2020-01-08 21:57:01,712 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet_facts.py
+2020-01-08 21:57:01,712 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpCD_FxJ TO /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455/AnsiballZ_ec2_vpc_subnet_facts.py
+2020-01-08 21:57:01,713 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455/ /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2020-01-08 21:57:01,722 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2020-01-08 21:57:02,433 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491821.47-258596030476455/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 21:57:02,449 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "tag:Environment": "M120", 
+                "tag:Use": "rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "subnet_ids": [], 
+            "validate_certs": true
+        }
+    }, 
+    "subnets": [
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "availability_zone_id": "apse1-az3", 
+            "available_ip_address_count": 248, 
+            "cidr_block": "10.120.31.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0046b05f2d4006487", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "838988372941", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:838988372941:subnet/subnet-0046b05f2d4006487", 
+            "subnet_id": "subnet-0046b05f2d4006487", 
+            "tags": {
+                "Environment": "M120", 
+                "Name": "M120_rds_ap-southeast-1c", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1a", 
+            "availability_zone_id": "apse1-az1", 
+            "available_ip_address_count": 248, 
+            "cidr_block": "10.120.32.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0f699b5cd13046bcb", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "838988372941", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:838988372941:subnet/subnet-0f699b5cd13046bcb", 
+            "subnet_id": "subnet-0f699b5cd13046bcb", 
+            "tags": {
+                "Environment": "M120", 
+                "Name": "M120_rds_ap-southeast-1a", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1b", 
+            "availability_zone_id": "apse1-az2", 
+            "available_ip_address_count": 240, 
+            "cidr_block": "10.120.30.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-06c1d074817811db3", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "838988372941", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:838988372941:subnet/subnet-06c1d074817811db3", 
+            "subnet_id": "subnet-06c1d074817811db3", 
+            "tags": {
+                "Environment": "M120", 
+                "Name": "M120_rds_ap-southeast-1b", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }
+    ]
+}
+2020-01-08 21:57:02,489 p=23677 u=root |  TASK [rds.mysql-base : register just the IDs for each of the subnets] **************************************************************************************
+2020-01-08 21:57:02,489 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml:10
+2020-01-08 21:57:02,508 p=23677 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_redis_ids": [
+            "subnet-06c1d074817811db3", 
+            "subnet-0046b05f2d4006487", 
+            "subnet-0f699b5cd13046bcb"
+        ]
+    }, 
+    "changed": false
+}
+2020-01-08 21:57:02,548 p=23677 u=root |  TASK [rds.mysql-base : Add or change a subnet group] *******************************************************************************************************
+2020-01-08 21:57:02,548 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml:14
+2020-01-08 21:57:02,571 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:02,571 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:02,580 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747 `" && echo ansible-tmp-1578491822.57-82166098552747="` echo /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747 `" ) && sleep 0'
+2020-01-08 21:57:02,803 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_subnet_group.py
+2020-01-08 21:57:02,803 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpkHolO6 TO /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747/AnsiballZ_rds_subnet_group.py
+2020-01-08 21:57:02,804 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747/ /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747/AnsiballZ_rds_subnet_group.py && sleep 0'
+2020-01-08 21:57:02,813 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747/AnsiballZ_rds_subnet_group.py && sleep 0'
+2020-01-08 21:57:03,321 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491822.57-82166098552747/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 21:57:03,333 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "description": "M120 Fancy Ex Parrot Subnet Group", 
+            "ec2_url": null, 
+            "name": "M120-mysql57", 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "state": "present", 
+            "subnets": [
+                "subnet-0046b05f2d4006487", 
+                "subnet-06c1d074817811db3", 
+                "subnet-0f699b5cd13046bcb"
+            ], 
+            "validate_certs": true
+        }
+    }, 
+    "subnet_group": {
+        "description": "M120 Fancy Ex Parrot Subnet Group", 
+        "name": "m120-mysql57", 
+        "status": "Complete", 
+        "subnet_ids": [
+            "subnet-0046b05f2d4006487", 
+            "subnet-06c1d074817811db3", 
+            "subnet-0f699b5cd13046bcb"
+        ], 
+        "vpc_id": "vpc-025e5ea3271f91941"
+    }
+}
+2020-01-08 21:57:03,375 p=23677 u=root |  TASK [rds.mysql-base : include_tasks] **********************************************************************************************************************
+2020-01-08 21:57:03,375 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/main.yml:3
+2020-01-08 21:57:03,427 p=23677 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-parameter-group.yml for localhost
+2020-01-08 21:57:03,471 p=23677 u=root |  TASK [rds.mysql-base : Create M120  parameter group] *******************************************************************************************************
+2020-01-08 21:57:03,471 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-parameter-group.yml:2
+2020-01-08 21:57:03,490 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:03,490 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:03,498 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131 `" && echo ansible-tmp-1578491823.49-55045530057131="` echo /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131 `" ) && sleep 0'
+2020-01-08 21:57:03,726 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_param_group.py
+2020-01-08 21:57:03,727 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpkH9WiZ TO /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131/AnsiballZ_rds_param_group.py
+2020-01-08 21:57:03,728 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131/ /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131/AnsiballZ_rds_param_group.py && sleep 0'
+2020-01-08 21:57:03,737 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131/AnsiballZ_rds_param_group.py && sleep 0'
+2020-01-08 21:57:04,569 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491823.49-55045530057131/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 21:57:04,583 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "db_parameter_group_arn": "arn:aws:rds:ap-southeast-1:838988372941:pg:m120-mysql57", 
+    "db_parameter_group_family": "mysql5.7", 
+    "db_parameter_group_name": "m120-mysql57", 
+    "description": "M120 This is a rds parameter group", 
+    "errors": [], 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "description": "M120 This is a rds parameter group", 
+            "ec2_url": null, 
+            "engine": "mysql5.7", 
+            "immediate": null, 
+            "name": "M120-mysql57", 
+            "params": {
+                "character_set_client": "utf8", 
+                "character_set_connection": "utf8", 
+                "character_set_database": "utf8", 
+                "character_set_server": "utf8"
+            }, 
+            "profile": null, 
+            "purge_tags": false, 
+            "region": null, 
+            "security_token": null, 
+            "state": "present", 
+            "tags": {
+                "Application": "M120-mysql57", 
+                "Environment": "mysql5.7"
+            }, 
+            "validate_certs": true
+        }
+    }, 
+    "tags": {
+        "Application": "M120-mysql57", 
+        "Environment": "mysql5.7"
+    }
+}
+2020-01-08 21:57:04,623 p=23677 u=root |  TASK [rds.mysql : include_tasks] ***************************************************************************************************************************
+2020-01-08 21:57:04,623 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:2
+2020-01-08 21:57:04,679 p=23677 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml for localhost
+2020-01-08 21:57:04,721 p=23677 u=root |  TASK [rds.mysql : Get RDS SG ID] ***************************************************************************************************************************
+2020-01-08 21:57:04,721 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml:2
+2020-01-08 21:57:04,738 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:04,739 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:04,747 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547 `" && echo ansible-tmp-1578491824.74-145167312781547="` echo /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547 `" ) && sleep 0'
+2020-01-08 21:57:04,982 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_group_facts.py
+2020-01-08 21:57:04,982 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpsR0D9s TO /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547/AnsiballZ_ec2_group_facts.py
+2020-01-08 21:57:04,983 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547/ /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547/AnsiballZ_ec2_group_facts.py && sleep 0'
+2020-01-08 21:57:04,992 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547/AnsiballZ_ec2_group_facts.py && sleep 0'
+2020-01-08 21:57:05,691 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491824.74-145167312781547/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 21:57:05,706 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "group-name": "M120-rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }, 
+    "security_groups": [
+        {
+            "description": "opens all ports to the world", 
+            "group_id": "sg-0da1934417cea5b02", 
+            "group_name": "M120-rds", 
+            "ip_permissions": [
+                {
+                    "from_port": 0, 
+                    "ip_protocol": "tcp", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "10.120.0.0/16", 
+                            "description": "private rds allow all on ports"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "to_port": 65535, 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "ip_permissions_egress": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "0.0.0.0/0"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "owner_id": "838988372941", 
+            "tags": {
+                "Environment": "M120-rds", 
+                "Name": "M120-rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }
+    ]
+}
+2020-01-08 21:57:05,746 p=23677 u=root |  TASK [rds.mysql : list of rds the security group id.] ******************************************************************************************************
+2020-01-08 21:57:05,746 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml:9
+2020-01-08 21:57:05,774 p=23677 u=root |  ok: [localhost] => (item={u'ip_permissions': [{u'from_port': 0, u'ip_protocol': u'tcp', u'ipv6_ranges': [], u'to_port': 65535, u'ip_ranges': [{u'description': u'private rds allow all on ports', u'cidr_ip': u'10.120.0.0/16'}], u'user_id_group_pairs': [], u'prefix_list_ids': []}], u'description': u'opens all ports to the world', u'tags': {u'Environment': u'M120-rds', u'Name': u'M120-rds'}, u'group_name': u'M120-rds', u'vpc_id': u'vpc-025e5ea3271f91941', u'group_id': u'sg-0da1934417cea5b02', u'ip_permissions_egress': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'cidr_ip': u'0.0.0.0/0'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'owner_id': u'838988372941'}) => {
+    "ansible_facts": {
+        "sg_rds_id": "sg-0da1934417cea5b02"
+    }, 
+    "ansible_loop_var": "item", 
+    "changed": false, 
+    "item": {
+        "description": "opens all ports to the world", 
+        "group_id": "sg-0da1934417cea5b02", 
+        "group_name": "M120-rds", 
+        "ip_permissions": [
+            {
+                "from_port": 0, 
+                "ip_protocol": "tcp", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "10.120.0.0/16", 
+                        "description": "private rds allow all on ports"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "to_port": 65535, 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "ip_permissions_egress": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "0.0.0.0/0"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "owner_id": "838988372941", 
+        "tags": {
+            "Environment": "M120-rds", 
+            "Name": "M120-rds"
+        }, 
+        "vpc_id": "vpc-025e5ea3271f91941"
+    }
+}
+2020-01-08 21:57:05,814 p=23677 u=root |  TASK [rds.mysql : include_tasks] ***************************************************************************************************************************
+2020-01-08 21:57:05,814 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:3
+2020-01-08 21:57:05,870 p=23677 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml for localhost
+2020-01-08 21:57:05,913 p=23677 u=root |  TASK [rds.mysql : Check MySQL DB instance] *****************************************************************************************************************
+2020-01-08 21:57:05,913 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:3
+2020-01-08 21:57:05,929 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:05,930 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:05,938 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876 `" && echo ansible-tmp-1578491825.93-269391866040876="` echo /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876 `" ) && sleep 0'
+2020-01-08 21:57:06,177 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_instance_facts.py
+2020-01-08 21:57:06,177 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpR6JWC5 TO /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876/AnsiballZ_rds_instance_facts.py
+2020-01-08 21:57:06,178 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876/ /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876/AnsiballZ_rds_instance_facts.py && sleep 0'
+2020-01-08 21:57:06,187 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876/AnsiballZ_rds_instance_facts.py && sleep 0'
+2020-01-08 21:57:06,740 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491825.93-269391866040876/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 21:57:06,752 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "instances": [], 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "db_instance_identifier": "m120-config-mysql57", 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": null, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }
+}
+2020-01-08 21:57:06,792 p=23677 u=root |  TASK [rds.mysql : Create AWS RDS instance] *****************************************************************************************************************
+2020-01-08 21:57:06,792 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:10
+2020-01-08 21:57:06,825 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 21:57:06,826 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 21:57:06,834 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358 `" && echo ansible-tmp-1578491826.83-4171113555358="` echo /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358 `" ) && sleep 0'
+2020-01-08 21:57:07,087 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds.py
+2020-01-08 21:57:07,088 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmp_6Vf6t TO /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358/AnsiballZ_rds.py
+2020-01-08 21:57:07,088 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358/ /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358/AnsiballZ_rds.py && sleep 0'
+2020-01-08 21:57:07,098 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358/AnsiballZ_rds.py && sleep 0'
+2020-01-08 22:05:53,641 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578491826.83-4171113555358/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 22:05:53,663 p=23677 u=root |   [WARNING]: The value 1 (type int) in a string field was converted to u'1' (type string). If this does not look like what you expect, quote the entire
+value to ensure it does not change.
+
+2020-01-08 22:05:53,663 p=23677 u=root |   [WARNING]: The value False (type bool) in a string field was converted to u'False' (type string). If this does not look like what you expect, quote the
+entire value to ensure it does not change.
+
+2020-01-08 22:05:53,665 p=23677 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "instance": {
+        "DBName": null, 
+        "allocated_storage": 120, 
+        "auto_minor_version_upgrade": false, 
+        "availability_zone": "ap-southeast-1c", 
+        "backup_retention": 1, 
+        "backup_window": "18:30-19:30", 
+        "character_set_name": null, 
+        "create_time": 1578492076.782, 
+        "db_name": null, 
+        "db_subnet_groups": {
+            "description": "M120 Fancy Ex Parrot Subnet Group", 
+            "name": "m120-mysql57", 
+            "status": "complete", 
+            "subnets": [
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1b", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-06c1d074817811db3", 
+                    "status": "active"
+                }, 
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1a", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-0f699b5cd13046bcb", 
+                    "status": "active"
+                }, 
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1c", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-0046b05f2d4006487", 
+                    "status": "active"
+                }
+            ], 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        "endpoint": "m120-config-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com", 
+        "engine": "mysql", 
+        "engine_version": "5.7.22", 
+        "id": "m120-config-mysql57", 
+        "instance_type": "db.t2.medium", 
+        "iops": 1200, 
+        "latest_restorable_time": 1578492155.026, 
+        "license_model": "general-public-license", 
+        "maintenance_window": "sun:19:30-sun:20:30", 
+        "multi_zone": false, 
+        "option_groups": [
+            {
+                "option_group_name": "default:mysql-5-7", 
+                "status": "in-sync"
+            }
+        ], 
+        "parameter_groups": [
+            {
+                "parameter_apply_status": "in-sync", 
+                "parameter_group_name": "m120-mysql57"
+            }
+        ], 
+        "pending_modified_values": {
+            "allocated_storage": null, 
+            "backup_retention_period": null, 
+            "db_instance_class": null, 
+            "db_instance_identifier": null, 
+            "engine_version": null, 
+            "iops": null, 
+            "master_user_password": null, 
+            "multi_az": null, 
+            "port": null
+        }, 
+        "port": 3306, 
+        "publicly_accessible": false, 
+        "read_replica_source_dbinstance_identifier": null, 
+        "replication_source": null, 
+        "secondary_availability_zone": null, 
+        "status": "available", 
+        "username": "dbAdmin", 
+        "vpc_security_groups": "sg-0da1934417cea5b02"
+    }, 
+    "invocation": {
+        "module_args": {
+            "apply_immediately": false, 
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "backup_retention": "1", 
+            "backup_window": "18:30-19:30", 
+            "character_set_name": null, 
+            "command": "create", 
+            "db_engine": "MySQL", 
+            "db_name": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "engine_version": "5.7.22", 
+            "force_failover": false, 
+            "instance_name": "m120-config-mysql57", 
+            "instance_type": "db.t2.medium", 
+            "iops": "1200", 
+            "license_model": "general-public-license", 
+            "maint_window": "SUN:19:30-SUN:20:30", 
+            "multi_zone": false, 
+            "new_instance_name": null, 
+            "option_group": null, 
+            "parameter_group": "M120-mysql57", 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": 3306, 
+            "profile": null, 
+            "publicly_accessible": "False", 
+            "region": "ap-southeast-1", 
+            "security_groups": null, 
+            "security_token": null, 
+            "size": "120", 
+            "snapshot": null, 
+            "source_instance": null, 
+            "subnet": "M120-mysql57", 
+            "tags": {
+                "Application": "m120-config-mysql57", 
+                "Environment": "m120-config-mysql57"
+            }, 
+            "upgrade": false, 
+            "username": "dbAdmin", 
+            "validate_certs": true, 
+            "vpc_security_groups": [
+                "sg-0da1934417cea5b02"
+            ], 
+            "wait": true, 
+            "wait_timeout": 1800, 
+            "zone": null
+        }
+    }
+}
+2020-01-08 22:05:53,704 p=23677 u=root |  TASK [rds.mysql : debug] ***********************************************************************************************************************************
+2020-01-08 22:05:53,704 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:39
+2020-01-08 22:05:53,727 p=23677 u=root |  ok: [localhost] => {
+    "rds_result": {
+        "changed": true, 
+        "failed": false, 
+        "instance": {
+            "DBName": null, 
+            "allocated_storage": 120, 
+            "auto_minor_version_upgrade": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "backup_retention": 1, 
+            "backup_window": "18:30-19:30", 
+            "character_set_name": null, 
+            "create_time": 1578492076.782, 
+            "db_name": null, 
+            "db_subnet_groups": {
+                "description": "M120 Fancy Ex Parrot Subnet Group", 
+                "name": "m120-mysql57", 
+                "status": "complete", 
+                "subnets": [
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1b", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-06c1d074817811db3", 
+                        "status": "active"
+                    }, 
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1a", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-0f699b5cd13046bcb", 
+                        "status": "active"
+                    }, 
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1c", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-0046b05f2d4006487", 
+                        "status": "active"
+                    }
+                ], 
+                "vpc_id": "vpc-025e5ea3271f91941"
+            }, 
+            "endpoint": "m120-config-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com", 
+            "engine": "mysql", 
+            "engine_version": "5.7.22", 
+            "id": "m120-config-mysql57", 
+            "instance_type": "db.t2.medium", 
+            "iops": 1200, 
+            "latest_restorable_time": 1578492155.026, 
+            "license_model": "general-public-license", 
+            "maintenance_window": "sun:19:30-sun:20:30", 
+            "multi_zone": false, 
+            "option_groups": [
+                {
+                    "option_group_name": "default:mysql-5-7", 
+                    "status": "in-sync"
+                }
+            ], 
+            "parameter_groups": [
+                {
+                    "parameter_apply_status": "in-sync", 
+                    "parameter_group_name": "m120-mysql57"
+                }
+            ], 
+            "pending_modified_values": {
+                "allocated_storage": null, 
+                "backup_retention_period": null, 
+                "db_instance_class": null, 
+                "db_instance_identifier": null, 
+                "engine_version": null, 
+                "iops": null, 
+                "master_user_password": null, 
+                "multi_az": null, 
+                "port": null
+            }, 
+            "port": 3306, 
+            "publicly_accessible": false, 
+            "read_replica_source_dbinstance_identifier": null, 
+            "replication_source": null, 
+            "secondary_availability_zone": null, 
+            "status": "available", 
+            "username": "dbAdmin", 
+            "vpc_security_groups": "sg-0da1934417cea5b02"
+        }, 
+        "warnings": [
+            "The value 1 (type int) in a string field was converted to u'1' (type string). If this does not look like what you expect, quote the entire value to ensure it does not change.", 
+            "The value False (type bool) in a string field was converted to u'False' (type string). If this does not look like what you expect, quote the entire value to ensure it does not change."
+        ]
+    }
+}
+2020-01-08 22:05:53,767 p=23677 u=root |  TASK [rds.mysql : include_tasks] ***************************************************************************************************************************
+2020-01-08 22:05:53,767 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:2
+2020-01-08 22:05:53,819 p=23677 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml for localhost
+2020-01-08 22:05:53,861 p=23677 u=root |  TASK [rds.mysql : Get RDS SG ID] ***************************************************************************************************************************
+2020-01-08 22:05:53,862 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml:2
+2020-01-08 22:05:53,880 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 22:05:53,880 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 22:05:53,889 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714 `" && echo ansible-tmp-1578492353.88-146770487932714="` echo /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714 `" ) && sleep 0'
+2020-01-08 22:05:53,900 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_group_facts.py
+2020-01-08 22:05:53,901 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpTZGfA_ TO /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714/AnsiballZ_ec2_group_facts.py
+2020-01-08 22:05:53,902 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714/ /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714/AnsiballZ_ec2_group_facts.py && sleep 0'
+2020-01-08 22:05:53,910 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714/AnsiballZ_ec2_group_facts.py && sleep 0'
+2020-01-08 22:05:54,617 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578492353.88-146770487932714/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 22:05:54,632 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "group-name": "M120-rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }, 
+    "security_groups": [
+        {
+            "description": "opens all ports to the world", 
+            "group_id": "sg-0da1934417cea5b02", 
+            "group_name": "M120-rds", 
+            "ip_permissions": [
+                {
+                    "from_port": 0, 
+                    "ip_protocol": "tcp", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "10.120.0.0/16", 
+                            "description": "private rds allow all on ports"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "to_port": 65535, 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "ip_permissions_egress": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "0.0.0.0/0"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "owner_id": "838988372941", 
+            "tags": {
+                "Environment": "M120-rds", 
+                "Name": "M120-rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }
+    ]
+}
+2020-01-08 22:05:54,672 p=23677 u=root |  TASK [rds.mysql : list of rds the security group id.] ******************************************************************************************************
+2020-01-08 22:05:54,672 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml:9
+2020-01-08 22:05:54,700 p=23677 u=root |  ok: [localhost] => (item={u'ip_permissions': [{u'from_port': 0, u'ip_protocol': u'tcp', u'ipv6_ranges': [], u'to_port': 65535, u'ip_ranges': [{u'description': u'private rds allow all on ports', u'cidr_ip': u'10.120.0.0/16'}], u'user_id_group_pairs': [], u'prefix_list_ids': []}], u'description': u'opens all ports to the world', u'tags': {u'Environment': u'M120-rds', u'Name': u'M120-rds'}, u'group_name': u'M120-rds', u'vpc_id': u'vpc-025e5ea3271f91941', u'group_id': u'sg-0da1934417cea5b02', u'ip_permissions_egress': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'cidr_ip': u'0.0.0.0/0'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'owner_id': u'838988372941'}) => {
+    "ansible_facts": {
+        "sg_rds_id": "sg-0da1934417cea5b02"
+    }, 
+    "ansible_loop_var": "item", 
+    "changed": false, 
+    "item": {
+        "description": "opens all ports to the world", 
+        "group_id": "sg-0da1934417cea5b02", 
+        "group_name": "M120-rds", 
+        "ip_permissions": [
+            {
+                "from_port": 0, 
+                "ip_protocol": "tcp", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "10.120.0.0/16", 
+                        "description": "private rds allow all on ports"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "to_port": 65535, 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "ip_permissions_egress": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "0.0.0.0/0"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "owner_id": "838988372941", 
+        "tags": {
+            "Environment": "M120-rds", 
+            "Name": "M120-rds"
+        }, 
+        "vpc_id": "vpc-025e5ea3271f91941"
+    }
+}
+2020-01-08 22:05:54,742 p=23677 u=root |  TASK [rds.mysql : include_tasks] ***************************************************************************************************************************
+2020-01-08 22:05:54,742 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:3
+2020-01-08 22:05:54,796 p=23677 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml for localhost
+2020-01-08 22:05:54,839 p=23677 u=root |  TASK [rds.mysql : Check MySQL DB instance] *****************************************************************************************************************
+2020-01-08 22:05:54,839 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:3
+2020-01-08 22:05:54,857 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 22:05:54,857 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 22:05:54,866 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990 `" && echo ansible-tmp-1578492354.86-31641319116990="` echo /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990 `" ) && sleep 0'
+2020-01-08 22:05:54,878 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_instance_facts.py
+2020-01-08 22:05:54,878 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpxPHmx4 TO /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990/AnsiballZ_rds_instance_facts.py
+2020-01-08 22:05:54,879 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990/ /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990/AnsiballZ_rds_instance_facts.py && sleep 0'
+2020-01-08 22:05:54,888 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990/AnsiballZ_rds_instance_facts.py && sleep 0'
+2020-01-08 22:05:55,433 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578492354.86-31641319116990/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 22:05:55,446 p=23677 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "instances": [], 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "db_instance_identifier": "m120-base-mysql57", 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": null, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }
+}
+2020-01-08 22:05:55,485 p=23677 u=root |  TASK [rds.mysql : Create AWS RDS instance] *****************************************************************************************************************
+2020-01-08 22:05:55,486 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:10
+2020-01-08 22:05:55,515 p=23677 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-08 22:05:55,515 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-08 22:05:55,524 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432 `" && echo ansible-tmp-1578492355.51-134992582572432="` echo /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432 `" ) && sleep 0'
+2020-01-08 22:05:55,536 p=23677 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds.py
+2020-01-08 22:05:55,537 p=23677 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-23677V5Fyk7/tmpS5_N3h TO /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432/AnsiballZ_rds.py
+2020-01-08 22:05:55,537 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432/ /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432/AnsiballZ_rds.py && sleep 0'
+2020-01-08 22:05:55,546 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432/AnsiballZ_rds.py && sleep 0'
+2020-01-08 22:14:16,712 p=23677 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578492355.51-134992582572432/ > /dev/null 2>&1 && sleep 0'
+2020-01-08 22:14:16,732 p=23677 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "instance": {
+        "DBName": null, 
+        "allocated_storage": 120, 
+        "auto_minor_version_upgrade": false, 
+        "availability_zone": "ap-southeast-1a", 
+        "backup_retention": 1, 
+        "backup_window": "18:30-19:30", 
+        "character_set_name": null, 
+        "create_time": 1578492639.049, 
+        "db_name": null, 
+        "db_subnet_groups": {
+            "description": "M120 Fancy Ex Parrot Subnet Group", 
+            "name": "m120-mysql57", 
+            "status": "complete", 
+            "subnets": [
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1b", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-06c1d074817811db3", 
+                    "status": "active"
+                }, 
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1a", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-0f699b5cd13046bcb", 
+                    "status": "active"
+                }, 
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1c", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-0046b05f2d4006487", 
+                    "status": "active"
+                }
+            ], 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        "endpoint": "m120-base-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com", 
+        "engine": "mysql", 
+        "engine_version": "5.7.22", 
+        "id": "m120-base-mysql57", 
+        "instance_type": "db.m5.large", 
+        "iops": 1200, 
+        "latest_restorable_time": 1578492723.135, 
+        "license_model": "general-public-license", 
+        "maintenance_window": "sun:19:30-sun:20:30", 
+        "multi_zone": false, 
+        "option_groups": [
+            {
+                "option_group_name": "default:mysql-5-7", 
+                "status": "in-sync"
+            }
+        ], 
+        "parameter_groups": [
+            {
+                "parameter_apply_status": "in-sync", 
+                "parameter_group_name": "m120-mysql57"
+            }
+        ], 
+        "pending_modified_values": {
+            "allocated_storage": null, 
+            "backup_retention_period": null, 
+            "db_instance_class": null, 
+            "db_instance_identifier": null, 
+            "engine_version": null, 
+            "iops": null, 
+            "master_user_password": null, 
+            "multi_az": null, 
+            "port": null
+        }, 
+        "port": 3306, 
+        "publicly_accessible": false, 
+        "read_replica_source_dbinstance_identifier": null, 
+        "replication_source": null, 
+        "secondary_availability_zone": null, 
+        "status": "available", 
+        "username": "dbAdmin", 
+        "vpc_security_groups": "sg-0da1934417cea5b02"
+    }, 
+    "invocation": {
+        "module_args": {
+            "apply_immediately": false, 
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "backup_retention": "1", 
+            "backup_window": "18:30-19:30", 
+            "character_set_name": null, 
+            "command": "create", 
+            "db_engine": "MySQL", 
+            "db_name": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "engine_version": "5.7.22", 
+            "force_failover": false, 
+            "instance_name": "m120-base-mysql57", 
+            "instance_type": "db.m5.large", 
+            "iops": "1200", 
+            "license_model": "general-public-license", 
+            "maint_window": "SUN:19:30-SUN:20:30", 
+            "multi_zone": false, 
+            "new_instance_name": null, 
+            "option_group": null, 
+            "parameter_group": "M120-mysql57", 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": 3306, 
+            "profile": null, 
+            "publicly_accessible": "False", 
+            "region": "ap-southeast-1", 
+            "security_groups": null, 
+            "security_token": null, 
+            "size": "120", 
+            "snapshot": null, 
+            "source_instance": null, 
+            "subnet": "M120-mysql57", 
+            "tags": {
+                "Application": "m120-base-mysql57", 
+                "Environment": "m120-base-mysql57"
+            }, 
+            "upgrade": false, 
+            "username": "dbAdmin", 
+            "validate_certs": true, 
+            "vpc_security_groups": [
+                "sg-0da1934417cea5b02"
+            ], 
+            "wait": true, 
+            "wait_timeout": 1800, 
+            "zone": null
+        }
+    }
+}
+2020-01-08 22:14:16,772 p=23677 u=root |  TASK [rds.mysql : debug] ***********************************************************************************************************************************
+2020-01-08 22:14:16,772 p=23677 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:39
+2020-01-08 22:14:16,794 p=23677 u=root |  ok: [localhost] => {
+    "rds_result": {
+        "changed": true, 
+        "failed": false, 
+        "instance": {
+            "DBName": null, 
+            "allocated_storage": 120, 
+            "auto_minor_version_upgrade": false, 
+            "availability_zone": "ap-southeast-1a", 
+            "backup_retention": 1, 
+            "backup_window": "18:30-19:30", 
+            "character_set_name": null, 
+            "create_time": 1578492639.049, 
+            "db_name": null, 
+            "db_subnet_groups": {
+                "description": "M120 Fancy Ex Parrot Subnet Group", 
+                "name": "m120-mysql57", 
+                "status": "complete", 
+                "subnets": [
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1b", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-06c1d074817811db3", 
+                        "status": "active"
+                    }, 
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1a", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-0f699b5cd13046bcb", 
+                        "status": "active"
+                    }, 
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1c", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-0046b05f2d4006487", 
+                        "status": "active"
+                    }
+                ], 
+                "vpc_id": "vpc-025e5ea3271f91941"
+            }, 
+            "endpoint": "m120-base-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com", 
+            "engine": "mysql", 
+            "engine_version": "5.7.22", 
+            "id": "m120-base-mysql57", 
+            "instance_type": "db.m5.large", 
+            "iops": 1200, 
+            "latest_restorable_time": 1578492723.135, 
+            "license_model": "general-public-license", 
+            "maintenance_window": "sun:19:30-sun:20:30", 
+            "multi_zone": false, 
+            "option_groups": [
+                {
+                    "option_group_name": "default:mysql-5-7", 
+                    "status": "in-sync"
+                }
+            ], 
+            "parameter_groups": [
+                {
+                    "parameter_apply_status": "in-sync", 
+                    "parameter_group_name": "m120-mysql57"
+                }
+            ], 
+            "pending_modified_values": {
+                "allocated_storage": null, 
+                "backup_retention_period": null, 
+                "db_instance_class": null, 
+                "db_instance_identifier": null, 
+                "engine_version": null, 
+                "iops": null, 
+                "master_user_password": null, 
+                "multi_az": null, 
+                "port": null
+            }, 
+            "port": 3306, 
+            "publicly_accessible": false, 
+            "read_replica_source_dbinstance_identifier": null, 
+            "replication_source": null, 
+            "secondary_availability_zone": null, 
+            "status": "available", 
+            "username": "dbAdmin", 
+            "vpc_security_groups": "sg-0da1934417cea5b02"
+        }, 
+        "warnings": [
+            "The value 1 (type int) in a string field was converted to u'1' (type string). If this does not look like what you expect, quote the entire value to ensure it does not change.", 
+            "The value False (type bool) in a string field was converted to u'False' (type string). If this does not look like what you expect, quote the entire value to ensure it does not change."
+        ]
+    }
+}
+2020-01-08 22:14:16,795 p=23677 u=root |  META: ran handlers
+2020-01-08 22:14:16,796 p=23677 u=root |  META: ran handlers
+2020-01-08 22:14:16,797 p=23677 u=root |  PLAY RECAP *************************************************************************************************************************************************
+2020-01-08 22:14:16,797 p=23677 u=root |  localhost                  : ok=21   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2020-01-11 14:50:02,189 p=18869 u=root |  ansible-playbook 2.8.4
+  config file = /home/centos/aws-project/006.rds/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Aug  7 2019, 00:51:29) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
+2020-01-11 14:50:02,190 p=18869 u=root |  Using /home/centos/aws-project/006.rds/ansible.cfg as config file
+2020-01-11 14:50:02,198 p=18869 u=root |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2020-01-11 14:50:02,198 p=18869 u=root |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2020-01-11 14:50:02,198 p=18869 u=root |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2020-01-11 14:50:02,201 p=18869 u=root |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2020-01-11 14:50:02,203 p=18869 u=root |   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2020-01-11 14:50:02,522 p=18869 u=root |  PLAYBOOK: rds-mysql.yml ***********************************************************************************************************************************
+2020-01-11 14:50:02,523 p=18869 u=root |  1 plays in rds-mysql.yml
+2020-01-11 14:50:02,552 p=18869 u=root |  PLAY [Create AWS RDS Instance vHost] **********************************************************************************************************************
+2020-01-11 14:50:02,569 p=18869 u=root |  TASK [Gathering Facts] ************************************************************************************************************************************
+2020-01-11 14:50:02,570 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/rds-mysql.yml:3
+2020-01-11 14:50:02,580 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:02,580 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:02,589 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091 `" && echo ansible-tmp-1578725402.58-15252058388091="` echo /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091 `" ) && sleep 0'
+2020-01-11 14:50:03,017 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2020-01-11 14:50:03,018 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmpvdUxVo TO /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091/AnsiballZ_setup.py
+2020-01-11 14:50:03,019 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091/ /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091/AnsiballZ_setup.py && sleep 0'
+2020-01-11 14:50:03,028 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091/AnsiballZ_setup.py && sleep 0'
+2020-01-11 14:50:03,581 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725402.58-15252058388091/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:50:03,651 p=18869 u=root |  ok: [localhost]
+2020-01-11 14:50:03,652 p=18869 u=root |  META: ran handlers
+2020-01-11 14:50:03,692 p=18869 u=root |  TASK [rds.mysql-base : include_tasks] *********************************************************************************************************************
+2020-01-11 14:50:03,692 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/main.yml:2
+2020-01-11 14:50:03,869 p=18869 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml for localhost
+2020-01-11 14:50:03,910 p=18869 u=root |  TASK [rds.mysql-base : gather information about the rds subnets] ******************************************************************************************
+2020-01-11 14:50:03,910 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml:2
+2020-01-11 14:50:03,927 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:03,927 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:03,936 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519 `" && echo ansible-tmp-1578725403.93-41558153450519="` echo /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519 `" ) && sleep 0'
+2020-01-11 14:50:04,179 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_vpc_subnet_facts.py
+2020-01-11 14:50:04,179 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmpXn0kfr TO /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519/AnsiballZ_ec2_vpc_subnet_facts.py
+2020-01-11 14:50:04,180 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519/ /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2020-01-11 14:50:04,190 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519/AnsiballZ_ec2_vpc_subnet_facts.py && sleep 0'
+2020-01-11 14:50:04,932 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725403.93-41558153450519/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:50:04,949 p=18869 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "tag:Environment": "M120", 
+                "tag:Use": "rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "subnet_ids": [], 
+            "validate_certs": true
+        }
+    }, 
+    "subnets": [
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "availability_zone_id": "apse1-az3", 
+            "available_ip_address_count": 249, 
+            "cidr_block": "10.120.31.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0046b05f2d4006487", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "838988372941", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:838988372941:subnet/subnet-0046b05f2d4006487", 
+            "subnet_id": "subnet-0046b05f2d4006487", 
+            "tags": {
+                "Environment": "M120", 
+                "Name": "M120_rds_ap-southeast-1c", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1a", 
+            "availability_zone_id": "apse1-az1", 
+            "available_ip_address_count": 248, 
+            "cidr_block": "10.120.32.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-0f699b5cd13046bcb", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "838988372941", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:838988372941:subnet/subnet-0f699b5cd13046bcb", 
+            "subnet_id": "subnet-0f699b5cd13046bcb", 
+            "tags": {
+                "Environment": "M120", 
+                "Name": "M120_rds_ap-southeast-1a", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        {
+            "assign_ipv6_address_on_creation": false, 
+            "availability_zone": "ap-southeast-1b", 
+            "availability_zone_id": "apse1-az2", 
+            "available_ip_address_count": 241, 
+            "cidr_block": "10.120.30.0/24", 
+            "default_for_az": false, 
+            "id": "subnet-06c1d074817811db3", 
+            "ipv6_cidr_block_association_set": [], 
+            "map_public_ip_on_launch": false, 
+            "owner_id": "838988372941", 
+            "state": "available", 
+            "subnet_arn": "arn:aws:ec2:ap-southeast-1:838988372941:subnet/subnet-06c1d074817811db3", 
+            "subnet_id": "subnet-06c1d074817811db3", 
+            "tags": {
+                "Environment": "M120", 
+                "Name": "M120_rds_ap-southeast-1b", 
+                "Use": "rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }
+    ]
+}
+2020-01-11 14:50:04,989 p=18869 u=root |  TASK [rds.mysql-base : register just the IDs for each of the subnets] *************************************************************************************
+2020-01-11 14:50:04,989 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml:10
+2020-01-11 14:50:05,008 p=18869 u=root |  ok: [localhost] => {
+    "ansible_facts": {
+        "subnet_redis_ids": [
+            "subnet-06c1d074817811db3", 
+            "subnet-0046b05f2d4006487", 
+            "subnet-0f699b5cd13046bcb"
+        ]
+    }, 
+    "changed": false
+}
+2020-01-11 14:50:05,048 p=18869 u=root |  TASK [rds.mysql-base : Add or change a subnet group] ******************************************************************************************************
+2020-01-11 14:50:05,049 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-subnet-group.yml:14
+2020-01-11 14:50:05,069 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:05,070 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:05,078 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133 `" && echo ansible-tmp-1578725405.07-74029758593133="` echo /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133 `" ) && sleep 0'
+2020-01-11 14:50:05,315 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_subnet_group.py
+2020-01-11 14:50:05,315 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmppj5fp9 TO /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133/AnsiballZ_rds_subnet_group.py
+2020-01-11 14:50:05,316 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133/ /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133/AnsiballZ_rds_subnet_group.py && sleep 0'
+2020-01-11 14:50:05,325 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133/AnsiballZ_rds_subnet_group.py && sleep 0'
+2020-01-11 14:50:05,719 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725405.07-74029758593133/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:50:05,732 p=18869 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "description": "M120 Fancy Ex Parrot Subnet Group", 
+            "ec2_url": null, 
+            "name": "M120-mysql57", 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "state": "present", 
+            "subnets": [
+                "subnet-0046b05f2d4006487", 
+                "subnet-06c1d074817811db3", 
+                "subnet-0f699b5cd13046bcb"
+            ], 
+            "validate_certs": true
+        }
+    }, 
+    "subnet_group": {
+        "description": "M120 Fancy Ex Parrot Subnet Group", 
+        "name": "m120-mysql57", 
+        "status": "Complete", 
+        "subnet_ids": [
+            "subnet-0046b05f2d4006487", 
+            "subnet-06c1d074817811db3", 
+            "subnet-0f699b5cd13046bcb"
+        ], 
+        "vpc_id": "vpc-025e5ea3271f91941"
+    }
+}
+2020-01-11 14:50:05,771 p=18869 u=root |  TASK [rds.mysql-base : include_tasks] *********************************************************************************************************************
+2020-01-11 14:50:05,771 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/main.yml:3
+2020-01-11 14:50:05,823 p=18869 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-parameter-group.yml for localhost
+2020-01-11 14:50:05,870 p=18869 u=root |  TASK [rds.mysql-base : Create M120  parameter group] ******************************************************************************************************
+2020-01-11 14:50:05,870 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql-base/tasks/rds-parameter-group.yml:2
+2020-01-11 14:50:05,888 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:05,888 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:05,897 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842 `" && echo ansible-tmp-1578725405.89-71173969308842="` echo /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842 `" ) && sleep 0'
+2020-01-11 14:50:06,136 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_param_group.py
+2020-01-11 14:50:06,136 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmpLDCm1L TO /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842/AnsiballZ_rds_param_group.py
+2020-01-11 14:50:06,137 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842/ /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842/AnsiballZ_rds_param_group.py && sleep 0'
+2020-01-11 14:50:06,146 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842/AnsiballZ_rds_param_group.py && sleep 0'
+2020-01-11 14:50:06,962 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725405.89-71173969308842/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:50:06,975 p=18869 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "db_parameter_group_arn": "arn:aws:rds:ap-southeast-1:838988372941:pg:m120-mysql57", 
+    "db_parameter_group_family": "mysql5.7", 
+    "db_parameter_group_name": "m120-mysql57", 
+    "description": "M120 This is a rds parameter group", 
+    "errors": [], 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "description": "M120 This is a rds parameter group", 
+            "ec2_url": null, 
+            "engine": "mysql5.7", 
+            "immediate": null, 
+            "name": "M120-mysql57", 
+            "params": {
+                "character_set_client": "utf8", 
+                "character_set_connection": "utf8", 
+                "character_set_database": "utf8", 
+                "character_set_server": "utf8"
+            }, 
+            "profile": null, 
+            "purge_tags": false, 
+            "region": null, 
+            "security_token": null, 
+            "state": "present", 
+            "tags": {
+                "Application": "M120-mysql57", 
+                "Environment": "mysql5.7"
+            }, 
+            "validate_certs": true
+        }
+    }, 
+    "tags": {
+        "Application": "M120-mysql57", 
+        "Environment": "mysql5.7"
+    }
+}
+2020-01-11 14:50:07,015 p=18869 u=root |  TASK [rds.mysql : include_tasks] **************************************************************************************************************************
+2020-01-11 14:50:07,015 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:2
+2020-01-11 14:50:07,071 p=18869 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml for localhost
+2020-01-11 14:50:07,112 p=18869 u=root |  TASK [rds.mysql : Get RDS SG ID] **************************************************************************************************************************
+2020-01-11 14:50:07,112 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml:2
+2020-01-11 14:50:07,130 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:07,131 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:07,140 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772 `" && echo ansible-tmp-1578725407.13-56942927092772="` echo /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772 `" ) && sleep 0'
+2020-01-11 14:50:07,374 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/ec2_group_facts.py
+2020-01-11 14:50:07,375 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmpw2NaaL TO /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772/AnsiballZ_ec2_group_facts.py
+2020-01-11 14:50:07,375 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772/ /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772/AnsiballZ_ec2_group_facts.py && sleep 0'
+2020-01-11 14:50:07,385 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772/AnsiballZ_ec2_group_facts.py && sleep 0'
+2020-01-11 14:50:08,108 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725407.13-56942927092772/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:50:08,123 p=18869 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": {
+                "group-name": "M120-rds"
+            }, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }, 
+    "security_groups": [
+        {
+            "description": "opens all ports to the world", 
+            "group_id": "sg-0da1934417cea5b02", 
+            "group_name": "M120-rds", 
+            "ip_permissions": [
+                {
+                    "from_port": 0, 
+                    "ip_protocol": "tcp", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "10.120.0.0/16", 
+                            "description": "private rds allow all on ports"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "to_port": 65535, 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "ip_permissions_egress": [
+                {
+                    "ip_protocol": "-1", 
+                    "ip_ranges": [
+                        {
+                            "cidr_ip": "0.0.0.0/0"
+                        }
+                    ], 
+                    "ipv6_ranges": [], 
+                    "prefix_list_ids": [], 
+                    "user_id_group_pairs": []
+                }
+            ], 
+            "owner_id": "838988372941", 
+            "tags": {
+                "Environment": "M120-rds", 
+                "Name": "M120-rds"
+            }, 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }
+    ]
+}
+2020-01-11 14:50:08,163 p=18869 u=root |  TASK [rds.mysql : list of rds the security group id.] *****************************************************************************************************
+2020-01-11 14:50:08,163 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds-security-group-fact.yml:9
+2020-01-11 14:50:08,192 p=18869 u=root |  ok: [localhost] => (item={u'ip_permissions': [{u'from_port': 0, u'ip_protocol': u'tcp', u'ipv6_ranges': [], u'to_port': 65535, u'ip_ranges': [{u'description': u'private rds allow all on ports', u'cidr_ip': u'10.120.0.0/16'}], u'user_id_group_pairs': [], u'prefix_list_ids': []}], u'description': u'opens all ports to the world', u'tags': {u'Environment': u'M120-rds', u'Name': u'M120-rds'}, u'group_name': u'M120-rds', u'vpc_id': u'vpc-025e5ea3271f91941', u'group_id': u'sg-0da1934417cea5b02', u'ip_permissions_egress': [{u'user_id_group_pairs': [], u'ipv6_ranges': [], u'ip_ranges': [{u'cidr_ip': u'0.0.0.0/0'}], u'ip_protocol': u'-1', u'prefix_list_ids': []}], u'owner_id': u'838988372941'}) => {
+    "ansible_facts": {
+        "sg_rds_id": "sg-0da1934417cea5b02"
+    }, 
+    "ansible_loop_var": "item", 
+    "changed": false, 
+    "item": {
+        "description": "opens all ports to the world", 
+        "group_id": "sg-0da1934417cea5b02", 
+        "group_name": "M120-rds", 
+        "ip_permissions": [
+            {
+                "from_port": 0, 
+                "ip_protocol": "tcp", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "10.120.0.0/16", 
+                        "description": "private rds allow all on ports"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "to_port": 65535, 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "ip_permissions_egress": [
+            {
+                "ip_protocol": "-1", 
+                "ip_ranges": [
+                    {
+                        "cidr_ip": "0.0.0.0/0"
+                    }
+                ], 
+                "ipv6_ranges": [], 
+                "prefix_list_ids": [], 
+                "user_id_group_pairs": []
+            }
+        ], 
+        "owner_id": "838988372941", 
+        "tags": {
+            "Environment": "M120-rds", 
+            "Name": "M120-rds"
+        }, 
+        "vpc_id": "vpc-025e5ea3271f91941"
+    }
+}
+2020-01-11 14:50:08,231 p=18869 u=root |  TASK [rds.mysql : include_tasks] **************************************************************************************************************************
+2020-01-11 14:50:08,232 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:3
+2020-01-11 14:50:08,287 p=18869 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml for localhost
+2020-01-11 14:50:08,329 p=18869 u=root |  TASK [rds.mysql : Check MySQL DB instance] ****************************************************************************************************************
+2020-01-11 14:50:08,329 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:3
+2020-01-11 14:50:08,346 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:08,346 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:08,355 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086 `" && echo ansible-tmp-1578725408.35-273620473060086="` echo /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086 `" ) && sleep 0'
+2020-01-11 14:50:08,591 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds_instance_facts.py
+2020-01-11 14:50:08,592 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmp7dfIxL TO /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086/AnsiballZ_rds_instance_facts.py
+2020-01-11 14:50:08,592 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086/ /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086/AnsiballZ_rds_instance_facts.py && sleep 0'
+2020-01-11 14:50:08,602 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086/AnsiballZ_rds_instance_facts.py && sleep 0'
+2020-01-11 14:50:09,146 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725408.35-273620473060086/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:50:09,158 p=18869 u=root |  ok: [localhost] => {
+    "changed": false, 
+    "instances": [], 
+    "invocation": {
+        "module_args": {
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "db_instance_identifier": "m120-test-mysql57", 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "filters": null, 
+            "profile": null, 
+            "region": "ap-southeast-1", 
+            "security_token": null, 
+            "validate_certs": true
+        }
+    }
+}
+2020-01-11 14:50:09,198 p=18869 u=root |  TASK [rds.mysql : Create AWS RDS instance] ****************************************************************************************************************
+2020-01-11 14:50:09,198 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:10
+2020-01-11 14:50:09,227 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:50:09,227 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:50:09,236 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736 `" && echo ansible-tmp-1578725409.23-208114173765736="` echo /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736 `" ) && sleep 0'
+2020-01-11 14:50:09,489 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/amazon/rds.py
+2020-01-11 14:50:09,490 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmp4Sj8PQ TO /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736/AnsiballZ_rds.py
+2020-01-11 14:50:09,491 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736/ /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736/AnsiballZ_rds.py && sleep 0'
+2020-01-11 14:50:09,500 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736/AnsiballZ_rds.py && sleep 0'
+2020-01-11 14:58:55,179 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725409.23-208114173765736/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:58:55,197 p=18869 u=root |   [WARNING]: The value 1 (type int) in a string field was converted to u'1' (type string). If this does not look like what you expect, quote the entire
+value to ensure it does not change.
+
+2020-01-11 14:58:55,198 p=18869 u=root |   [WARNING]: The value False (type bool) in a string field was converted to u'False' (type string). If this does not look like what you expect, quote the
+entire value to ensure it does not change.
+
+2020-01-11 14:58:55,199 p=18869 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "instance": {
+        "DBName": null, 
+        "allocated_storage": 120, 
+        "auto_minor_version_upgrade": false, 
+        "availability_zone": "ap-southeast-1c", 
+        "backup_retention": 1, 
+        "backup_window": "18:30-19:30", 
+        "character_set_name": null, 
+        "create_time": 1578725655.226, 
+        "db_name": null, 
+        "db_subnet_groups": {
+            "description": "M120 Fancy Ex Parrot Subnet Group", 
+            "name": "m120-mysql57", 
+            "status": "complete", 
+            "subnets": [
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1b", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-06c1d074817811db3", 
+                    "status": "active"
+                }, 
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1a", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-0f699b5cd13046bcb", 
+                    "status": "active"
+                }, 
+                {
+                    "availability_zone": {
+                        "name": "ap-southeast-1c", 
+                        "provisioned_iops_capable": false
+                    }, 
+                    "identifier": "subnet-0046b05f2d4006487", 
+                    "status": "active"
+                }
+            ], 
+            "vpc_id": "vpc-025e5ea3271f91941"
+        }, 
+        "endpoint": "m120-test-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com", 
+        "engine": "mysql", 
+        "engine_version": "5.7.22", 
+        "id": "m120-test-mysql57", 
+        "instance_type": "db.t2.medium", 
+        "iops": 1200, 
+        "latest_restorable_time": 1578725735.573, 
+        "license_model": "general-public-license", 
+        "maintenance_window": "sun:19:30-sun:20:30", 
+        "multi_zone": false, 
+        "option_groups": [
+            {
+                "option_group_name": "default:mysql-5-7", 
+                "status": "in-sync"
+            }
+        ], 
+        "parameter_groups": [
+            {
+                "parameter_apply_status": "in-sync", 
+                "parameter_group_name": "m120-mysql57"
+            }
+        ], 
+        "pending_modified_values": {
+            "allocated_storage": null, 
+            "backup_retention_period": null, 
+            "db_instance_class": null, 
+            "db_instance_identifier": null, 
+            "engine_version": null, 
+            "iops": null, 
+            "master_user_password": null, 
+            "multi_az": null, 
+            "port": null
+        }, 
+        "port": 3306, 
+        "publicly_accessible": false, 
+        "read_replica_source_dbinstance_identifier": null, 
+        "replication_source": null, 
+        "secondary_availability_zone": null, 
+        "status": "available", 
+        "username": "dbAdmin", 
+        "vpc_security_groups": "sg-0da1934417cea5b02"
+    }, 
+    "invocation": {
+        "module_args": {
+            "apply_immediately": false, 
+            "aws_access_key": null, 
+            "aws_secret_key": null, 
+            "backup_retention": "1", 
+            "backup_window": "18:30-19:30", 
+            "character_set_name": null, 
+            "command": "create", 
+            "db_engine": "MySQL", 
+            "db_name": null, 
+            "debug_botocore_endpoint_logs": false, 
+            "ec2_url": null, 
+            "engine_version": "5.7.22", 
+            "force_failover": false, 
+            "instance_name": "m120-test-mysql57", 
+            "instance_type": "db.t2.medium", 
+            "iops": "1200", 
+            "license_model": "general-public-license", 
+            "maint_window": "SUN:19:30-SUN:20:30", 
+            "multi_zone": false, 
+            "new_instance_name": null, 
+            "option_group": null, 
+            "parameter_group": "M120-mysql57", 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": 3306, 
+            "profile": null, 
+            "publicly_accessible": "False", 
+            "region": "ap-southeast-1", 
+            "security_groups": null, 
+            "security_token": null, 
+            "size": "120", 
+            "snapshot": null, 
+            "source_instance": null, 
+            "subnet": "M120-mysql57", 
+            "tags": {
+                "Application": "m120-test-mysql57", 
+                "Environment": "m120-test-mysql57"
+            }, 
+            "upgrade": false, 
+            "username": "dbAdmin", 
+            "validate_certs": true, 
+            "vpc_security_groups": [
+                "sg-0da1934417cea5b02"
+            ], 
+            "wait": true, 
+            "wait_timeout": 1800, 
+            "zone": null
+        }
+    }
+}
+2020-01-11 14:58:55,239 p=18869 u=root |  TASK [rds.mysql : debug] **********************************************************************************************************************************
+2020-01-11 14:58:55,240 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/rds.yml:39
+2020-01-11 14:58:55,262 p=18869 u=root |  ok: [localhost] => {
+    "rds_result": {
+        "changed": true, 
+        "failed": false, 
+        "instance": {
+            "DBName": null, 
+            "allocated_storage": 120, 
+            "auto_minor_version_upgrade": false, 
+            "availability_zone": "ap-southeast-1c", 
+            "backup_retention": 1, 
+            "backup_window": "18:30-19:30", 
+            "character_set_name": null, 
+            "create_time": 1578725655.226, 
+            "db_name": null, 
+            "db_subnet_groups": {
+                "description": "M120 Fancy Ex Parrot Subnet Group", 
+                "name": "m120-mysql57", 
+                "status": "complete", 
+                "subnets": [
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1b", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-06c1d074817811db3", 
+                        "status": "active"
+                    }, 
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1a", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-0f699b5cd13046bcb", 
+                        "status": "active"
+                    }, 
+                    {
+                        "availability_zone": {
+                            "name": "ap-southeast-1c", 
+                            "provisioned_iops_capable": false
+                        }, 
+                        "identifier": "subnet-0046b05f2d4006487", 
+                        "status": "active"
+                    }
+                ], 
+                "vpc_id": "vpc-025e5ea3271f91941"
+            }, 
+            "endpoint": "m120-test-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com", 
+            "engine": "mysql", 
+            "engine_version": "5.7.22", 
+            "id": "m120-test-mysql57", 
+            "instance_type": "db.t2.medium", 
+            "iops": 1200, 
+            "latest_restorable_time": 1578725735.573, 
+            "license_model": "general-public-license", 
+            "maintenance_window": "sun:19:30-sun:20:30", 
+            "multi_zone": false, 
+            "option_groups": [
+                {
+                    "option_group_name": "default:mysql-5-7", 
+                    "status": "in-sync"
+                }
+            ], 
+            "parameter_groups": [
+                {
+                    "parameter_apply_status": "in-sync", 
+                    "parameter_group_name": "m120-mysql57"
+                }
+            ], 
+            "pending_modified_values": {
+                "allocated_storage": null, 
+                "backup_retention_period": null, 
+                "db_instance_class": null, 
+                "db_instance_identifier": null, 
+                "engine_version": null, 
+                "iops": null, 
+                "master_user_password": null, 
+                "multi_az": null, 
+                "port": null
+            }, 
+            "port": 3306, 
+            "publicly_accessible": false, 
+            "read_replica_source_dbinstance_identifier": null, 
+            "replication_source": null, 
+            "secondary_availability_zone": null, 
+            "status": "available", 
+            "username": "dbAdmin", 
+            "vpc_security_groups": "sg-0da1934417cea5b02"
+        }, 
+        "warnings": [
+            "The value 1 (type int) in a string field was converted to u'1' (type string). If this does not look like what you expect, quote the entire value to ensure it does not change.", 
+            "The value False (type bool) in a string field was converted to u'False' (type string). If this does not look like what you expect, quote the entire value to ensure it does not change."
+        ]
+    }
+}
+2020-01-11 14:58:55,302 p=18869 u=root |  TASK [rds.mysql : include_tasks] **************************************************************************************************************************
+2020-01-11 14:58:55,302 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/main.yml:4
+2020-01-11 14:58:55,353 p=18869 u=root |  included: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/setup-db.yml for localhost
+2020-01-11 14:58:55,399 p=18869 u=root |  TASK [rds.mysql : Upgrade AWS elastiCache redis cluster] **************************************************************************************************
+2020-01-11 14:58:55,400 p=18869 u=root |  task path: /home/centos/aws-project/006.rds/roles/rds.mysql/tasks/setup-db.yml:2
+2020-01-11 14:58:55,415 p=18869 u=root |  <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
+2020-01-11 14:58:55,415 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'echo ~root && sleep 0'
+2020-01-11 14:58:55,424 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157 `" && echo ansible-tmp-1578725935.41-142372232029157="` echo /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157 `" ) && sleep 0'
+2020-01-11 14:58:55,634 p=18869 u=root |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2020-01-11 14:58:55,635 p=18869 u=root |  <127.0.0.1> PUT /root/.ansible/tmp/ansible-local-18869KZzvp8/tmp6K1BBX TO /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157/AnsiballZ_command.py
+2020-01-11 14:58:55,636 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157/ /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157/AnsiballZ_command.py && sleep 0'
+2020-01-11 14:58:55,645 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c '/usr/bin/python2 /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157/AnsiballZ_command.py && sleep 0'
+2020-01-11 14:58:56,520 p=18869 u=root |  <127.0.0.1> EXEC /bin/sh -c 'rm -f -r /root/.ansible/tmp/ansible-tmp-1578725935.41-142372232029157/ > /dev/null 2>&1 && sleep 0'
+2020-01-11 14:58:56,535 p=18869 u=root |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": [
+        "aws", 
+        "rds", 
+        "modify-db-instance", 
+        "--region", 
+        "ap-southeast-1", 
+        "--db-instance-identifier", 
+        "m120-test-mysql57", 
+        "--deletion-protection", 
+        "--apply-immediately"
+    ], 
+    "delta": "0:00:00.772678", 
+    "end": "2020-01-11 14:58:56.508621", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "aws rds modify-db-instance  --region \"ap-southeast-1\"  --db-instance-identifier \"m120-test-mysql57\"  --deletion-protection  --apply-immediately\n", 
+            "_uses_shell": false, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2020-01-11 14:58:55.735943", 
+    "stderr": "", 
+    "stderr_lines": [], 
+    "stdout": "{\n    \"DBInstance\": {\n        \"PubliclyAccessible\": false, \n        \"MasterUsername\": \"dbAdmin\", \n        \"MonitoringInterval\": 0, \n        \"LicenseModel\": \"general-public-license\", \n        \"VpcSecurityGroups\": [\n            {\n                \"Status\": \"active\", \n                \"VpcSecurityGroupId\": \"sg-0da1934417cea5b02\"\n            }\n        ], \n        \"InstanceCreateTime\": \"2020-01-11T06:54:15.226Z\", \n        \"CopyTagsToSnapshot\": false, \n        \"OptionGroupMemberships\": [\n            {\n                \"Status\": \"in-sync\", \n                \"OptionGroupName\": \"default:mysql-5-7\"\n            }\n        ], \n        \"PendingModifiedValues\": {}, \n        \"Engine\": \"mysql\", \n        \"MultiAZ\": false, \n        \"LatestRestorableTime\": \"2020-01-11T06:55:35.573Z\", \n        \"DBSecurityGroups\": [], \n        \"DBParameterGroups\": [\n            {\n                \"DBParameterGroupName\": \"m120-mysql57\", \n                \"ParameterApplyStatus\": \"in-sync\"\n            }\n        ], \n        \"PerformanceInsightsEnabled\": false, \n        \"AutoMinorVersionUpgrade\": false, \n        \"PreferredBackupWindow\": \"18:30-19:30\", \n        \"DBSubnetGroup\": {\n            \"Subnets\": [\n                {\n                    \"SubnetStatus\": \"Active\", \n                    \"SubnetIdentifier\": \"subnet-06c1d074817811db3\", \n                    \"SubnetAvailabilityZone\": {\n                        \"Name\": \"ap-southeast-1b\"\n                    }\n                }, \n                {\n                    \"SubnetStatus\": \"Active\", \n                    \"SubnetIdentifier\": \"subnet-0f699b5cd13046bcb\", \n                    \"SubnetAvailabilityZone\": {\n                        \"Name\": \"ap-southeast-1a\"\n                    }\n                }, \n                {\n                    \"SubnetStatus\": \"Active\", \n                    \"SubnetIdentifier\": \"subnet-0046b05f2d4006487\", \n                    \"SubnetAvailabilityZone\": {\n                        \"Name\": \"ap-southeast-1c\"\n                    }\n                }\n            ], \n            \"DBSubnetGroupName\": \"m120-mysql57\", \n            \"VpcId\": \"vpc-025e5ea3271f91941\", \n            \"DBSubnetGroupDescription\": \"M120 Fancy Ex Parrot Subnet Group\", \n            \"SubnetGroupStatus\": \"Complete\"\n        }, \n        \"ReadReplicaDBInstanceIdentifiers\": [], \n        \"AllocatedStorage\": 120, \n        \"DBInstanceArn\": \"arn:aws:rds:ap-southeast-1:838988372941:db:m120-test-mysql57\", \n        \"BackupRetentionPeriod\": 1, \n        \"PreferredMaintenanceWindow\": \"sun:19:30-sun:20:30\", \n        \"Endpoint\": {\n            \"HostedZoneId\": \"Z2G0U3KFCY8NZ5\", \n            \"Port\": 3306, \n            \"Address\": \"m120-test-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com\"\n        }, \n        \"DBInstanceStatus\": \"available\", \n        \"IAMDatabaseAuthenticationEnabled\": false, \n        \"EngineVersion\": \"5.7.22\", \n        \"DeletionProtection\": true, \n        \"AvailabilityZone\": \"ap-southeast-1c\", \n        \"DomainMemberships\": [], \n        \"StorageType\": \"io1\", \n        \"DbiResourceId\": \"db-HJX3EY2LAMLV4X4A3XGTUEYUZM\", \n        \"CACertificateIdentifier\": \"rds-ca-2015\", \n        \"Iops\": 1200, \n        \"StorageEncrypted\": false, \n        \"AssociatedRoles\": [], \n        \"DBInstanceClass\": \"db.t2.medium\", \n        \"DbInstancePort\": 0, \n        \"DBInstanceIdentifier\": \"m120-test-mysql57\"\n    }\n}", 
+    "stdout_lines": [
+        "{", 
+        "    \"DBInstance\": {", 
+        "        \"PubliclyAccessible\": false, ", 
+        "        \"MasterUsername\": \"dbAdmin\", ", 
+        "        \"MonitoringInterval\": 0, ", 
+        "        \"LicenseModel\": \"general-public-license\", ", 
+        "        \"VpcSecurityGroups\": [", 
+        "            {", 
+        "                \"Status\": \"active\", ", 
+        "                \"VpcSecurityGroupId\": \"sg-0da1934417cea5b02\"", 
+        "            }", 
+        "        ], ", 
+        "        \"InstanceCreateTime\": \"2020-01-11T06:54:15.226Z\", ", 
+        "        \"CopyTagsToSnapshot\": false, ", 
+        "        \"OptionGroupMemberships\": [", 
+        "            {", 
+        "                \"Status\": \"in-sync\", ", 
+        "                \"OptionGroupName\": \"default:mysql-5-7\"", 
+        "            }", 
+        "        ], ", 
+        "        \"PendingModifiedValues\": {}, ", 
+        "        \"Engine\": \"mysql\", ", 
+        "        \"MultiAZ\": false, ", 
+        "        \"LatestRestorableTime\": \"2020-01-11T06:55:35.573Z\", ", 
+        "        \"DBSecurityGroups\": [], ", 
+        "        \"DBParameterGroups\": [", 
+        "            {", 
+        "                \"DBParameterGroupName\": \"m120-mysql57\", ", 
+        "                \"ParameterApplyStatus\": \"in-sync\"", 
+        "            }", 
+        "        ], ", 
+        "        \"PerformanceInsightsEnabled\": false, ", 
+        "        \"AutoMinorVersionUpgrade\": false, ", 
+        "        \"PreferredBackupWindow\": \"18:30-19:30\", ", 
+        "        \"DBSubnetGroup\": {", 
+        "            \"Subnets\": [", 
+        "                {", 
+        "                    \"SubnetStatus\": \"Active\", ", 
+        "                    \"SubnetIdentifier\": \"subnet-06c1d074817811db3\", ", 
+        "                    \"SubnetAvailabilityZone\": {", 
+        "                        \"Name\": \"ap-southeast-1b\"", 
+        "                    }", 
+        "                }, ", 
+        "                {", 
+        "                    \"SubnetStatus\": \"Active\", ", 
+        "                    \"SubnetIdentifier\": \"subnet-0f699b5cd13046bcb\", ", 
+        "                    \"SubnetAvailabilityZone\": {", 
+        "                        \"Name\": \"ap-southeast-1a\"", 
+        "                    }", 
+        "                }, ", 
+        "                {", 
+        "                    \"SubnetStatus\": \"Active\", ", 
+        "                    \"SubnetIdentifier\": \"subnet-0046b05f2d4006487\", ", 
+        "                    \"SubnetAvailabilityZone\": {", 
+        "                        \"Name\": \"ap-southeast-1c\"", 
+        "                    }", 
+        "                }", 
+        "            ], ", 
+        "            \"DBSubnetGroupName\": \"m120-mysql57\", ", 
+        "            \"VpcId\": \"vpc-025e5ea3271f91941\", ", 
+        "            \"DBSubnetGroupDescription\": \"M120 Fancy Ex Parrot Subnet Group\", ", 
+        "            \"SubnetGroupStatus\": \"Complete\"", 
+        "        }, ", 
+        "        \"ReadReplicaDBInstanceIdentifiers\": [], ", 
+        "        \"AllocatedStorage\": 120, ", 
+        "        \"DBInstanceArn\": \"arn:aws:rds:ap-southeast-1:838988372941:db:m120-test-mysql57\", ", 
+        "        \"BackupRetentionPeriod\": 1, ", 
+        "        \"PreferredMaintenanceWindow\": \"sun:19:30-sun:20:30\", ", 
+        "        \"Endpoint\": {", 
+        "            \"HostedZoneId\": \"Z2G0U3KFCY8NZ5\", ", 
+        "            \"Port\": 3306, ", 
+        "            \"Address\": \"m120-test-mysql57.c9hwnglzyqbw.ap-southeast-1.rds.amazonaws.com\"", 
+        "        }, ", 
+        "        \"DBInstanceStatus\": \"available\", ", 
+        "        \"IAMDatabaseAuthenticationEnabled\": false, ", 
+        "        \"EngineVersion\": \"5.7.22\", ", 
+        "        \"DeletionProtection\": true, ", 
+        "        \"AvailabilityZone\": \"ap-southeast-1c\", ", 
+        "        \"DomainMemberships\": [], ", 
+        "        \"StorageType\": \"io1\", ", 
+        "        \"DbiResourceId\": \"db-HJX3EY2LAMLV4X4A3XGTUEYUZM\", ", 
+        "        \"CACertificateIdentifier\": \"rds-ca-2015\", ", 
+        "        \"Iops\": 1200, ", 
+        "        \"StorageEncrypted\": false, ", 
+        "        \"AssociatedRoles\": [], ", 
+        "        \"DBInstanceClass\": \"db.t2.medium\", ", 
+        "        \"DbInstancePort\": 0, ", 
+        "        \"DBInstanceIdentifier\": \"m120-test-mysql57\"", 
+        "    }", 
+        "}"
+    ]
+}
+2020-01-11 14:58:56,536 p=18869 u=root |  META: ran handlers
+2020-01-11 14:58:56,536 p=18869 u=root |  META: ran handlers
+2020-01-11 14:58:56,537 p=18869 u=root |  PLAY RECAP ************************************************************************************************************************************************
+2020-01-11 14:58:56,538 p=18869 u=root |  localhost                  : ok=16   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

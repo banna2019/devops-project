@@ -1,0 +1,28 @@
+---
+# tasks file for roles/securitygroups
+- name: provision emqtt  8084 and 8083 and 1883 all security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-emqtt"
+    description: "opens port 8084 8083 1883 to the world"
+    tags:
+      "Name": "{{ vpc_env }}-emqtt"
+      "Environment": "{{ vpc_env }}-emqtt"
+    rules:
+      - proto: "tcp"
+        from_port: "8084"
+        to_port: "8084"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 8084"
+      - proto: "tcp"
+        from_port: "8083"
+        to_port: "8083"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 8083"
+      - proto: "tcp"
+        from_port: "1883"
+        to_port: "1883"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 1883"
+  register: sg_emqtt

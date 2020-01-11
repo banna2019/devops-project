@@ -1,0 +1,12 @@
+
+[M100-zuul]
+13.228.203.144 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+13.251.119.51 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+[M100-graylog]
+18.138.81.10 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+3.1.204.95 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+18.141.3.255 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+54.169.90.42 ansible_ssh_user=centos ansible_ssh_private_key_file=/home/centos/.keys/m100-ssh
+
+

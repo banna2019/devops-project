@@ -1,0 +1,19 @@
+---
+# tasks file for roles/securitygroups
+- name: provision private 18083 port security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-docker-manager"
+    description: "opens port 2375 to the user"
+    tags:
+      "Name": "{{ vpc_env }}-docker-manager"
+      "Environment": "{{ vpc_env }}-docker-manager"
+    rules:
+      - proto: "tcp"
+        from_port: "2375"
+        to_port: "2375"
+        cidr_ip: "154.197.29.34/32"
+        rule_desc: "private allow all on port 2375"
+  register: sg_docker_manager
+

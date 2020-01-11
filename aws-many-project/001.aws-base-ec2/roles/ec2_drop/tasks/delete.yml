@@ -1,0 +1,8 @@
+---
+- name: "remove ec2 instance termination"
+  ec2:
+    instance_ids: "{{ item }}"
+    state: absent
+    region: "{{ vpc_region | default('ap-southeast-1') }}"
+  with_items: "{{ instance_ids }}"
+

@@ -1,0 +1,17 @@
+---
+- name: Create ec2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "M120"
+    vpc_region: "ap-southeast-1"
+
+    ec2_key_Pair: "m120-ssh"
+    ec2_ami_Id: "ami-0208d16fd11190da6" 
+    ssh_user: centos
+    hosts_dir: "/home/centos/aws-project"
+    
+  roles:
+    - { role: ec2,app_name: "prometheus",env_tag: "prometheus",ec2_instance_type: "t3a.large",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}",securitys_name: "",app_names: [prometheus] }

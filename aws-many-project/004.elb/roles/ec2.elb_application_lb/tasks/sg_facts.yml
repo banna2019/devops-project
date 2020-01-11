@@ -1,0 +1,65 @@
+---
+- name: Get WS SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ elb_vpc_id }}" 
+      group-name: "{{ elb_vpc_name }}-{{ app_ws_group }}"
+  register: sg_ws
+
+- name: list of ws all the security group id.
+  set_fact:
+    sg_ws_id: "{{ item.group_id }}"
+  with_items: "{{ sg_ws.security_groups }}"
+
+- name: Get operation SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ elb_vpc_id }}" 
+      group-name: "{{ elb_vpc_name }}-{{ app_operation_group }}"
+  register: sg_operation
+
+- name: list of operation all the security group id.
+  set_fact:
+    sg_operation_id: "{{ item.group_id }}"
+  with_items: "{{ sg_operation.security_groups }}"
+
+- name: Get superbackend SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ elb_vpc_id }}" 
+      group-name: "{{ elb_vpc_name }}-{{ app_superbackend_group }}"
+  register: sg_superbackend
+
+- name: list of superbackend all the security group id.
+  set_fact:
+    sg_superbackend_id: "{{ item.group_id }}"
+  with_items: "{{ sg_superbackend.security_groups }}"
+
+- name: Get merchant SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ elb_vpc_id }}" 
+      group-name: "{{ elb_vpc_name }}-{{ app_merchant_group }}"
+  register: sg_merchant
+
+- name: list of merchant all the security group id.
+  set_fact:
+    sg_merchant_id: "{{ item.group_id }}"
+  with_items: "{{ sg_merchant.security_groups }}"
+
+- name: Get appgw SG ID
+  ec2_group_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ elb_vpc_id }}" 
+      group-name: "{{ elb_vpc_name }}-{{ app_appgw_group }}"
+  register: sg_appgw
+
+- name: list of appgw all the security group id.
+  set_fact:
+    sg_appgw_id: "{{ item.group_id }}"
+  with_items: "{{ sg_appgw.security_groups }}"

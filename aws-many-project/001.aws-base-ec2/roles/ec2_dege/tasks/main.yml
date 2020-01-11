@@ -1,0 +1,14 @@
+---
+- include: vpc_subnet_facts.yml
+- include: creata_keys.yml 
+- include: merchant-sg.yml 
+- include: backend-acl-sg.yml 
+
+- include_tasks: instances.yml
+  when: securitys_name == ""
+
+- include_tasks: instances-merchant.yml 
+  when: securitys_name == "merchant"
+
+- include_tasks: instances-backend.yml
+  when: securitys_name == "backend"

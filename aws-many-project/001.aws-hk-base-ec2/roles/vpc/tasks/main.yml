@@ -1,0 +1,11 @@
+---
+# tasks file for vpc/roles/vpc
+
+- name: ensure that the VPC is present
+  ec2_vpc_net:
+    region: "{{ vpc_region }}"
+    name: "{{ vpc_env }}"
+    state: present
+    cidr_block: "{{ vpc_cidr_block }}"
+    resource_tags: { "Name" : "{{ vpc_env }}", "Environment" : "{{ vpc_env }}" }
+  register: vpc_info

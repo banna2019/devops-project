@@ -1,0 +1,14 @@
+{
+    "InstanceType": "kafka_cluster_type",
+    "BrokerAZDistribution": "DEFAULT",
+    "ClientSubnets": [
+        "subnet_msk_ids00",
+        "subnet_msk_ids01",
+        "subnet_msk_ids02"],
+    "SecurityGroups": ["sg_all_id"],
+    "StorageInfo": {
+      "EbsStorageInfo": {
+        "VolumeSize": kafka_instance_size
+      }
+   } 
+}

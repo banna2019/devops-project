@@ -1,0 +1,8 @@
+---
+- name: Upgrade AWS elastiCache redis cluster
+  command: >
+    aws rds modify-db-instance \
+      --region "{{ region }}" \
+      --db-instance-identifier "{{ rds_instance_name }}" \
+      --deletion-protection \
+      --apply-immediately

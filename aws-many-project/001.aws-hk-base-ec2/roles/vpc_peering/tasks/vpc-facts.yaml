@@ -1,0 +1,35 @@
+---
+- name: VPC facts
+  ec2_vpc_net_facts:
+    filters:
+      "tag:Name": "{{ owner_vpc_name }}"
+  register: owner_vpc_facts
+
+- name: "set fact: VPC ID"
+  set_fact:
+    owner_vpc_id: "{{ owner_vpc_facts.vpcs[0].id }}"
+
+- name: "set fact: owner cidr IP"
+  set_fact:
+    owner_cidr_block: "{{ owner_vpc_facts.vpcs[0].cidr_block }}"
+
+- name: VPC facts
+  ec2_vpc_net_facts:
+    filters:
+      "tag:Name": "{{ acc_vpc_name }}"
+  register: acc_vpc_facts
+
+- name: "set fact: VPC ID"
+  set_fact:
+    acc_vpc_id: "{{ acc_vpc_facts.vpcs[0].id }}"
+
+- name: "set fact: accept cidr IP"
+  set_fact:
+    acc_cidr_block: "{{ acc_vpc_facts.vpcs[0].cidr_block }}"
+
+- name: Owner route tables facts
+  ec2_vpc_route_table_facts:
+    region: "{{ region }}"
+    filters:
+      vpc-id: "{{ owner_vpc_id }}"
+  register: vpc_route_tables

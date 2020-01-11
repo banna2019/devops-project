@@ -1,0 +1,110 @@
+---
+
+- name: Create Docker configuration directories
+  file:
+    path: "{{ item }}"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  loop:
+    - "/etc/docker"
+    - "/etc/systemd/system/docker.service.d"
+
+- name: Configure Docker daemon options (json)
+  template:
+    src: "etc/docker/daemon.json.j2"
+    dest: "/etc/docker/daemon.json"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  when: docker_default_daemon_json or docker_daemon_json
+  notify: ["Restart Docker"]
+
+- name: Configure Docker daemon options (flags)
+  template:
+    src: "etc/systemd/system/docker.service.d/options.conf.j2"
+    dest: "/etc/systemd/system/docker.service.d/options.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  register: docker_register_daemon_flags
+  when: docker_daemon_flags
+  notify: ["Restart Docker"]
+
+- name: Configure Docker daemon environment variables
+  template:
+    src: "etc/systemd/system/docker.service.d/environment.conf.j2"
+    dest: "/etc/systemd/system/docker.service.d/environment.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  register: docker_register_daemon_environment
+  when: docker_daemon_environment
+  notify: ["Restart Docker"]
+
+- name: Configure custom systemd unit file override
+  template:
+    src: "etc/systemd/system/docker.service.d/custom.conf.j2"
+    dest: "/etc/systemd/system/docker.service.d/custom.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  register: docker_register_custom_override
+  when: docker_systemd_override | d()
+  notify: ["Restart Docker"]
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: true
+  when: (docker_register_daemon_flags | d() and
+         docker_register_daemon_flags is changed)
+         or (docker_register_daemon_environment | d() and
+         docker_register_daemon_environment is changed)
+         or (docker_register_custom_override | d() and
+         docker_register_custom_override is changed)
+  notify: ["Restart Docker"]
+
+- name: Restart Docker now to make sure `docker login` works
+  meta: "flush_handlers"
+
+- name: Manage Docker registry login credentials
+  docker_login:
+    registry_url: "{{ item.registry_url | d(omit) }}"
+    username: "{{ item.username }}"
+    password: "{{ item.password }}"
+    email: "{{ item.email | d(omit) }}"
+    reauthorize: "{{ item.reauthorize | d(omit) }}"
+    config_path: "{{ item.config_path | d((ansible_env.PWD | d('/root')) + '/.docker/config.json') }}"
+    state: "{{ item.state | d('present') }}"
+  loop: "{{ docker_registries }}"
+  when: item.username | d() and item.password | d()
+  vars:
+    ansible_python_interpreter: "{{ '/usr/bin/env python-docker' if docker_pip_virtualenv | d() else ansible_python.executable }}"
+
+- name: Remove Docker related cron jobs
+  file:
+    path: "/etc/cron.d/{{ item.cron_file }}"
+    state: "absent"
+  loop: "{{ docker_cron_jobs }}"
+  when:
+    - item.state | d("present") == "absent"
+    - item.name | d() and item.job | d()
+    - item.schedule | d() and item.cron_file | d()
+
+- name: Create Docker related cron jobs
+  cron:
+    name: "{{ item.name }}"
+    job: "{{ item.job }}"
+    minute: "{{ item.schedule[0] }}"
+    hour: "{{ item.schedule[1] }}"
+    day: "{{ item.schedule[2] }}"
+    month: "{{ item.schedule[3] }}"
+    weekday: "{{ item.schedule[4] }}"
+    cron_file: "{{ item.cron_file }}"
+    user: "{{ item.user | d('root') }}"
+  loop: "{{ docker_cron_jobs }}"
+  when:
+    - item.state | d("present") != "absent"
+    - item.name | d() and item.job | d()
+    - item.schedule | d() and item.cron_file | d()

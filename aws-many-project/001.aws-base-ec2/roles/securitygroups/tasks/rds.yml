@@ -1,0 +1,18 @@
+---
+# tasks file for roles/securitygroups
+- name: provision vpc rds netwokr  all security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-rds"
+    description: "opens all ports to the world"
+    tags:
+      "Name": "{{ vpc_env }}-rds"
+      "Environment": "{{ vpc_env }}-rds"
+    rules:
+      - proto: "tcp"
+        ports:
+          - 0-65535
+        cidr_ip: "{{ vpc_facts.vpcs[0].cidr_block }}"
+        rule_desc: "private rds allow all on ports"
+  register: sg_all

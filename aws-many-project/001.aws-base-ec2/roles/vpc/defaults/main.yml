@@ -1,0 +1,4 @@
+---
+# defaults file for vpc/roles/vpc
+
+vpc_cidr_block: "10.120.0.0/16"

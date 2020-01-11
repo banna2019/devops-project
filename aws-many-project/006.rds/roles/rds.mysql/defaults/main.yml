@@ -1,0 +1,12 @@
+---
+# defaults file for rds.mysql
+# Reference to the Created RDS instance
+#rds_backup_retention: 1
+#rds_db_name: ""
+
+security_rds: "{{ vpc_name }}-rds"
+rds_multi_zone: no
+rds_license_model: "general-public-license"
+rds_backup_retention: 1
+rds_backup_window: "18:30-19:30"
+rds_maint_window: "SUN:19:30-SUN:20:30"

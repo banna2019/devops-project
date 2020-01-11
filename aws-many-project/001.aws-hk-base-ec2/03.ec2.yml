@@ -1,0 +1,21 @@
+---
+- name: Create ec2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: True
+
+  vars:
+    vpc_env: "M20"
+    vpc_region: "ap-east-1"
+
+    ec2_key_Pair: "m20-ssh"
+    ec2_ami_Id: "ami-02a91e9dd7fcb35fc" 
+    ssh_user: centos
+    hosts_dir: "/home/centos/aws-project"
+    #hosts_dir: "/home/centos/aws-project/003.os-sys-docker/inventory/hosts"
+    
+  roles:
+    - { role: ec2,app_name: "merchant",ec2_instance_type: "t2.medium",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[0] }}",securitys_name: "merchant-8081",app_names: [merchant,share-site-domains,agent,shareagent] }
+    - { role: ec2,app_name: "h5",ec2_instance_type: "t2.medium",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[1] }}",securitys_name: "",app_names: [h5] }
+    - { role: ec2,app_name: "download-site",ec2_instance_type: "t2.medium",ec2_volume_Size: 50,ec2_instance_count: 1,vpc_subnet_Id: "{{ subnet_ec2_ids[2] }}",app_names: [download-site,customer] }
+

@@ -1,0 +1,22 @@
+---
+
+- name: Create AWS RDS Instance vHost
+  hosts: localhost
+  connection: local
+  gather_facts: True
+  serial: 1
+  max_fail_percentage: 0
+
+  vars:
+    vpc_name: "M120"
+    region: "ap-southeast-1"
+    rds_engine: "mysql5.7"
+    rds_mysql_version: "mysql57"
+    rds_engine_version: "5.7.22"
+
+  roles:
+    - { role: rds.mysql-base }  #创建RDS基础环境
+    - { role: rds.mysql,rds_instance_name: 'm120-test-mysql57',rds_instance_type: "db.t2.medium",rds_instance_size_gb: "120",rds_ebs_iops: "1200",rds_admin_username: "dbAdmin",rds_admin_password: "HDhpcTaTeDkM8kGW" }
+    #- { role: rds.mysql,rds_instance_name: 'm120-config-mysql57',rds_instance_type: "db.t2.medium",rds_instance_size_gb: "120",rds_ebs_iops: "1200",rds_admin_username: "dbAdmin",rds_admin_password: "HDhpcTaTeDkM8kGW" }
+    #- { role: rds.mysql,rds_instance_name: 'm120-base-mysql57',rds_instance_type: "db.m5.large",rds_instance_size_gb: "120",rds_ebs_iops: "1200",rds_admin_username: "dbAdmin",rds_admin_password: "opuUjcEVp0xH" }
+

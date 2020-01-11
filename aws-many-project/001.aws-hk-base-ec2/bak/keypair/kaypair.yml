@@ -1,0 +1,20 @@
+---
+- hosts: localhost  
+  connection: local  
+  gather_facts: no  
+
+  vars:
+    ec2_key_Pair: "bruce_banna"
+    ec2_region: "ap-southeast-1"
+
+  tasks:
+ 
+  - name: Create a new EC2 key
+    ec2_key:
+      name: "{{ ec2_key_Pair }}"
+      region: "{{ ec2_region | default('ap-southeast-1') }}"
+    register: ec2_key_result
+ 
+  - name: Save private key
+    copy: content="{{ ec2_key_result.key.private_key }}" dest="./{{ ec2_key_Pair }}.pem" mode=0600
+    when: ec2_key_result.changed

@@ -1,0 +1,40 @@
+---
+- name: "Provision ec2 instance"
+  ec2:
+    key_name: "{{ ec2_key_Pair }}"
+    region: "{{ vpc_region | default('ap-southeast-1') }}"
+    group_id:
+      - "{{ sg_zuul_all.group_id }}"
+      - "{{ sg_ssh.group_id }}"
+    instance_type: "{{ ec2_instance_type | default('t2.micro') }}"
+    image: "{{ ec2_ami_Id }}"
+    #image: "{{ ec2_ami_Id | default('ami-8e0205f2') }}"
+    wait: true
+    exact_count: "{{ ec2_instance_count }}"
+    count_tag:
+      Name: "{{ ec2_instance_tag_name }}"
+    instance_tags:
+      Name: "{{ ec2_instance_tag_name }}"
+      env: "{{ vpc_env }}"
+    vpc_subnet_id: "{{ vpc_subnet_Id }}"
+#    private_ip: "{{ ec2_instance_private_Ip }}"
+    assign_public_ip: yes
+    instance_profile_name: "{{ ec2_instance_profile_name | default('') }}"
+    termination_protection: yes
+    volumes:
+      - device_name: "{{ ec2_volume_Device_Name }}"
+        volume_type: "{{ ec2_volume_type }}"
+        volume_size: "{{ ec2_volume_Size }}"
+        delete_on_termination: false
+    monitoring: yes
+  register: ec2_zuul
+
+- name: Assign EIP address for web instances
+  ec2_eip:
+    in_vpc: yes
+    reuse_existing_ip_allowed: yes
+    state: present
+    region: "{{ vpc_region }}"
+    device_id: "{{ item.id }}"
+  with_items: "{{ ec2_zuul.instances }}"
+  register: elastic_ip

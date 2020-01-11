@@ -1,0 +1,42 @@
+---
+- name: Create a new EC2 key
+  ec2_key:
+    name: "{{ ec2_key_Pair }}"
+    region: "{{ vpc_region }}"
+  register: ec2_key_result
+
+- name: Check directory exists or not.
+  stat: path="{{ hosts_dir }}/.keys"
+  register: status
+
+- name: Make private key Dir
+  file: state=directory path="{{ hosts_dir }}/.keys" owner=root group=root mode=0775
+  when: status.stat.exists == false
+
+- name: Save private key
+  copy: content="{{ ec2_key_result.key.private_key }}" dest="{{ hosts_dir }}/.keys/{{ ec2_key_Pair }}" mode=0600
+  when: ec2_key_result.changed
+
+- name: Check directory  inventory exists or not.
+  stat: path="{{ hosts_dir }}/.inventory"
+  register: inven_stats
+
+- name: Make private key Dir
+  file: state=directory path="{{ hosts_dir }}/.inventory" owner=root group=root mode=0775
+  when: inven_stats.stat.exists == false
+
+- name: Check File exists or not
+  stat: path="{{ hosts_dir }}/.inventory/hk_hosts"
+  register: stats
+
+- name: Create file if does not exist
+  file: state=touch path="{{ hosts_dir }}/.inventory/hk_hosts" owner=root group=root mode=0755
+  when: stats.stat.exists == false
+
+- name: Check instances File exists or not
+  stat: path="{{ hosts_dir }}/.inventory/hk_instances"
+  register: status
+
+- name: Create instances file if does not exist
+  file: state=touch path="{{ hosts_dir }}/.inventory/hk_instances" owner=root group=root mode=0755
+  when: status.stat.exists == false

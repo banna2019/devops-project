@@ -1,0 +1,18 @@
+---
+- name: "VPC Peering"
+  ec2_vpc_peer:
+    vpc_id: "{{ owner_vpc_id }}"
+    peer_vpc_id: "{{ acc_vpc_id }}"
+    region: "{{ region }}"
+    tags:
+      Name: "{{connection_name}}"
+  register: _vpc_peer
+- debug: var=_vpc_peer verbosity=1
+
+- name: "Accept VPC Peering request"
+  ec2_vpc_peer:
+    peering_id: "{{ _vpc_peer.peering_id }}"
+    state: accept
+    region: "{{ region }}"
+  when: _vpc_peer.peering_id is defined
+

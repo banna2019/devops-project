@@ -1,0 +1,12 @@
+---
+- name: Get all vpc peers with specific filters
+  ec2_vpc_peering_facts:
+    region: "{{ region }}"
+    filters:
+      status-code: ['active']
+      "tag:Name": "{{ connection_name }}"
+  register: running_vpc_peers
+
+- name: "set fact: peering ID"
+  set_fact:
+    peer_id: "{{ running_vpc_peers.result[0].vpc_peering_connection_id }}"

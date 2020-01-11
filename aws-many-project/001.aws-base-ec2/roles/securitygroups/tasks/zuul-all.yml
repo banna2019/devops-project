@@ -1,0 +1,18 @@
+---
+# tasks file for roles/securitygroups
+- name: provision zuul  8800 all security group
+  ec2_group:
+    region: "{{ vpc_region }}"
+    vpc_id: "{{ vpc_facts.vpcs[0].id }}"
+    name: "{{ vpc_env }}-zuul-all"
+    description: "opens port 8800 to the world"
+    tags:
+      "Name": "{{ vpc_env }}-zuul-all"
+      "Environment": "{{ vpc_env }}-zuul-all"
+    rules:
+      - proto: "tcp"
+        from_port: "8800"
+        to_port: "8800"
+        cidr_ip: "0.0.0.0/0"
+        rule_desc: "allow all on port 8800"
+  register: sg_zuul_all

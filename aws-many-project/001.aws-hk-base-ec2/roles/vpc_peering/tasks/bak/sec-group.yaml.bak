@@ -1,0 +1,18 @@
+---
+- name: provision accept ec2 all to owner security group
+  ec2_group:
+    region: "{{ region }}"
+    vpc_id: "{{ acc_vpc_id }}"
+    name: "{{ acc_vpc_name }}-peering-all"
+    description: "opens all ports to the world"
+    tags:
+      "Name": "{{ acc_vpc_name }}-peering-all"
+      "Environment": "{{ acc_vpc_name }}-peering-all"
+    rules:
+      - proto: all
+      #- proto: "tcp"
+        #ports:
+        #  - 0-65535
+        cidr_ip: "{{ owner_cidr_block }}"
+        rule_desc: "private ec2 allow all on ports"
+  register: sg_accept_all

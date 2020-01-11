@@ -1,0 +1,36 @@
+---
+# tasks file for roles/subnets
+
+- name: ensure that the subnets are present
+  ec2_vpc_subnet:
+    region: "{{ vpc_region }}"
+    state: present
+    vpc_id: "{{ vpc_info.vpc.id }}"
+    cidr: "{{ item.subnet }}"
+    az: "{{ vpc_region }}{{ item.az }}"
+    resource_tags: 
+      "Name" : "{{ vpc_env }}_{{ item.use }}_{{ vpc_region }}{{ item.az }}"
+      "Environment" : "{{ vpc_env }}"
+      "Use" : "{{ item.use }}"
+  with_items: "{{ the_subnets }}"
+
+- name: gather information about the ec2 subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      "tag:Use": "ec2"
+      "tag:Environment": "{{ vpc_env }}"
+  register: subnets_ec2
+
+- name: gather information about the rds subnets
+  ec2_vpc_subnet_facts:
+    region: "{{ vpc_region }}"
+    filters:
+      "tag:Use": "rds"
+      "tag:Environment": "{{ vpc_env }}"
+  register: subnets_rds
+
+- name: register just the IDs for each of the subnets
+  set_fact:
+    subnet_ec2_ids: "{{ subnets_ec2.subnets | sort(attribute='cidr_block') | map(attribute='id') |list  }}"
+    subnet_rds_ids: "{{ subnets_rds.subnets | sort(attribute='cidr_block') | map(attribute='id') |list }}"
